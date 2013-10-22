@@ -6,15 +6,15 @@ deploy states for SaltStacks
 for more info on SaltStack: [http://saltstack.com/community.html](http://saltstack.com/community.html)
 Salt is a master-minion system to setup servers and workstations to specified states, defined in yaml files.
 
-Incredible handy for setting up once for testing, development and production.
+Incredibly handy for setting up once for testing, development and production.
 
 ## Install (ubuntu)
 
-sudo add-apt-repository ppa:saltstack/salt
+    sudo add-apt-repository ppa:saltstack/salt
 
 (if using Raring 13.04 or Saucy 13.10):
 
-sudo add-apt-repository ppa:saltstack/salt-daily
+    sudo add-apt-repository ppa:saltstack/salt-daily
 
 vagrant
 =======
