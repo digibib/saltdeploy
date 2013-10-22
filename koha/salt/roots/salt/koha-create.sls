@@ -3,7 +3,7 @@
 # ONLY FOR NEW BASE!
 ##########
 include:
-  - kohafiles
+  - koha-files
 
 createkohadb:
   cmd.run:
