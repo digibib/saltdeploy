@@ -10,6 +10,6 @@ purgekohainstance:
 # purge stale mysql admin user
 dropmysqlusers:
   cmd.run:
-    - name: 'echo "drop user flesk,flesk@localhost; flush privileges;" | mysql -u root > /dev/null 2>&1'
+    - name: "echo \"drop user {{ opts['adminuser'] }},{{ opts['adminuser'] }}@localhost; flush privileges;\" | mysql -u root > /dev/null 2>&1"
     - require: 
       - cmd: purgekohainstance

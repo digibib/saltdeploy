@@ -1,4 +1,5 @@
 master: localhost
 file_client: local
 kohaname: knakk
+adminuser: flesk
 filerepo: http://171.23.133.203/saltfiles/koha
