@@ -5,6 +5,7 @@ base:
     - koha-locales
     # - koha-restore
     # - koha-import
-    # - koha-import-15000 
+    # - koha-import-15000
+    # - koha-import-all
     # - koha-dummypatrons
     # - koha-dummycirc

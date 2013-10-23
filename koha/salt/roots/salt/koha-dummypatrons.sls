@@ -1,7 +1,6 @@
 ########
 # KOHA DUMMY PATRON DATA
 ########
-
 https://github.com/digibib/LibrioTools:
   git.latest:
     - rev: master
@@ -12,7 +11,7 @@ https://github.com/digibib/LibrioTools:
     - source: salt://files/patrons.yaml
     - stateful: True
 
-create100patrons:
+createpatrons:
   cmd.run:
     - name: sudo KOHA_CONF=/etc/koha/sites/{{ opts['kohaname'] }}/koha-conf.xml PERL5LIB=/usr/share/koha/lib perl patrons.pl -n 100 -c patrons.yaml
     - cwd: /tmp/LibrioTools/sim
