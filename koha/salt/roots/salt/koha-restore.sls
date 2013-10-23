@@ -12,13 +12,13 @@ include:
 # 500ex database for knakk
 /home/vagrant/knakk-2013-10-22.sql.gz:
   file.managed:
-    - source: http://171.23.133.203/saltfiles/koha/knakk-2013-10-22.sql.gz
+    - source: {{ opts['filerepo'] }}/knakk-2013-10-22.sql.gz
     - source_hash: md5=b3367bad920b42948322d3f735784a99
 
 # 500ex file structure for knakk
 /home/vagrant/knakk-2013-10-22.tar.gz:
   file.managed:
-    - source: http://171.23.133.203/saltfiles/koha/knakk-2013-10-22.tar.gz
+    - source: {{ opts['filerepo'] }}/knakk-2013-10-22.tar.gz
     - source_hash: md5=36bb6ce2496f2570ae8c22c4a038fe5f
 
 ##########

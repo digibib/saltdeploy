@@ -15,7 +15,7 @@ include:
 # marcxml file with 500 records and items
 /home/vagrant/500_eximport.xml:
   file.managed:
-    - source: http://171.23.133.203/saltfiles/koha/500_eximport.xml
+    - source: {{ opts['filerepo'] }}/500_eximport.xml
     - source_hash: md5=498f7b6f69b41cf4dfead83210dcbee3  
 
 import500ex:
