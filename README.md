@@ -41,3 +41,11 @@ Typical structure:
    │           ├── examplestate.sls          ( example state - can be loaded on start or manually )
    └── Vagrantfile                           ( Vagrant setup file, virtualbox image, provisioner, ports, etc.)
 ```
+
+NB! For running 64bit virtual images, the processor needs to support virtualization:
+
+check with:
+
+    grep --color vmx /proc/cpuinfo
+
+if there is output with `vmx` it's Yay!
