@@ -9,3 +9,5 @@ base:
     # - koha-import-all
     # - koha-dummypatrons
     # - koha-dummycirc
+    # - koha-oai
+    # - koha-marc2rdf
