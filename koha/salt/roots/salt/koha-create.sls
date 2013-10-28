@@ -27,3 +27,10 @@ createkohadb:
     - repl: <enable_plugins>1
     - require:
       - cmd: createkohadb
+
+/etc/koha/sites/{{ opts['kohaname'] }}:
+  file.directory:
+    - group: {{ opts['kohaname'] }}-koha
+    - watch:
+      - file: /etc/koha/sites/{{ opts['kohaname'] }}/zebra-biblios.cfg
+      - file: /etc/koha/sites/{{ opts['kohaname'] }}/koha-conf.xml
