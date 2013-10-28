@@ -22,3 +22,16 @@ createkohadb:
       - repl: biblios\/\1:100G
       - require:
         - cmd: createkohadb
+
+# enabele koha plugins
+/etc/koha/sites/{{ opts['kohaname'] }}/koha-conf.xml:
+  file.managed:
+    - group: {{ opts['kohaname'] }}-koha
+    - watch:
+      - cmd: createkohadb
+    - replace:
+      - name: /etc/koha/sites/{{ opts['kohaname'] }}/koha-conf.xml
+      - pattern: <enable_plugins>0
+      - repl: <enable_plugins>1
+      - require:
+        - cmd: createkohadb
