@@ -12,4 +12,4 @@
 disable_zebracron:
   file.comment:
     - name: /etc/cron.d/koha-common
-    - regex: ^.+koha-rebuild-zebra
+    - regex: ^\*.+koha-rebuild-zebra

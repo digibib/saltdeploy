@@ -18,7 +18,7 @@ createkohadb:
       - cmd: createkohadb
     - replace:
       - name: /etc/koha/sites/{{ opts['kohaname'] }}/zebra-biblios.cfg
-      - pattern: biblios\/([register|shadow]):.+$
+      - pattern: biblios\/(register|shadow):.+$
       - repl: biblios\/\1:100G
       - require:
         - cmd: createkohadb
