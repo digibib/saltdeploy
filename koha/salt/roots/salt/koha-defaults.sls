@@ -1,5 +1,5 @@
 ##########
-# KOHA FILES STATE
+# KOHA DEFAULTS STATE
 ##########
 
 # defaults file with libraries and item types
@@ -7,8 +7,9 @@
   file.managed:
     - source: salt://files/defaults.sql.gz
 
-##########
-# IMPORT FILES
-##########
 
-
+# disable zebra rebuild cronjob
+disable_zebracron:
+  file.comment:
+    - name: /etc/cron.d/koha-common
+    - regex: ^.+koha-rebuild-zebra

@@ -9,13 +9,13 @@
         "identifier_tag": "001",
         "type": "BIBO.Document",
         "default_prefix": "http://data.deichman.no/",
-        "default_graph": "http://data.deichman.no/book"
+        "default_graph": "http://data.deichman.no/books"
       }
     },
     "mapping": "38887827-50a6-4c79-ba8c-5bf88e427d33",
     "oai": {
       "id": "KOHA-OAI-TEST",
-      "url": "http://10.172.2.202:8080/cgi-bin/koha/oai.pl/request/",
+      "url": "http://localhost:8080/cgi-bin/koha/oai.pl/request/",
       "set": "",
       "follow_redirects": "true",
       "parser": "rexml",
@@ -27,8 +27,17 @@
       "schedule": ""
     },
     "rules": [
-
+      {
+        "id": "18557b61-85d3-49fb-af6c-4a5e94dc31d5"
+      },
+      {
+        "id": "be6c403e-5f48-4296-b0d1-0069a0247efa"
+      },
+      {
+        "id": "ec14e639-8b7c-46d8-b7c5-fbb8b60ef9f4"
+      }
     ],
+
     "harvesters": [
 
     ]

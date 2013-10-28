@@ -2301,7 +2301,7 @@
                             "substr_offset": 35
                         },
                         "relation": {
-                            "class": "LEXVO.Language"
+                            "class": "LVONT.Language"
                         }
                     },
                     "biocontent": {

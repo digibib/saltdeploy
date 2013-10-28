@@ -13,6 +13,9 @@ marc2rdfpkgs:
       - bundler
       - virtuoso-minimal
 
+marc2rdf-user:
+  user.present:
+    - name: {{ opts['kohaname'] }}-marc2rdf
 ########
 # UPSTART FILES
 ########
@@ -22,7 +25,7 @@ marc2rdfpkgs:
     - source: salt://files/marc2rdf/marc2rdf.conf
     - template: jinja
     - context:
-      User: {{ opts['kohaname'] }}-koha
+      User: {{ opts['kohaname'] }}-marc2rdf
     - require:
       - file: /etc/init/marc2rdf-app.conf
       - file: /etc/init/marc2rdf-scheduler.conf
@@ -34,7 +37,7 @@ marc2rdfpkgs:
     - template: jinja
     - context:
       Port: 3000
-      User: {{ opts['kohaname'] }}-koha
+      User: {{ opts['kohaname'] }}-marc2rdf
 
 /etc/init/marc2rdf-scheduler.conf:
   file.managed:
@@ -42,7 +45,7 @@ marc2rdfpkgs:
     - template: jinja
     - context:
       Port: 3100
-      User: {{ opts['kohaname'] }}-koha
+      User: {{ opts['kohaname'] }}-marc2rdf
 
 /etc/init/marc2rdf-load_schedules.conf:
   file.managed:
@@ -50,7 +53,7 @@ marc2rdfpkgs:
     - template: jinja
     - context:
       Port: 3200
-      User: {{ opts['kohaname'] }}-koha
+      User: {{ opts['kohaname'] }}-marc2rdf
 
 ########
 # VIRTUOSO
@@ -61,7 +64,7 @@ marc2rdfpkgs:
     - source: salt://files/virtuoso/virtuoso.conf
     - template: jinja
     - context:
-      User: {{ opts['kohaname'] }}-koha
+      User: {{ opts['kohaname'] }}-marc2rdf
 
 /data/virtuoso/virtuoso.ini:
   file.managed:
@@ -97,6 +100,12 @@ https://github.com/digibib/marc2rdf:
     - require:
       - git: https://github.com/digibib/marc2rdf
 
+/usr/local/src/marc2rdf/db/rules.json:
+  file.managed:
+    - source: salt://files/marc2rdf/rules.json
+    - require:
+      - git: https://github.com/digibib/marc2rdf
+
 bundle_marc2rdf: 
   cmd.run:
     - cwd: /usr/local/src/marc2rdf
@@ -106,7 +115,7 @@ bundle_marc2rdf:
 
 /usr/local/src/marc2rdf:
   file.directory:
-    - user: {{ opts['kohaname'] }}-koha
+    - user: {{ opts['kohaname'] }}-marc2rdf
     - recurse:
       - user
 
@@ -122,6 +131,7 @@ marc2rdf:
       - file: /usr/local/src/marc2rdf/config/settings.json
       - file: /usr/local/src/marc2rdf/db/libraries.json
       - file: /usr/local/src/marc2rdf/db/mappings.json
+      - file: /usr/local/src/marc2rdf/db/rules.json
     - watch:
       - git: https://github.com/digibib/marc2rdf
 
