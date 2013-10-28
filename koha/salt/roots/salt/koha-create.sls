@@ -12,26 +12,18 @@ createkohadb:
 
 # increase memory limits on zebra index
 /etc/koha/sites/{{ opts['kohaname'] }}/zebra-biblios.cfg:
-  file.managed:
-    - group: {{ opts['kohaname'] }}-koha
-    - watch:
+  file.replace:
+    - name: /etc/koha/sites/{{ opts['kohaname'] }}/zebra-biblios.cfg
+    - pattern: biblios\/(register|shadow):.+$
+    - repl: biblios\/\1:100G
+    - require:
       - cmd: createkohadb
-    - replace:
-      - name: /etc/koha/sites/{{ opts['kohaname'] }}/zebra-biblios.cfg
-      - pattern: biblios\/(register|shadow):.+$
-      - repl: biblios\/\1:100G
-      - require:
-        - cmd: createkohadb
 
 # enable koha plugins
 /etc/koha/sites/{{ opts['kohaname'] }}/koha-conf.xml:
-  file.managed:
-    - group: {{ opts['kohaname'] }}-koha
-    - watch:
+  file.replace:
+    - name: /etc/koha/sites/{{ opts['kohaname'] }}/koha-conf.xml
+    - pattern: <enable_plugins>0
+    - repl: <enable_plugins>1
+    - require:
       - cmd: createkohadb
-    - replace:
-      - name: /etc/koha/sites/{{ opts['kohaname'] }}/koha-conf.xml
-      - pattern: <enable_plugins>0
-      - repl: <enable_plugins>1
-      - require:
-        - cmd: createkohadb
