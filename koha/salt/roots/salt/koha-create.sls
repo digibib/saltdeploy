@@ -23,7 +23,7 @@ createkohadb:
       - require:
         - cmd: createkohadb
 
-# enabele koha plugins
+# enable koha plugins
 /etc/koha/sites/{{ opts['kohaname'] }}/koha-conf.xml:
   file.managed:
     - group: {{ opts['kohaname'] }}-koha
