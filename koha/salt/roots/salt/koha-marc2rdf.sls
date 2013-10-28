@@ -85,6 +85,18 @@ https://github.com/digibib/marc2rdf:
     - require:
       - git: https://github.com/digibib/marc2rdf
 
+/usr/local/src/marc2rdf/db/libraries.json:
+  file.managed:
+    - source: salt://files/marc2rdf/libraries.json
+    - require:
+      - git: https://github.com/digibib/marc2rdf
+
+/usr/local/src/marc2rdf/db/mappings.json:
+  file.managed:
+    - source: salt://files/marc2rdf/mappings.json
+    - require:
+      - git: https://github.com/digibib/marc2rdf
+
 bundle_marc2rdf: 
   cmd.run:
     - cwd: /usr/local/src/marc2rdf
@@ -107,6 +119,9 @@ marc2rdf:
     - enable: True
     - require:
       - file: /etc/init/marc2rdf.conf
+      - file: /usr/local/src/marc2rdf/config/settings.json
+      - file: /usr/local/src/marc2rdf/db/libraries.json
+      - file: /usr/local/src/marc2rdf/db/mappings.json
     - watch:
       - git: https://github.com/digibib/marc2rdf
 

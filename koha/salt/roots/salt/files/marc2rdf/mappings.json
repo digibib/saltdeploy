@@ -1,0 +1,2493 @@
+[
+    {
+        "id": "38887827-50a6-4c79-ba8c-5bf88e427d33",
+        "name": "Deichmanske",
+        "description": "testmapping for deichman",
+        "mapping": {
+            "tags": {
+                "100": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DC.creator",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/person/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "RADATANA.catalogueName",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "c": {
+                                        "predicate": "FOAF.title",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "d": {
+                                        "predicate": "DEICH.lifespan",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "j": {
+                                        "predicate": "XFOAF.nationality",
+                                        "object": {
+                                            "datatype": "uri",
+                                            "regex_strip": "[\\W]+",
+                                            "prefix": "http://data.deichman.no/nationality/",
+                                            "regex_split": "[\\-]+"
+                                        }
+                                    },
+                                    "q": {
+                                        "predicate": "SKOS.note",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    }
+                                },
+                                "class": "FOAF.Person"
+                            }
+                        }
+                    }
+                },
+                "110": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DC.creator",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/organization/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "FOAF.name",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "combinestring": ". ",
+                                            "combine": [
+                                                "a",
+                                                "b"
+                                            ]
+                                        }
+                                    },
+                                    "c": {
+                                        "predicate": "DEICH.conferencePlace",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "d": {
+                                        "predicate": "DEICH.conferenceDate",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "q": {
+                                        "predicate": "SKOS.note",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "n": {
+                                        "predicate": "DEICH.corporationNumber",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    }
+                                },
+                                "class": "FOAF.Organization"
+                            }
+                        }
+                    }
+                },
+                "111": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DC.creator",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/conference/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "FOAF.name",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "c": {
+                                        "predicate": "DEICH.conferencePlace",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "d": {
+                                        "predicate": "DEICH.conferenceDate",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "q": {
+                                        "predicate": "SKOS.note",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "n": {
+                                        "predicate": "DEICH.corporationNumber",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    }
+                                },
+                                "class": "BIBO.Conference"
+                            }
+                        }
+                    }
+                },
+                "240": {
+                    "subfield": {
+                        "a": {
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\.:,;\\/\\s]\\s*$"
+                            },
+                            "conditions": {
+                                "indicator": {
+                                    "default": "DEICH.originalTitle",
+                                    "indicator1": {
+                                        "subs": {
+                                            "0": "DEICH.uniformTitle",
+                                            "1": "DEICH.originalTitle"
+                                        },
+                                        "orig": "0|1"
+                                    }
+                                }
+                            }
+                        },
+                        "p": {
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\.:,;\\/\\s]\\s*$"
+                            },
+                            "conditions": {
+                                "indicator": {
+                                    "default": "DEICH.originalParttitle",
+                                    "indicator1": {
+                                        "subs": {
+                                            "0": "DEICH.uniformParttitle",
+                                            "1": "DEICH.originalParttitle"
+                                        },
+                                        "orig": "0|1"
+                                    }
+                                }
+                            }
+                        },
+                        "b": {
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\.:,;\\/\\s]\\s*$"
+                            },
+                            "conditions": {
+                                "indicator": {
+                                    "default": "DEICH.originalSubtitle",
+                                    "indicator1": {
+                                        "subs": {
+                                            "0": "DEICH.uniformSubtitle",
+                                            "1": "DEICH.originalSubtitle"
+                                        },
+                                        "orig": "0|1"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "245": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DC.title",
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\.:,;\\/\\s]\\s*$"
+                            }
+                        },
+                        "p": {
+                            "predicate": "DEICH.parttitle",
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\.:,;\\/\\s]\\s*$"
+                            }
+                        },
+                        "c": {
+                            "predicate": "RDA.statementOfResponsibility",
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\.:,;\\/\\s]\\s*$"
+                            }
+                        },
+                        "b": {
+                            "predicate": "FABIO.hasSubtitle",
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\.:,;\\/\\s]\\s*$"
+                            }
+                        },
+                        "n": {
+                            "predicate": "BIBO.number",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "246": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "RDA.variantTitleForTheWork",
+                            "object": {
+                                "datatype": "literal",
+                                "combinestring": ". ",
+                                "combine": [
+                                    "a",
+                                    "b"
+                                ]
+                            }
+                        },
+                        "p": {
+                            "predicate": "RDA.variantTitleForTheWork",
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\.:,;\\/\\s]\\s*$"
+                            }
+                        },
+                        "c": {
+                            "predicate": "RDA.statementOfResponsibility",
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\.:,;\\/\\s]\\s*$"
+                            }
+                        },
+                        "b": {
+                            "predicate": "RDA.variantTitleForTheWork",
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\.:,;\\/\\s]\\s*$"
+                            }
+                        },
+                        "n": {
+                            "predicate": "BIBO.number",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "250": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "BIBO.edition",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        },
+                        "b": {
+                            "predicate": "RDA.statementOfResponsibility",
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\.:,;\\/\\s]\\s*$"
+                            }
+                        }
+                    }
+                },
+                "260": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DEICH.publicationPlace",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$",
+                                "prefix": "http://data.deichman.no/publicationPlace/",
+                                "urlize": true
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "a": {
+                                        "predicate": "GEONAMES.name",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "regex_strip": "[\\?\\[\\]\\<\\>]+"
+                                        }
+                                    }
+                                },
+                                "class": "GEONAMES.Feature"
+                            }
+                        },
+                        "c": {
+                            "predicate": "DC.issued",
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\[\\]\\?]+"
+                            }
+                        },
+                        "b": {
+                            "predicate": "DC.publisher",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$",
+                                "prefix": "http://data.deichman.no/organization/",
+                                "urlize": true
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "b": {
+                                        "predicate": "FOAF.name",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    }
+                                },
+                                "class": "FOAF.Organization"
+                            }
+                        }
+                    }
+                },
+                "300": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "BIBO.numPages",
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\s]*s[\\.\\s]*$"
+                            }
+                        },
+                        "c": {
+                            "predicate": "DEICH.physicalDescription",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        },
+                        "b": {
+                            "predicate": "DEICH.physicalDescription",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        },
+                        "e": {
+                            "predicate": "DEICH.physicalDescription",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "440": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DC.isPartOf",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/series/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "DC.title",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "regex_strip": "[\\.:,;\\/\\s]\\s*$"
+                                        }
+                                    },
+                                    "c": {
+                                        "predicate": "RDA.statementOfResponsibility",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "regex_strip": "[\\.:,;\\/\\s]\\s*$"
+                                        }
+                                    },
+                                    "p": {
+                                        "predicate": "RDA.variantTitleForTheWork",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "regex_strip": "[\\.:,;\\/\\s]\\s*$"
+                                        }
+                                    },
+                                    "x": {
+                                        "predicate": "BIBO.issn",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    }
+                                },
+                                "class": "BIBO.Series"
+                            }
+                        },
+                        "v": {
+                            "predicate": "DEICH.volumeNumber",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "503": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DEICH.publicationHistory",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "520": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DC.abstract",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "521": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DEICH.ageLimit",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "546": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DEICH.languageNote",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "571": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "BIBO.identifier",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "572": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DEICH.variantTitleNote",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "573": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DEICH.titleSourceNote",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "574": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DEICH.originalTitleNote",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "590": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DEICH.listNote",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "592": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DEICH.volumePartNote",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "595": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DEICH.periodicalCoverage",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "599": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DEICH.signatureNote",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "600": {
+                    "subfield": {
+                        "t": {
+                            "predicate": "DC.subject",
+                            "object": {
+                                "combinestring": "_",
+                                "prefix": "http://data.deichman.no/work/x",
+                                "combine": [
+                                    "3",
+                                    "t"
+                                ],
+                                "urlize": true,
+                                "datatype": "uri",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.creator",
+                                        "object": {
+                                            "datatype": "uri",
+                                            "prefix": "http://data.deichman.no/person/x"
+                                        }
+                                    },
+                                    "t": {
+                                        "predicate": "DC.title",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    }
+                                },
+                                "class": "FABIO.Work"
+                            }
+                        }
+                    }
+                },
+                "630": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DC.subject",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/work/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "DC.title",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "combinestring": ". ",
+                                            "combine": [
+                                                "a",
+                                                "p",
+                                                "x"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "class": "FABIO.Work"
+                            }
+                        }
+                    }
+                },
+                "650": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DC.subject",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/subject/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "SKOS.prefLabel",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "combinestring": " - ",
+                                            "combine": [
+                                                "a",
+                                                "q",
+                                                "x",
+                                                "0"
+                                            ],
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "SKOS.Concept"
+                            }
+                        }
+                    }
+                },
+                "651": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DEICH.geographicalSubject",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/geographicalSubject/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "GEONAMES.name",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "regex_strip": "[\\?\\[\\]\\<\\>]+",
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "GEONAMES.Feature"
+                            }
+                        }
+                    }
+                },
+                "652": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "MO.genre",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/mogenre/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "RDFS.label",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "MO.Genre"
+                            }
+                        }
+                    }
+                },
+                "653": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DC.subject",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/keyword/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "SKOS.prefLabel",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "combinestring": " - ",
+                                            "combine": [
+                                                "a",
+                                                "q",
+                                                "x",
+                                                "0"
+                                            ],
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "SKOS.Concept"
+                            }
+                        }
+                    }
+                },
+                "655": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DBO.literaryGenre",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/genre/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "RDFS.label",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "combinestring": " - ",
+                                            "combine": [
+                                                "a",
+                                                "x"
+                                            ],
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "YAGO.LiteraryGenres"
+                            }
+                        }
+                    }
+                },
+                "690": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DC.subject",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/subjectMultilingual/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "SKOS.prefLabel",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "combinestring": " - ",
+                                            "combine": [
+                                                "a",
+                                                "q",
+                                                "x",
+                                                "0"
+                                            ],
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "SKOS.Concept"
+                            }
+                        }
+                    }
+                },
+                "691": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DC.subject",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/subjectFiction/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "SKOS.prefLabel",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "combinestring": " - ",
+                                            "combine": [
+                                                "a",
+                                                "q",
+                                                "x",
+                                                "0"
+                                            ],
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "SKOS.Concept"
+                            }
+                        }
+                    }
+                },
+                "692": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DC.subject",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/subjectJuvenileFiction/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "SKOS.prefLabel",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "combinestring": " - ",
+                                            "combine": [
+                                                "a",
+                                                "q",
+                                                "x",
+                                                "0"
+                                            ],
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "SKOS.Concept"
+                            }
+                        }
+                    }
+                },
+                "693": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DBO.literaryGenre",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/genreJuvenile/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "RDFS.label",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "combinestring": " - ",
+                                            "combine": [
+                                                "a",
+                                                "x"
+                                            ],
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "YAGO.LiteraryGenres"
+                            }
+                        }
+                    }
+                },
+                "694": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DC.subject",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/keywordJuvenile/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "SKOS.prefLabel",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "combinestring": " - ",
+                                            "combine": [
+                                                "a",
+                                                "q",
+                                                "x",
+                                                "0"
+                                            ],
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "SKOS.Concept"
+                            }
+                        }
+                    }
+                },
+                "695": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "CTAG.tagged",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$",
+                                "prefix": "http://data.deichman.no/keyword/",
+                                "regex_split": " ",
+                                "urlize": true
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "CTAG.label",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "CTAG.Tag"
+                            }
+                        }
+                    }
+                },
+                "699": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DEICH.bibsubject",
+                            "object": {
+                                "combinestring": "_",
+                                "prefix": "http://data.deichman.no/subject/",
+                                "combine": [
+                                    "a",
+                                    "q",
+                                    "x",
+                                    "0"
+                                ],
+                                "urlize": true,
+                                "datatype": "uri",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "SKOS.prefLabel",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "combinestring": " - ",
+                                            "combine": [
+                                                "a",
+                                                "q",
+                                                "x",
+                                                "0"
+                                            ],
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "SKOS.Concept"
+                            }
+                        }
+                    }
+                },
+                "700": {
+                    "subfield": {
+                        "3": {
+                            "conditions": {
+                                "subfield": {
+                                    "e": {
+                                        "default": "DC.contributor",
+                                        "subs": {
+                                            "arr": "DEICH.musicalArranger",
+                                            "regissør": "BIBO.director",
+                                            "illustr": "BIBO.illustrator",
+                                            "dir": "BIBO.director",
+                                            "innl": "DC.narrator",
+                                            "medf": "DC.creator",
+                                            "medarb": "DC.contributor",
+                                            "komm": "DEICH.commentator",
+                                            "fotogr": "DEICH.photographer",
+                                            "bearb": "DC.contributor",
+                                            "reg": "BIBO.director",
+                                            "red": "BIBO.editor",
+                                            "komp": "DEICH.composer",
+                                            "foto": "DEICH.photographer",
+                                            "forft": "DC.creator",
+                                            "forf": "DC.creator",
+                                            "biogr": "DEICH.biographer",
+                                            "utøv": "BIBO.performer",
+                                            "overs": "BIBO.translator",
+                                            "fort": "DC.narrator",
+                                            "gjendikt": "BIBO.translator",
+                                            "utg": "BIBO.issuer",
+                                            "tekstf": "DEICH.lyricist",
+                                            "medforf": "DC.creator",
+                                            "ill": "BIBO.illustrator",
+                                            "oppl": "DC.narrator",
+                                            "manusforf": "DEICH.scriptWriter",
+                                            "sang": "DEICH.singer",
+                                            "skuesp": "DEICH.actor",
+                                            "u": "BIBO.issuer",
+                                            "t": "DEICH.lyricist",
+                                            "eks": "BIBO.performer",
+                                            "k": "DEICH.composer",
+                                            "opprforf": "DEICH.initialAuthor"
+                                        },
+                                        "orig": "arr|bearb|biogr|dir|forft|fort|fotogr|foto|gjendikt|illustr|ill|innl|komm|komp|manusforf|medarb|medforf|medf|oppl|opprforf|overs|red|regissør|reg|sang|skuesp|tekstf|utg|utøv|forf|eks|k|t|u"
+                                    }
+                                }
+                            },
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/person/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "RADATANA.catalogueName",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "q": {
+                                        "predicate": "SKOS.note",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "c": {
+                                        "predicate": "FOAF.title",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "b": {
+                                        "predicate": "BIBO.suffixName",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "d": {
+                                        "predicate": "DEICH.lifespan",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "j": {
+                                        "predicate": "XFOAF.nationality",
+                                        "object": {
+                                            "datatype": "uri",
+                                            "regex_strip": "[\\W]+",
+                                            "prefix": "http://data.deichman.no/nationality/",
+                                            "regex_split": "[\\-]+"
+                                        }
+                                    }
+                                },
+                                "class": "FOAF.Person"
+                            }
+                        }
+                    }
+                },
+                "710": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DC.contributor",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/organization/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "FOAF.name",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "q": {
+                                        "predicate": "SKOS.note",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    }
+                                },
+                                "class": "FOAF.Organization"
+                            }
+                        }
+                    }
+                },
+                "711": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DC.contributor",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/conference/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "FOAF.name",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "q": {
+                                        "predicate": "SKOS.note",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    }
+                                },
+                                "class": "BIBO.Conference"
+                            }
+                        }
+                    }
+                },
+                "740": {
+                    "subfield": {
+                        "a": {
+                            "object": {
+                                "datatype": "literal"
+                            },
+                            "conditions": {
+                                "indicator": {
+                                    "default": "DC.alternative",
+                                    "indicator2": {
+                                        "subs": {
+                                            "0": "DC.alternative",
+                                            "2": "DC.hasPart"
+                                        },
+                                        "orig": "0|2"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "760": {
+                    "subfield": {
+                        "w": {
+                            "predicate": "DC.isPartOf",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "[\\W]+",
+                                "prefix": "http://data.deichman.no/resource/tnr_"
+                            }
+                        }
+                    }
+                },
+                "780": {
+                    "subfield": {
+                        "w": {
+                            "predicate": "DBO.previousWork",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "[\\W]+",
+                                "prefix": "http://data.deichman.no/resource/tnr_"
+                            }
+                        }
+                    }
+                },
+                "785": {
+                    "subfield": {
+                        "w": {
+                            "predicate": "DBO.subsequentWork",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "[\\W]+",
+                                "prefix": "http://data.deichman.no/resource/tnr_"
+                            }
+                        }
+                    }
+                },
+                "800": {
+                    "subfield": {
+                        "t": {
+                            "predicate": "DC.isPartOf",
+                            "object": {
+                                "combinestring": "_",
+                                "prefix": "http://data.deichman.no/work/x",
+                                "combine": [
+                                    "3",
+                                    "t"
+                                ],
+                                "urlize": true,
+                                "datatype": "uri",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.creator",
+                                        "object": {
+                                            "datatype": "uri",
+                                            "prefix": "http://data.deichman.no/person/x"
+                                        }
+                                    },
+                                    "t": {
+                                        "predicate": "DC.title",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    }
+                                },
+                                "class": "DEICH.seriesWork"
+                            }
+                        }
+                    }
+                },
+                "856": {
+                    "subfield": {
+                        "u": {
+                            "predicate": "FABIO.hasURL",
+                            "object": {
+                                "datatype": "uri"
+                            }
+                        }
+                    }
+                },
+                "099": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DEICH.listCode",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "090": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DEICH.location_category",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        },
+                        "c": {
+                            "predicate": "DEICH.location_dewey",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        },
+                        "b": {
+                            "predicate": "DEICH.location_format",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        },
+                        "d": {
+                            "predicate": "DEICH.location_signature",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "092": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DC.location",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        }
+                    }
+                },
+                "015": {
+                    "subfield": {
+                        "a": {
+                            "object": {
+                                "datatype": "literal"
+                            },
+                            "conditions": {
+                                "subfield": {
+                                    "b": {
+                                        "subs": {
+                                            "dugnadsbasenibibliofil": "DEICH.dugnadsbaseID",
+                                            "bibbi": "DEICH.bsID",
+                                            "bibliofilid": "DEICH.bibliofilID"
+                                        },
+                                        "orig": "bibbi|bibliofilid|dugnadsbasenibibliofil"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "019": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DC.audience",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/audience/ages_",
+                                "regex_split": ", *",
+                                "regex_substitute": {
+                                    "default": "all",
+                                    "subs": {
+                                        "a": "0-5",
+                                        "bu": "8-9",
+                                        "b": "6-7",
+                                        "u": "10-11",
+                                        "mu": "12-15"
+                                    },
+                                    "orig": "a|bu|mu|b|u"
+                                }
+                            }
+                        },
+                        "s": {
+                            "predicate": "DEICH.ageLimit",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "[\\D]+",
+                                "prefix": "http://data.deichman.no/ageLimit/"
+                            }
+                        },
+                        "b": {
+                            "predicate": "DC.format",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/format/",
+                                "regex_split": ", *",
+                                "regex_substitute": {
+                                    "default": "Document",
+                                    "subs": {
+                                        "ab": "Atlas",
+                                        "ee": "DVD",
+                                        "ed": "Videotape",
+                                        "ef": "Blu-ray_Disk",
+                                        "vo": "File_folder",
+                                        "gg": "Blu-ray_Disk",
+                                        "ge": "Web_page",
+                                        "gd": "CD_ROM",
+                                        "gc": "DVD-ROM",
+                                        "gb": "Floppy_disk",
+                                        "ga": "Computer_file",
+                                        "ic": "Microfiche",
+                                        "ib": "Microfilm_reel",
+                                        "gi": "Nintendo_optical_disc",
+                                        "gt": "DTbook",
+                                        "na": "Portable_Document_Format",
+                                        "j": "Periodical_literature",
+                                        "dj": "Spoken_word_recording",
+                                        "dh": "Language_course",
+                                        "di": "Audiobook",
+                                        "dg": "Music",
+                                        "dd": "Digi_book",
+                                        "de": "Digi_card",
+                                        "db": "Compact_Cassette",
+                                        "dc": "Compact_Disc",
+                                        "da": "Gramophone_record",
+                                        "dz": "MP3",
+                                        "ff": "Photography",
+                                        "fm": "Poster",
+                                        "a": "Map",
+                                        "c": "Sheet_music",
+                                        "b": "Manuscript",
+                                        "ma": "Personal_computer_game",
+                                        "mc": "Playstation_3_game",
+                                        "mb": "Playstation_2_game",
+                                        "h": "Physical_body",
+                                        "mo": "Nintendo_Wii_game",
+                                        "mn": "Nintendo_DS_game",
+                                        "l": "Book",
+                                        "mj": "Xbox_360_game",
+                                        "sm": "Magazine",
+                                        "fd": "Reversal_film"
+                                    },
+                                    "orig": "ab|da|db|dc|dd|de|dg|dh|di|dj|dz|ed|ee|ef|fd|ff|fm|ga|gb|gc|gd|ge|gg|gi|gt|h|ib|ic|ma|mb|mc|mj|mn|mo|na|sm|vo|a|b|c|j|l"
+                                }
+                            }
+                        },
+                        "e": {
+                            "predicate": "DEICH.facilitation",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/facilitation/",
+                                "regex_split": "(\\w{2})",
+                                "regex_substitute": {
+                                    "default": "simpleText",
+                                    "subs": {
+                                        "tj": "capitalized",
+                                        "tf": "signLanguage",
+                                        "tg": "tactile",
+                                        "td": "largePrint",
+                                        "te": "braille",
+                                        "tb": "simpleContent",
+                                        "tc": "largePrint",
+                                        "ta": "simpleText"
+                                    },
+                                    "orig": "ta|tb|tc|td|te|tf|tg|tj"
+                                }
+                            }
+                        },
+                        "d": {
+                            "predicate": "DEICH.literaryFormat",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://dbpedia.org/resource/",
+                                "regex_split": "(\\w{1})",
+                                "regex_substitute": {
+                                    "default": "Novel",
+                                    "subs": {
+                                        "a": "Anthology",
+                                        "b": "Picture_book",
+                                        "d": "Poetry",
+                                        "l": "Textbook",
+                                        "n": "Short_stories",
+                                        "p": "Pointing_book",
+                                        "s": "Play_%28theatre%29",
+                                        "r": "Novel",
+                                        "t": "Comic_book"
+                                    },
+                                    "orig": "a|b|d|l|n|p|r|s|t"
+                                }
+                            }
+                        }
+                    }
+                },
+                "610|611": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DC.subject",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/organization/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "FOAF.name",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "combinestring": ". ",
+                                            "combine": [
+                                                "a",
+                                                "b",
+                                                "q"
+                                            ]
+                                        }
+                                    },
+                                    "c": {
+                                        "predicate": "DEICH.conferencePlace",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "d": {
+                                        "predicate": "DEICH.conferenceDate",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "q": {
+                                        "predicate": "SKOS.note",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "n": {
+                                        "predicate": "DEICH.corporationNumber",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    }
+                                },
+                                "class": "FOAF.Organization"
+                            }
+                        }
+                    }
+                },
+                "^5(?!03|20|21|46|71|72|73|74|90|92|95|99)": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DC.description",
+                            "object": {
+                                "datatype": "literal",
+                                "lang": "no"
+                            }
+                        }
+                    }
+                },
+                "245|245": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DEICH.titleURLized",
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$",
+                                "urlize": true
+                            }
+                        },
+                        "p": {
+                            "predicate": "DEICH.parttitleURLized",
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$",
+                                "urlize": true
+                            }
+                        }
+                    }
+                },
+                "694|694": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DC.subject",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$",
+                                "prefix": "http://data.deichman.no/subject/",
+                                "urlize": true
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "3": {
+                                        "predicate": "SKOS.narrower",
+                                        "object": {
+                                            "datatype": "uri",
+                                            "prefix": "http://data.deichman.no/keywordJuvenile/x"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "SKOS.prefLabel",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "SKOS.Concept"
+                            }
+                        }
+                    }
+                },
+                "025": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "BIBO.eanucc13",
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\D]+"
+                            }
+                        }
+                    }
+                },
+                "020": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "BIBO.isbn",
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\D]+"
+                            }
+                        },
+                        "c": {
+                            "predicate": "DEICH.priceInfo",
+                            "object": {
+                                "datatype": "literal"
+                            }
+                        },
+                        "b": {
+                            "predicate": "DEICH.bindingInfo",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "[\\W]+",
+                                "prefix": "http://data.deichman.no/bindingInfo/"
+                            }
+                        }
+                    }
+                },
+                "022": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "BIBO.issn",
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\D]+"
+                            }
+                        }
+                    }
+                },
+                "240|240": {
+                    "subfield": {
+                        "a": {
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$",
+                                "urlize": true
+                            },
+                            "conditions": {
+                                "indicator": {
+                                    "default": "DEICH.originalTitleURLized",
+                                    "indicator1": {
+                                        "subs": {
+                                            "0": "DEICH.uniformTitleURLized",
+                                            "1": "DEICH.originalTitleURLized"
+                                        },
+                                        "orig": "0|1"
+                                    }
+                                }
+                            }
+                        },
+                        "p": {
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$",
+                                "urlize": true
+                            },
+                            "conditions": {
+                                "indicator": {
+                                    "default": "DEICH.originalParttitleURLized",
+                                    "indicator1": {
+                                        "subs": {
+                                            "0": "DEICH.uniformParttitleURLized",
+                                            "1": "DEICH.originalParttitleURLized"
+                                        },
+                                        "orig": "0|1"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "600|600": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "DC.subject",
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/person/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "RADATANA.catalogueName",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "c": {
+                                        "predicate": "FOAF.title",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "d": {
+                                        "predicate": "DEICH.lifespan",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "j": {
+                                        "predicate": "XFOAF.nationality",
+                                        "object": {
+                                            "datatype": "uri",
+                                            "regex_strip": "[\\W]+",
+                                            "prefix": "http://data.deichman.no/nationality/",
+                                            "regex_split": "[\\-]+"
+                                        }
+                                    },
+                                    "q": {
+                                        "predicate": "SKOS.note",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    }
+                                },
+                                "class": "FOAF.Person"
+                            }
+                        }
+                    }
+                },
+                "015|015": {
+                    "subfield": {
+                        "b": {
+                            "object": {
+                                "datatype": "literal"
+                            },
+                            "conditions": {
+                                "subfield": {
+                                    "b": {
+                                        "subs": {
+                                            "dfb": "DC.source"
+                                        },
+                                        "orig": "dfb"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "692|692": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DC.subject",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$",
+                                "prefix": "http://data.deichman.no/subject/",
+                                "urlize": true
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "3": {
+                                        "predicate": "SKOS.narrower",
+                                        "object": {
+                                            "datatype": "uri",
+                                            "prefix": "http://data.deichman.no/subjectJuvenileFiction/x"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "SKOS.prefLabel",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "SKOS.Concept"
+                            }
+                        }
+                    }
+                },
+                "690|690": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DC.subject",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$",
+                                "prefix": "http://data.deichman.no/subject/",
+                                "urlize": true
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "3": {
+                                        "predicate": "SKOS.narrower",
+                                        "object": {
+                                            "datatype": "uri",
+                                            "prefix": "http://data.deichman.no/subjectMultilingual/x"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "SKOS.prefLabel",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "SKOS.Concept"
+                            }
+                        }
+                    }
+                },
+                "130|730": {
+                    "subfield": {
+                        "3": {
+                            "predicate": "FABIO.isManifestationOf",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "[^\\w\\-]+",
+                                "prefix": "http://data.deichman.no/work/x"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.identifier",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "DC.title",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "combinestring": ". ",
+                                            "combine": [
+                                                "a",
+                                                "p"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "class": "FABIO.Work"
+                            }
+                        }
+                    }
+                },
+                "691|691": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DC.subject",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$",
+                                "prefix": "http://data.deichman.no/subject/",
+                                "urlize": true
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "3": {
+                                        "predicate": "SKOS.narrower",
+                                        "object": {
+                                            "datatype": "uri",
+                                            "prefix": "http://data.deichman.no/subjectFiction/x"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "SKOS.prefLabel",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "SKOS.Concept"
+                            }
+                        }
+                    }
+                },
+                "700|700": {
+                    "subfield": {
+                        "t": {
+                            "conditions": {
+                                "indicator": {
+                                    "default": "FRBR.relatedEndeavour",
+                                    "indicator2": {
+                                        "subs": {
+                                            "0": "FRBR.relatedEndeavour",
+                                            "2": "FABIO.isManifestationOf"
+                                        },
+                                        "orig": "0|2"
+                                    }
+                                }
+                            },
+                            "object": {
+                                "combinestring": "_",
+                                "prefix": "http://data.deichman.no/work/x",
+                                "combine": [
+                                    "3",
+                                    "t"
+                                ],
+                                "urlize": true,
+                                "datatype": "uri",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$"
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "1": {
+                                        "predicate": "SKOS.notation",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    },
+                                    "3": {
+                                        "predicate": "DC.creator",
+                                        "object": {
+                                            "datatype": "uri",
+                                            "prefix": "http://data.deichman.no/person/x"
+                                        }
+                                    },
+                                    "t": {
+                                        "predicate": "DC.title",
+                                        "object": {
+                                            "datatype": "literal"
+                                        }
+                                    }
+                                },
+                                "class": "FABIO.Work"
+                            }
+                        }
+                    }
+                },
+                "082": {
+                    "subfield": {
+                        "a": {
+                            "object": {
+                                "datatype": "literal",
+                                "regex_strip": "[\\.:,;\\/\\s]\\s*$"
+                            },
+                            "conditions": {
+                                "indicator": {
+                                    "default": "DEICH.dewey",
+                                    "indicator1": {
+                                        "subs": {
+                                            "3": "DEICH.dewey",
+                                            " ": "DEICH.localCode"
+                                        },
+                                        "orig": "3| "
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "650|650": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DC.subject",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$",
+                                "prefix": "http://data.deichman.no/subject/",
+                                "urlize": true
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "3": {
+                                        "predicate": "SKOS.narrower",
+                                        "object": {
+                                            "datatype": "uri",
+                                            "prefix": "http://data.deichman.no/subject/x"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "SKOS.prefLabel",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "SKOS.Concept"
+                            }
+                        }
+                    }
+                },
+                "001": {
+                    "titleNumber": {
+                        "predicate": "DC.identifier",
+                        "object": {
+                            "datatype": "literal"
+                        }
+                    }
+                },
+                "100|100": {
+                    "subfield": {
+                        "3": {
+                            "object": {
+                                "datatype": "uri",
+                                "prefix": "http://data.deichman.no/person/x"
+                            },
+                            "conditions": {
+                                "subfield": {
+                                    "e": {
+                                        "subs": {
+                                            "arr": "DEICH.musicalArranger",
+                                            "regissør": "BIBO.director",
+                                            "illustr": "BIBO.illustrator",
+                                            "dir": "BIBO.director",
+                                            "innl": "DC.narrator",
+                                            "medf": "DC.creator",
+                                            "medarb": "DC.contributor",
+                                            "komm": "DEICH.commentator",
+                                            "fotogr": "DEICH.photographer",
+                                            "bearb": "DC.contributor",
+                                            "reg": "BIBO.director",
+                                            "red": "BIBO.editor",
+                                            "komp": "DEICH.composer",
+                                            "foto": "DEICH.photographer",
+                                            "forft": "DC.creator",
+                                            "forf": "DC.creator",
+                                            "biogr": "DEICH.biographer",
+                                            "utøv": "BIBO.performer",
+                                            "overs": "BIBO.translator",
+                                            "fort": "DC.narrator",
+                                            "gjendikt": "BIBO.translator",
+                                            "utg": "BIBO.issuer",
+                                            "tekstf": "DEICH.lyricist",
+                                            "medforf": "DC.creator",
+                                            "ill": "BIBO.illustrator",
+                                            "oppl": "DC.narrator",
+                                            "manusforf": "DEICH.scriptWriter",
+                                            "sang": "DEICH.singer",
+                                            "skuesp": "DEICH.actor",
+                                            "u": "BIBO.issuer",
+                                            "t": "DEICH.lyricist",
+                                            "eks": "BIBO.performer",
+                                            "k": "DEICH.composer",
+                                            "opprforf": "DEICH.initialAuthor"
+                                        },
+                                        "orig": "arr|bearb|biogr|dir|forft|fort|fotogr|foto|gjendikt|illustr|ill|innl|komm|komp|manusforf|medarb|medforf|medf|oppl|opprforf|overs|red|regissør|reg|sang|skuesp|tekstf|utg|utøv|forf|eks|k|t|u"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "008": {
+                    "periodicaType": {
+                        "predicate": "DEICH.literaryFormat",
+                        "object": {
+                            "datatype": "uri",
+                            "prefix": "http://dbpedia.org/resource/",
+                            "substr_length": 1,
+                            "regex_substitute": {
+                                "default": "Newspaper",
+                                "subs": {
+                                    "a": "Yearbook",
+                                    "p": "Journal",
+                                    "n": "Newspaper"
+                                },
+                                "orig": "a|n|p"
+                            },
+                            "substr_offset": 21
+                        }
+                    },
+                    "language": {
+                        "predicate": "DC.language",
+                        "object": {
+                            "datatype": "uri",
+                            "regex_strip": "[\\W]+",
+                            "prefix": "http://lexvo.org/id/iso639-3/",
+                            "substr_length": 3,
+                            "substr_offset": 35
+                        },
+                        "relation": {
+                            "class": "LEXVO.Language"
+                        }
+                    },
+                    "biocontent": {
+                        "predicate": "DEICH.bioContent",
+                        "object": {
+                            "datatype": "uri",
+                            "prefix": "http://data.deichman.no/bioContent/",
+                            "substr_length": 1,
+                            "regex_substitute": {
+                                "default": "biography",
+                                "subs": {
+                                    "0": "nonBiography",
+                                    "1": "biography",
+                                    "a": "autobiography",
+                                    "c": "collectedBiography",
+                                    "b": "monoBiography",
+                                    "d": "partlyBiographic"
+                                },
+                                "orig": "0|1|a|b|c|d"
+                            },
+                            "substr_offset": 34
+                        }
+                    },
+                    "script": {
+                        "predicate": "DEICH.script",
+                        "object": {
+                            "datatype": "uri",
+                            "prefix": "http://dbpedia.org/resource/",
+                            "substr_length": 1,
+                            "regex_substitute": {
+                                "default": "ISO_basic_Latin_alphabet",
+                                "subs": {
+                                    "a": "ISO_basic_Latin_alphabet",
+                                    "c": "Cyrillic_script",
+                                    "b": "Latin-derived_alphabet",
+                                    "e": "Chinese_characters",
+                                    "d": "Japanese_writing_system",
+                                    "g": "Greek_alphabet",
+                                    "f": "Arabic_alphabet",
+                                    "i": "Thai_alphabet",
+                                    "m": "Blackletter",
+                                    "l": "Tamil_alphabet"
+                                },
+                                "orig": "a|b|c|d|e|f|g|i|l|m"
+                            },
+                            "substr_offset": 38
+                        }
+                    },
+                    "audience": {
+                        "predicate": "DC.audience",
+                        "object": {
+                            "datatype": "uri",
+                            "prefix": "http://data.deichman.no/audience/",
+                            "substr_length": 1,
+                            "regex_substitute": {
+                                "default": "adult",
+                                "subs": {
+                                    "a": "adult",
+                                    "j": "juvenile"
+                                },
+                                "orig": "a|j"
+                            },
+                            "substr_offset": 22
+                        }
+                    },
+                    "literaryformat": {
+                        "predicate": "DEICH.literaryFormat",
+                        "object": {
+                            "datatype": "uri",
+                            "prefix": "http://dbpedia.org/resource/",
+                            "substr_length": 1,
+                            "regex_substitute": {
+                                "default": "Fiction",
+                                "subs": {
+                                    "0": "Non-fiction",
+                                    "1": "Fiction"
+                                },
+                                "orig": "0|1"
+                            },
+                            "substr_offset": 33
+                        }
+                    },
+                    "cataloguingDate": {
+                        "predicate": "DEICH.cataloguingDate",
+                        "object": {
+                            "datatype": "literal",
+                            "substr_length": 6,
+                            "substr_offset": 0
+                        }
+                    },
+                    "contentCode": {
+                        "predicate": "DEICH.literaryFormat",
+                        "object": {
+                            "prefix": "http://dbpedia.org/resource/",
+                            "substr_length": 4,
+                            "regex_substitute": {
+                                "default": "Document",
+                                "subs": {
+                                    "a": "R%C3%A9sum%C3%A9",
+                                    "b": "Bibliography",
+                                    "e": "Encyclopedia",
+                                    "d": "Dictionary",
+                                    "f": "User_guide",
+                                    "i": "Back-of-the-book_index",
+                                    "h": "Yearbook",
+                                    "k": "Discograhy",
+                                    "m": "Thesis",
+                                    "l": "Legal_writing",
+                                    "o": "Review",
+                                    "s": "Statistics",
+                                    "r": "Reference_work",
+                                    "w": "Magazine",
+                                    "x": "Dissertation"
+                                },
+                                "orig": "a|b|d|e|f|h|i|k|l|m|o|r|s|w|x"
+                            },
+                            "datatype": "uri",
+                            "regex_split": "(\\w{1})",
+                            "substr_offset": 24
+                        }
+                    }
+                },
+                "041": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DC.language",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "[\\W]+",
+                                "prefix": "http://lexvo.org/id/iso639-3/",
+                                "regex_split": "(\\w{3})"
+                            }
+                        },
+                        "h": {
+                            "predicate": "DEICH.originalLanguage",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "[\\W]+",
+                                "prefix": "http://lexvo.org/id/iso639-3/",
+                                "regex_split": "(\\w{3})"
+                            }
+                        },
+                        "b": {
+                            "predicate": "DEICH.subTitles",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "[\\W]+",
+                                "prefix": "http://lexvo.org/id/iso639-3/",
+                                "regex_split": "(\\w{3})"
+                            }
+                        }
+                    }
+                },
+                "653|653": {
+                    "subfield": {
+                        "a": {
+                            "predicate": "DC.subject",
+                            "object": {
+                                "datatype": "uri",
+                                "regex_strip": "^[\\.:,;?!_\\-\\/]*|[\\.:,;?!_\\-\\/]*$",
+                                "prefix": "http://data.deichman.no/subject/",
+                                "urlize": true
+                            },
+                            "relation": {
+                                "subfield": {
+                                    "3": {
+                                        "predicate": "SKOS.narrower",
+                                        "object": {
+                                            "datatype": "uri",
+                                            "prefix": "http://data.deichman.no/keyword/x"
+                                        }
+                                    },
+                                    "a": {
+                                        "predicate": "SKOS.prefLabel",
+                                        "object": {
+                                            "datatype": "literal",
+                                            "lang": "no"
+                                        }
+                                    }
+                                },
+                                "class": "SKOS.Concept"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+]

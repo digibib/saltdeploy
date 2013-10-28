@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "name": "Koha library",
+    "config": {
+      "resource": {
+        "base": "http://data.deichman.no/",
+        "prefix": "id_",
+        "identifier_tag": "001",
+        "type": "BIBO.Document",
+        "default_prefix": "http://data.deichman.no/",
+        "default_graph": "http://data.deichman.no/book"
+      }
+    },
+    "mapping": "38887827-50a6-4c79-ba8c-5bf88e427d33",
+    "oai": {
+      "id": "KOHA-OAI-TEST",
+      "url": "http://10.172.2.202:8080/cgi-bin/koha/oai.pl/request/",
+      "set": "",
+      "follow_redirects": "true",
+      "parser": "rexml",
+      "timeout": "60",
+      "format": "marcxml",
+      "preserve_on_update": [
+        "FOAF.depiction"
+      ],
+      "schedule": ""
+    },
+    "rules": [
+
+    ],
+    "harvesters": [
+
+    ]
+  }
+]
