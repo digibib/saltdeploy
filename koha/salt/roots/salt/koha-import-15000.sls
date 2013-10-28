@@ -21,6 +21,6 @@ import15000ex:
 
 rebuildzebra:
   cmd.run:
-    - name: sudo koha-rebuild-zebra --full {{ opts['kohaname'] }}
+    - name: sudo koha-rebuild-zebra --full --quiet {{ opts['kohaname'] }}
     - watch: 
       - cmd: import15000ex

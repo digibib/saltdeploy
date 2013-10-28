@@ -22,6 +22,6 @@ import_all:
 
 rebuildzebra:
   cmd.run:
-    - name: sudo koha-rebuild-zebra --full {{ opts['kohaname'] }}
+    - name: sudo koha-rebuild-zebra --full --quiet {{ opts['kohaname'] }}
     - watch: 
       - cmd: import_all
