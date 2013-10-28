@@ -31,6 +31,8 @@ createkohadb:
 /etc/koha/sites/{{ opts['kohaname'] }}:
   file.directory:
     - group: {{ opts['kohaname'] }}-koha
+    - recurse: 
+      - group
     - watch:
       - file: /etc/koha/sites/{{ opts['kohaname'] }}/zebra-biblios.cfg
       - file: /etc/koha/sites/{{ opts['kohaname'] }}/koha-conf.xml
