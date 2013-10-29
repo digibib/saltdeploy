@@ -28,11 +28,26 @@ createkohadb:
     - require:
       - cmd: createkohadb
 
+# make sure instance config has right permissions
 /etc/koha/sites/{{ opts['kohaname'] }}:
   file.directory:
     - group: {{ opts['kohaname'] }}-koha
+    - user: {{ opts['kohaname'] }}-koha
     - recurse: 
       - group
+      - user
+    - watch:
+      - file: /etc/koha/sites/{{ opts['kohaname'] }}/zebra-biblios.cfg
+      - file: /etc/koha/sites/{{ opts['kohaname'] }}/koha-conf.xml
+
+# make sure instance index has right permissions
+/var/lib/koha/{{ opts['kohaname'] }}:
+  file.directory:
+    - group: {{ opts['kohaname'] }}-koha
+    - user: {{ opts['kohaname'] }}-koha
+    - recurse: 
+      - group
+      - user
     - watch:
       - file: /etc/koha/sites/{{ opts['kohaname'] }}/zebra-biblios.cfg
       - file: /etc/koha/sites/{{ opts['kohaname'] }}/koha-conf.xml

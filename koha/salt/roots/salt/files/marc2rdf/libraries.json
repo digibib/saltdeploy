@@ -4,8 +4,8 @@
     "name": "Koha library",
     "config": {
       "resource": {
-        "base": "http://data.deichman.no/",
-        "prefix": "id_",
+        "base": "http://data.deichman.no/resource/",
+        "prefix": "tnr_",
         "identifier_tag": "001",
         "type": "BIBO.Document",
         "default_prefix": "http://data.deichman.no/",
