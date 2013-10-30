@@ -32,9 +32,3 @@ restore{{ opts['kohaname'] }}500ex:
       - file: /home/vagrant/{{ opts['kohaname'] }}-2013-10-22.sql.gz
       - file: /home/vagrant/{{ opts['kohaname'] }}-2013-10-22.tar.gz
       - cmd: createkohadb
-
-rebuildzebra:
-  cmd.run:
-    - name: sudo koha-rebuild-zebra --full {{ opts['kohaname'] }}
-    - watch: 
-      - cmd: restore{{ opts['kohaname'] }}500ex
