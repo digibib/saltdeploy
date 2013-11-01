@@ -16,7 +16,7 @@ include:
 /home/vagrant/500_eximport.xml:
   file.managed:
     - source: {{ opts['filerepo'] }}/500_eximport.xml
-    - source_hash: md5=498f7b6f69b41cf4dfead83210dcbee3  
+    - source_hash: md5=36be027ace7041a2dd3cc234c1c14710  
 
 import500ex:
   cmd.run:
