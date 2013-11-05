@@ -3,3 +3,5 @@ file_client: local
 kohaname: knakk
 adminuser: flesk
 filerepo: http://171.23.133.203/saltfiles/koha
+circulationstart: 2011-01-01
+daybeforereturn: 21

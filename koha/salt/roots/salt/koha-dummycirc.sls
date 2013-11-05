@@ -13,9 +13,9 @@ https://github.com/digibib/LibrioTools:
     - stateful: True
 
 # run circulation
-circulatefromsep2013:
+circulate:
   cmd.run:
-    - name: KOHA_CONF=/etc/koha/sites/{{ opts['kohaname'] }}/koha-conf.xml PERL5LIB=/usr/share/koha/lib perl circ.pl -v -f 2013-09-01 -r 14 -c circulation.yaml
+    - name: KOHA_CONF=/etc/koha/sites/{{ opts['kohaname'] }}/koha-conf.xml PERL5LIB=/usr/share/koha/lib perl circ.pl -v -f {{ opts['circulationstart'] }} -r {{ opts['daybeforereturn'] }} -c circulation.yaml
     - cwd: /usr/local/src/LibrioTools/sim
     - require:
       - file: /usr/local/src/LibrioTools/sim/circulation.yaml
@@ -31,7 +31,7 @@ returnfromsep2013:
       - file: /usr/local/src/LibrioTools/sim/circulation.yaml
       - git: https://github.com/digibib/LibrioTools
     - watch: 
-      - cmd: circulatefromsep2013
+      - cmd: circulate
 
 rebuildholdsqueue:
   cmd.run:
