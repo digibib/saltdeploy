@@ -10,7 +10,7 @@ include:
 /home/vagrant/all_eximport.xml:
   file.managed:
     - source: {{ opts['filerepo'] }}/all_eximport.xml
-    - source_hash: md5=fd02c84095dced5c57897b8794f13a7d  
+    - source_hash: md5=ec02b0fd8299d9302fc4b5d0ac76575e  
 
 import_all:
   cmd.run:
