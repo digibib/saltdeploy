@@ -20,7 +20,7 @@ include:
 
 import500ex:
   cmd.run:
-    - name: KOHA_CONF=/etc/koha/sites/{{ opts['kohaname'] }}/koha-conf.xml perl -I /usr/share/koha/lib/ /usr/share/koha/bin/migration_tools/bulkmarcimport.pl -m marcxml -file /home/vagrant/500_eximport.xml
+    - name: sudo koha-shell knakk -c "perl -I /usr/share/koha/lib/ /usr/share/koha/bin/migration_tools/bulkmarcimport.pl -m marcxml -file /home/vagrant/500_eximport.xml"
     - user: {{ opts['kohaname'] }}-koha
     - require:
       - file: /home/vagrant/500_eximport.xml
