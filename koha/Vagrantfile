@@ -69,6 +69,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     salt.minion_config = "salt/minion"
     salt.run_highstate = true
     salt.install_type = "daily"
+    salt.verbose = true
+    salt.pillar({
+      "saltfiles" => "salt://files",
+      "kohaname" => "knakk",
+      "adminuser" => "flesk",
+      "filerepo" => "http://171.23.133.203/saltfiles/koha",
+      "circulationstart" => "2011-01-01",
+      "daybeforereturn" => "21",
+      "dummypatrons" => "100"
+    })
+    salt.pillar_data
   end
 
 end

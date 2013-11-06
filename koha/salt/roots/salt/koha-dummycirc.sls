@@ -15,7 +15,7 @@ https://github.com/digibib/LibrioTools:
 # run circulation
 circulate:
   cmd.run:
-    - name: sudo koha-shell knakk -c "perl circ.pl -v -f {{ opts['circulationstart'] }} -r {{ opts['daybeforereturn'] }} -c circulation.yaml"
+    - name: sudo koha-shell knakk -c "perl circ.pl -v -f {{ pillar['circulationstart'] }} -r {{ pillar['daysbeforereturn'] }} -c circulation.yaml"
     - cwd: /usr/local/src/LibrioTools/sim
     - require:
       - file: /usr/local/src/LibrioTools/sim/circulation.yaml

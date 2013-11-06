@@ -15,7 +15,7 @@ marc2rdfpkgs:
 
 marc2rdf-user:
   user.present:
-    - name: {{ opts['kohaname'] }}-marc2rdf
+    - name: {{ pillar['kohaname'] }}-marc2rdf
 ########
 # UPSTART FILES
 ########
@@ -25,7 +25,7 @@ marc2rdf-user:
     - source: salt://files/marc2rdf/marc2rdf.conf
     - template: jinja
     - context:
-      User: {{ opts['kohaname'] }}-marc2rdf
+      User: {{ pillar['kohaname'] }}-marc2rdf
     - require:
       - file: /etc/init/marc2rdf-app.conf
       - file: /etc/init/marc2rdf-scheduler.conf
@@ -37,7 +37,7 @@ marc2rdf-user:
     - template: jinja
     - context:
       Port: 3000
-      User: {{ opts['kohaname'] }}-marc2rdf
+      User: {{ pillar['kohaname'] }}-marc2rdf
 
 /etc/init/marc2rdf-scheduler.conf:
   file.managed:
@@ -45,7 +45,7 @@ marc2rdf-user:
     - template: jinja
     - context:
       Port: 3100
-      User: {{ opts['kohaname'] }}-marc2rdf
+      User: {{ pillar['kohaname'] }}-marc2rdf
 
 /etc/init/marc2rdf-load_schedules.conf:
   file.managed:
@@ -53,7 +53,7 @@ marc2rdf-user:
     - template: jinja
     - context:
       Port: 3200
-      User: {{ opts['kohaname'] }}-marc2rdf
+      User: {{ pillar['kohaname'] }}-marc2rdf
 
 ########
 # VIRTUOSO
@@ -64,7 +64,7 @@ marc2rdf-user:
     - source: salt://files/virtuoso/virtuoso.conf
     - template: jinja
     - context:
-      User: {{ opts['kohaname'] }}-marc2rdf
+      User: {{ pillar['kohaname'] }}-marc2rdf
 
 /data/virtuoso/virtuoso.ini:
   file.managed:
@@ -115,7 +115,7 @@ bundle_marc2rdf:
 
 /usr/local/src/marc2rdf:
   file.directory:
-    - user: {{ opts['kohaname'] }}-marc2rdf
+    - user: {{ pillar['kohaname'] }}-marc2rdf
     - recurse:
       - user
 

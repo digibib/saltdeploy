@@ -1,8 +1,8 @@
 master: localhost
 file_client: local
-kohaname: knakk
-adminuser: flesk
-filerepo: http://171.23.133.203/saltfiles/koha
-circulationstart: 2011-01-01
-daybeforereturn: 21
-dummypatrons: 100
+#kohaname: knakk
+#adminuser: flesk
+#filerepo: http://171.23.133.203/saltfiles/koha
+#circulationstart: "2011-01-01"
+#daysbeforereturn: 21
+#dummypatrons: 100

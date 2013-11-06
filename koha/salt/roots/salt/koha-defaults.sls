@@ -5,7 +5,7 @@
 # defaults file with libraries and item types
 /tmp/defaults.sql.gz:
   file.managed:
-    - source: salt://files/defaults.sql.gz
+    - source: {{ pillar['saltfiles'] }}/defaults.sql.gz
 
 
 # disable zebra rebuild cronjob

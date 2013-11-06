@@ -18,7 +18,7 @@ virtuosopkgs:
 
 # /usr/local/src/virtuoso7.zip:
 #   file.managed:
-#   - source: {{ opts['filerepo'] }}/virtuoso7.zip
+#   - source: {{ pillar['filerepo'] }}/virtuoso7.zip
 #   - source_hash: md5=4d288bb90f6e3b72c6b349df411d0f11
 
 # unpack_virtuoso:
@@ -54,7 +54,7 @@ install_virtuoso:
     - source: salt://files/virtuoso/virtuoso.ini.production
     - template: jinja
     - context:
-      User: {{ opts['kohaname'] }}-koha
+      User: {{ pillar['kohaname'] }}-koha
 
 virtuoso:
   service.running:
