@@ -13,7 +13,7 @@ https://github.com/digibib/LibrioTools:
 
 createpatrons:
   cmd.run:
-    - name: sudo koha-shell knakk -c "perl patrons.pl -n {{ pillar['dummypatrons'] }} -c patrons.yaml"
+    - name: KOHA_CONF=/etc/koha/sites/{{ pillar['kohaname'] }}/koha-conf.xml perl -I /usr/share/koha/lib/ patrons.pl -n {{ pillar['dummypatrons'] }} -c patrons.yaml
     - cwd: /tmp/LibrioTools/sim
     - require:
       - file: /tmp/LibrioTools/sim/patrons.yaml

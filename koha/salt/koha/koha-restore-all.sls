@@ -5,7 +5,7 @@
 ##########
 
 include:
-  - koha.salt.roots.salt.koha-create
+  - koha.koha-create
 
 ##########
 # RESTORE FILES
@@ -29,7 +29,7 @@ include:
 
 restore{{ pillar['kohaname'] }}all:
   cmd.run:
-    - name: sudo koha-restore {{ pillar['kohaname'] }}-2013-10-30.sql.gz {{ pillar['kohaname'] }}-2013-10-30.tar.gz > /dev/null 2>&1
+    - name: koha-restore {{ pillar['kohaname'] }}-2013-10-30.sql.gz {{ pillar['kohaname'] }}-2013-10-30.tar.gz > /dev/null 2>&1
     - require:
       - file: /tmp/{{ pillar['kohaname'] }}-2013-10-30.sql.gz
       - file: /tmp/{{ pillar['kohaname'] }}-2013-10-30.tar.gz

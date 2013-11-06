@@ -3,11 +3,11 @@
 # ONLY FOR NEW BASE!
 ##########
 include:
-  - koha.salt.roots.salt.koha-defaults
+  - koha.koha-defaults
 
 createkohadb:
   cmd.run:
-    - name: sudo koha-create --create-db {{ pillar['kohaname'] }}
+    - name: koha-create --create-db {{ pillar['kohaname'] }}
     - unless: test $(id -u {{ pillar['kohaname'] }}-koha)
 
 # increase memory limits on zebra index

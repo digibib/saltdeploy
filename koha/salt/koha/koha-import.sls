@@ -3,7 +3,7 @@
 ##########
 
 include:
-  - koha.salt.roots.salt.koha-create
+  - koha.koha-create
 
 # marcxml file with 500 records and items
 /tmp/500_eximport.xml:
@@ -13,7 +13,7 @@ include:
 
 import500ex:
   cmd.run:
-    - name: sudo koha-shell knakk -c "perl -I /usr/share/koha/lib/ /usr/share/koha/bin/migration_tools/bulkmarcimport.pl -m marcxml -file /tmp/500_eximport.xml"
+    - name: KOHA_CONF=/etc/koha/sites/{{ pillar['kohaname'] }}/koha-conf.xml perl -I /usr/share/koha/lib/ /usr/share/koha/bin/migration_tools/bulkmarcimport.pl -m marcxml -file /tmp/500_eximport.xml
     - user: {{ pillar['kohaname'] }}-koha
     - require:
       - file: /tmp/500_eximport.xml
@@ -21,6 +21,6 @@ import500ex:
 
 rebuildzebra:
   cmd.run:
-    - name: sudo koha-rebuild-zebra --full {{ pillar['kohaname'] }}
+    - name: koha-rebuild-zebra --full {{ pillar['kohaname'] }}
     - watch: 
       - cmd: import500ex

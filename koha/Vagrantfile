@@ -49,7 +49,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.synced_folder "../data", "/vagrant_data"
   # config.vm.share_folder "salt_file_root", "/srv", "salt/roots/"
   
-  config.vm.synced_folder "salt/roots", "/srv"
+  config.vm.synced_folder ".", "/srv"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -70,15 +70,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     salt.run_highstate = true
     salt.install_type = "daily"
     salt.verbose = true
-    salt.pillar({
-      "saltfiles" => "salt://files",
-      "kohaname" => "knakk",
-      "adminuser" => "flesk",
-      "filerepo" => "http://171.23.133.203/saltfiles/koha",
-      "circulationstart" => "2011-01-01",
-      "daybeforereturn" => "21",
-      "dummypatrons" => "100"
-    })
     salt.pillar_data
   end
 

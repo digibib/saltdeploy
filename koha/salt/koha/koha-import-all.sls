@@ -4,7 +4,7 @@
 ##########
 
 include:
-  - koha.salt.roots.salt.koha-create
+  - koha.koha-create
 
 # marcxml file with all records and items
 /tmp/all_eximport.xml:
@@ -14,7 +14,7 @@ include:
 
 import_all:
   cmd.run:
-    - name: sudo koha-shell knakk -c "perl -I /usr/share/koha/lib/ /usr/share/koha/bin/migration_tools/bulkmarcimport.pl -m marcxml -file /tmp/all_eximport.xml"
+    - name: KOHA_CONF=/etc/koha/sites/{{ pillar['kohaname'] }}/koha-conf.xml perl -I /usr/share/koha/lib/ /usr/share/koha/bin/migration_tools/bulkmarcimport.pl -m marcxml -file /tmp/all_eximport.xml
     - user: {{ pillar['kohaname'] }}-koha
     - require:
       - file: /tmp/all_eximport.xml
@@ -22,6 +22,6 @@ import_all:
 
 rebuildzebra:
   cmd.run:
-    - name: sudo koha-rebuild-zebra --full --quiet {{ pillar['kohaname'] }}
+    - name: koha-rebuild-zebra --full --quiet {{ pillar['kohaname'] }}
     - watch: 
       - cmd: import_all
