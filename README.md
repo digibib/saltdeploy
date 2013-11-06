@@ -12,7 +12,7 @@ Incredibly handy for setting up once for testing, development and production.
 
     sudo add-apt-repository ppa:saltstack/salt
 
-(if using Raring 13.04 or Saucy 13.10):
+(if using Saucy 13.10):
 
     sudo add-apt-repository ppa:saltstack/salt-daily
 
@@ -29,18 +29,29 @@ All you need is a Vagrantfile and the salt config files. You don't need to insta
 Typical structure:
 
 ```
-── koha
+── koha                             ( root dir, often shared dir in Vagrant and including Vagrantfile )
+   ├── pillar
+   │   ├── koha
+   │   │   └── init.sls
+   │   └── top.sls
    ├── salt
-   │   ├── minion                            ( minion settings, variables, etc. )
-   │   └── roots                             ( root dir of salt, often shared dir in Vagrant )
-   │       └── salt                
-   │           ├── files                     ( files exposed to salt )
-   │           │   ├── sample_template.tmpl
-   │           │   ├── any_file_really.sh
-   │           ├── top.sls                   ( top state file - loads when booting image)
-   │           ├── examplestate.sls          ( example state - can be loaded on start or manually )
-   └── Vagrantfile                           ( Vagrant setup file, virtualbox image, provisioner, ports, etc.)
+   │   ├── koha
+   │   │   ├── files                ( files exposed to salt, accessible by salt://koha/files)
+   │   │   │   ├── sample_template.tmpl
+   │   │   │   ├── any_file_really.sh
+   │   │   │   ├── ...
+   │   │   ├── init.sls
+   │   │   ├── examplestate.sls     ( example state - can be loaded on start or manually )
+   │   │   ├── ...
+   │   ├── minion                   ( minion settings, can include variables, etc. )
+   │   └── top.sls                  ( top state file - loads when booting image)
+   └── Vagrantfile                  ( Vagrant setup file, virtualbox image, provisioner, forwarded ports, etc.)
 ```
+
+Vagrantfile
+===========
+
+The core config file for Vagrant. Any commands to Vagrant must be run from dir with Vagrantfile.
 
 NB! For running 64bit virtual images, the processor needs to support virtualization:
 
@@ -49,3 +60,22 @@ check with:
     grep --color vmx /proc/cpuinfo
 
 if there is output with `vmx` it's Yay!
+
+Usually, the commands are:
+
+    vagrant up        ( builds virtualbox from net image or uses previous one located in .vagrant, 
+                        boots virtualbox and runs state.highstate (=top.sls) if given in Vagrantfile)
+
+    vagrant halt/reload  (stops/reboots virtualbox)
+
+    vagrant destroy      ( deletes virtualbox entirely )
+
+    vagrant provision    ( forces running state.highstate )
+
+    vagrant ssh          ( log into virtualbox and do whatever as sudo! )
+
+To run individual states, run e.g.:
+
+    echo "sudo salt-call state.sls examplestate" | vagrant ssh
+
+Or do it from within the Virtualbox
