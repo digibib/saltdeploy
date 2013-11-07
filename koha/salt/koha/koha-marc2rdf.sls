@@ -22,7 +22,7 @@ marc2rdf-user:
 
 /etc/init/marc2rdf.conf:
   file.managed:
-    - source: salt://files/marc2rdf/marc2rdf.conf
+    - source: {{ pillar['saltfiles'] }}/marc2rdf/marc2rdf.conf
     - template: jinja
     - context:
       User: {{ pillar['kohaname'] }}-marc2rdf
@@ -33,7 +33,7 @@ marc2rdf-user:
 
 /etc/init/marc2rdf-app.conf:
   file.managed:
-    - source: salt://files/marc2rdf/marc2rdf-app.conf
+    - source: {{ pillar['saltfiles'] }}/marc2rdf/marc2rdf-app.conf
     - template: jinja
     - context:
       Port: 3000
@@ -41,7 +41,7 @@ marc2rdf-user:
 
 /etc/init/marc2rdf-scheduler.conf:
   file.managed:
-    - source: salt://files/marc2rdf/marc2rdf-scheduler.conf
+    - source: {{ pillar['saltfiles'] }}/marc2rdf/marc2rdf-scheduler.conf
     - template: jinja
     - context:
       Port: 3100
@@ -49,7 +49,7 @@ marc2rdf-user:
 
 /etc/init/marc2rdf-load_schedules.conf:
   file.managed:
-    - source: salt://files/marc2rdf/marc2rdf-load_schedules.conf
+    - source: {{ pillar['saltfiles'] }}/marc2rdf/marc2rdf-load_schedules.conf
     - template: jinja
     - context:
       Port: 3200
@@ -61,14 +61,14 @@ marc2rdf-user:
 
 /etc/init/virtuoso.conf:
   file.managed:
-    - source: salt://files/virtuoso/virtuoso.conf
+    - source: {{ pillar['saltfiles'] }}/virtuoso/virtuoso.conf
     - template: jinja
     - context:
       User: {{ pillar['kohaname'] }}-marc2rdf
 
 /data/virtuoso/virtuoso.ini:
   file.managed:
-    - source: salt://files/virtuoso/virtuoso.ini.minimal
+    - source: {{ pillar['saltfiles'] }}/virtuoso/virtuoso.ini.minimal
     - require: 
       - pkg: marc2rdfpkgs
 
@@ -83,26 +83,26 @@ https://github.com/digibib/marc2rdf:
 
 /usr/local/src/marc2rdf/config/settings.json:
   file.managed:
-    - source: salt://files/marc2rdf/marc2rdf_settings.json
+    - source: {{ pillar['saltfiles'] }}/marc2rdf/marc2rdf_settings.json
     - stateful: True
     - require:
       - git: https://github.com/digibib/marc2rdf
 
 /usr/local/src/marc2rdf/db/libraries.json:
   file.managed:
-    - source: salt://files/marc2rdf/libraries.json
+    - source: {{ pillar['saltfiles'] }}/marc2rdf/libraries.json
     - require:
       - git: https://github.com/digibib/marc2rdf
 
 /usr/local/src/marc2rdf/db/mappings.json:
   file.managed:
-    - source: salt://files/marc2rdf/mappings.json
+    - source: {{ pillar['saltfiles'] }}/marc2rdf/mappings.json
     - require:
       - git: https://github.com/digibib/marc2rdf
 
 /usr/local/src/marc2rdf/db/rules.json:
   file.managed:
-    - source: salt://files/marc2rdf/rules.json
+    - source: {{ pillar['saltfiles'] }}/marc2rdf/rules.json
     - require:
       - git: https://github.com/digibib/marc2rdf
 

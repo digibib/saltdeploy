@@ -51,7 +51,7 @@ install_virtuoso:
 
 /data/virtuoso-opensource-7/database/virtuoso.ini:
   file.managed:
-    - source: salt://files/virtuoso/virtuoso.ini.production
+    - source: {{ pillar['saltfiles'] }}/virtuoso/virtuoso.ini.production
     - template: jinja
     - context:
       User: {{ pillar['kohaname'] }}-koha

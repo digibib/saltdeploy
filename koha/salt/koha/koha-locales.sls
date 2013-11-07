@@ -14,8 +14,9 @@
     - source_hash: md5=de0285fbd4bbc9979d58f203b9f8a287
     - stateful: True
 
-sudo koha-translate --install nb-NO:
+translate:
   cmd.run:
+    - name: sudo koha-translate --install nb-NO
     - require:
       - file: /usr/share/koha/misc/translator/po/nb-NO-i-staff-t-prog-v-3006000.po
       - file: /usr/share/koha/misc/translator/po/nb-NO-i-opac-t-prog-v-3006000.po    

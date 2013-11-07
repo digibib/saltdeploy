@@ -9,7 +9,7 @@ https://github.com/digibib/LibrioTools:
 
 /usr/local/src/LibrioTools/sim/circulation.yaml:
   file.managed:
-    - source: salt://files/circulation.yaml
+    - source: {{ pillar['saltfiles'] }}/circulation.yaml
     - stateful: True
 
 # run circulation
