@@ -1,0 +1,765 @@
+--- 
+"Utl\xC3\xA5n": 
+  Gebyr-regler: 
+    - 
+      - "Beregn gebyrer ut i fra antall dager siden et l\xC3\xA5n forfalt"
+      - 
+        choices: 
+          ignoreCalendar: direkte.
+          noFinesWhenClosed: "Ikke inkludert dager da biblioteket er stengt."
+        pref: finesCalendar
+        type: choice
+      - ~
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke beregn"
+          production: "Beregn og effektuer"
+          test: "Beregn (men bare for \xC3\xA5 sende e-post til administratoren)"
+        pref: finesMode
+        type: choice
+      - "gebyrer (forutsetter at cron-jobben <code>misc/cronjobs/fines.pl</code> kj\xC3\xB8res jevnlig)."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke refunder"
+          1: Refunder
+        pref: RefundLostItemFeeOnReturn
+      - "gebyrer for tapte dokumenter som har blitt p\xC3\xA5f\xC3\xB8rt en l\xC3\xA5ner, n\xC3\xA5r det tapte eksemplaret returneres."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke ta med"
+          1: "Ta med"
+        pref: FinesIncludeGracePeriod
+      - "den gebyrfrie perioden n\xC3\xA5r gebyrer sal beregnes for et forfalt l\xC3\xA5n."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Don't Forgive"
+          1: Forgive
+        pref: WhenLostForgiveFine
+      - "the fines on an item when it is lost."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Don't Charge"
+          1: Charge
+        pref: WhenLostChargeReplacementFee
+      - "the replacement price when a patron loses an item."
+  Grensesnitt: 
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke fors\xC3\xB8k"
+          1: "Fors\xC3\xB8k"
+        pref: CircAutocompl
+      - "\xC3\xA5 foresl\xC3\xA5 brukere etter hvert som et l\xC3\xA5ners\xC3\xB8k skrives inn i utl\xC3\xA5nsskjermen."
+      - "Viser bare de 10 f\xC3\xB8rste resultatene av gangen."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke filtrer"
+          EAN13: "EAN-13 eller 0-fyllt UPC-A fra"
+          T-prefix: "Fjern det f\xC3\xB8rste tallet fra T-prefix-format"
+          cuecat: "Konverter fra CueCat-format"
+          libsuite8: "Konverter fra Libsuite8-format"
+          whitespace: "Fjern mellom fra"
+        pref: itemBarcodeInputFilter
+      - "innleste strekkoder."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Don't enable"
+          1: Enable
+        pref: itemBarcodeFallbackSearch
+      - "the automatic use of a keyword catalog search if the phrase entered as a barcode on the checkout page does not turn up any results during an item barcode search."
+    - 
+      - "Sorter tidligere l\xC3\xA5n i utl\xC3\xA5nsskjermen basert p\xC3\xA5"
+      - 
+        choices: 
+          asc: "tidligst til senest"
+          desc: "senest til tidligst"
+        pref: previousIssuesDefaultSortOrder
+      - forfallsdato.
+    - 
+      - "Sorter dagens utl\xC3\xA5n p\xC3\xA5 sirkulasjonssiden basert p\xC3\xA5"
+      - 
+        choices: 
+          asc: "tidligst til senest"
+          desc: "senest til tidligst"
+        pref: todaysIssuesDefaultSortOrder
+        type: choice
+      - forfallsdato.
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke sl\xC3\xA5 p\xC3\xA5"
+          1: "Sl\xC3\xA5 p\xC3\xA5"
+        pref: UseTablesortForCirc
+      - "sortering av l\xC3\xA5neres aktive l\xC3\xA5n i utl\xC3\xA5nsskjermen. <br/>NB! Å sl\xC3\xA5 p\xC3\xA5 denne funksjonen kan gj\xC3\xB8re utl\xC3\xA5nsfunksjonen tregere for l\xC3\xA5nere med mange l\xC3\xA5n."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke sl\xC3\xA5 p\xC3\xA5"
+          1: "Sl\xC3\xA5 p\xC3\xA5"
+        pref: soundon
+      - "lyder i skjermene for utl\xC3\xA5n og innlevering. Ikke alle nettlesere st\xC3\xB8tter dette, forel\xC3\xB8pig."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: SpecifyDueDate
+      - "at ansatte oppgir en forfallsdato ved utl\xC3\xA5n."
+    - 
+      - "Sett standard verdi for for startdato for 'Reservasjoner som skal plukkes'-lista til"
+      - 
+        class: integer
+        pref: HoldsToPullStartDate
+      - "day(s) ago. Note that the default end date is controlled by preference ConfirmFutureHolds."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: AllowAllMessageDeletion
+      - "at ansatte kan slette meldinger som er lagt til ved andre bibliotek."
+    - 
+      - Vis
+      - 
+        class: integer
+        pref: numReturnedItemsToShow
+      - "de siste innleverte dokumentene i innleveringsskjermen."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Gj\xC3\xB8r ansatte oppmerksomme p\xC3\xA5"
+          1: "Ikke gj\xC3\xB8re ansatte oppmerksomme p\xC3\xA5"
+        pref: FineNotifyAtCheckin
+      - "gebyrer p\xC3\xA5 eksemplarer de tar retur p\xC3\xA5."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke gi beskjed"
+          1: "Gi beskjed"
+        pref: WaitingNotifyAtCheckin
+      - "til den ansatte om ventende reserveringer for den l\xC3\xA5neren hvis b\xC3\xB8ker de tar retur p\xC3\xA5."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke krev"
+          1: Krev
+        pref: FilterBeforeOverdueReport
+      - "at ansatte m\xC3\xA5 velge utl\xC3\xA5n som skal vises f\xC3\xB8r rapporten for forfalte l\xC3\xA5n kj\xC3\xB8res."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke vis"
+          1: Vis
+        pref: DisplayClearScreenButton
+      - "en knapp for \xC3\xA5 fjerne den siste l\xC3\xA5neren fra skjermen i utl\xC3\xA5nsgrensesnittet."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Regn det som lokal bruk"
+          1: "Ikke regn det som lokal bruk"
+        pref: RecordLocalUseOnReturn
+      - "n\xC3\xA5r et eksemplar som ikke er utl\xC3\xA5nt blir levert inn."
+    - 
+      - "N\xC3\xA5r et tomt strekkodefelt sendes inn i sirkulasjonsskjermen"
+      - 
+        choices: 
+          ? ""
+          : "t\xC3\xB8m skjermen"
+          1: "\xC3\xA5pne et vindu for rask kvitteringsutskrift"
+        pref: CircAutoPrintQuickSlip
+      - "."
+    - 
+      - "Inkluder stilarket"
+      - 
+        class: url
+        pref: NoticeCSS
+      - "i meldinger. (Dette m\xC3\xA5 v\xC3\xA6re en komplett URL som starter med <code>http://</code>)"
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke oppdater"
+          1: Oppdater
+        pref: UpdateTotalIssuesOnCirc
+      - "det totale antallet utl\xC3\xA5n for en bibliografisk post n\xC3\xA5r et eksemplar l\xC3\xA5nes ut. (ADVARSEL! Dette kan \xC3\xB8ke belastningen p\xC3\xA5 serveren betydelig. Dersom dette er et problem b\xC3\xB8r skriptet update_totalissues.pl kj\xC3\xB8res jevnlig fra cron, for \xC3\xA5 oppdatere antallet utl\xC3\xA5n.)"
+    - 
+      - "Bruk CSV-profilen"
+      - 
+        pref: ExportWithCsvProfile
+      - "ved eksport av lpnehistorikk for en l\xC3\xA5ner (legg inn navn p\xC3\xA5 CSV-profil)"
+    - 
+      - "Utelat f\xC3\xB8lgende felter fra eksporten av l\xC3\xA5nehistorikk i CSV- eller ISO2709-format"
+      - 
+        pref: ExportRemoveFields
+      - "(skill felter med mellomrom, feks 100a 200b 300c)"
+    - 
+      - 
+        choices: 
+          ? ""
+          : De-aktiver
+          1: Aktiver
+        pref: AllowOfflineCirculation
+      - "offline sirkulasjon p\xC3\xA5 vanlige datamaskiner som benyttes til sirkulasjon. (NB: Dette p\xC3\xA5virker ikke Firefox-innstikket eller det frittst\xC3\xA5ende programmet for offline sirkulasjon.)"
+  Innlevering: 
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke blokker"
+          1: Blokker
+        pref: BlockReturnOfWithdrawnItems
+      - "retur av dokumenter som har blitt trukket tilbake."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke beregn"
+          1: Beregn
+        pref: CalculateFinesOnReturn
+      - "og oppdater purregebyr n\xC3\xA5r et eksemplar leveres inn."
+      - Beregn
+  Pensumsamlinger: 
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Don't use"
+          1: Use
+        pref: UseCourseReserves
+      - "course reserves"
+  Reservasjonsregler: 
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: AllowHoldPolicyOverride
+      - "ansatte \xC3\xA5 overstyre reservasjonsregler n\xC3\xA5r de utf\xC3\xB8rer reservasjoner."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: AllowHoldsOnDamagedItems
+      - "reservasjoner p\xC3\xA5 skadede eksemplarer."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: AllowOnShelfHolds
+      - "reservasjoner p\xC3\xA5 eksemplarer som ikke er utl\xC3\xA5nt."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: AllowHoldDateInFuture
+      - "reservasjoner som ikke blir aktive f\xC3\xB8r etter en gitt dato i fremtiden."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: OPACAllowHoldDateInFuture
+      - "l\xC3\xA5nere \xC3\xA5 utf\xC3\xB8re reserveringer som ikke begynner \xC3\xA5 gjelde f\xC3\xB8r en gitt dato i fremtiden. (AllowHoldDateInFuture m\xC3\xA5 ogs\xC3\xA5 v\xC3\xA6re sl\xC3\xA5tt p\xC3\xA5)."
+    - 
+      - "Confirm future hold requests (starting no later than"
+      - 
+        class: integer
+        pref: ConfirmFutureHolds
+      - "days from now) at checkin time. Note that this number of days will be used too in calculating the default end date for the Holds to pull-report. But it does not interfere with issuing, renewing or transferring books."
+    - 
+      - Sjekk
+      - 
+        choices: 
+          ItemHomeLibrary: "eksemplarets hjemmebibliotek"
+          PatronLibrary: "l\xC3\xA5nerens hjemmebibliotek"
+        pref: ReservesControlBranch
+      - "for \xC3\xA5 kontrollere om en l\xC3\xA5ner kan reservere et dokument."
+    - 
+      - "Marker en reservasjon som problematisk n\xC3\xA5r den har ventet mer enn"
+      - 
+        class: integer
+        pref: ReservesMaxPickUpDelay
+      - dager.
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: ExpireReservesMaxPickUpDelay
+      - "reservasjoner \xC3\xA5 g\xC3\xA5 ut p\xC3\xA5 dato automatisk dersom de ikke har blitt hentet innenfor tidsperioden som er angitt med ReservesMaxPickUpDelay"
+    - 
+      - "Dersom ExpireReservesMaxPickUpDelay er i bruk: gi l\xC3\xA5nere som lar ventende reservasjoner g\xC3\xA5 ut p\xC3\xA5 dato et gebyr p\xC3\xA5"
+      - 
+        class: currency
+        pref: ExpireReservesMaxPickUpDelayCharge
+    - 
+      - "Fyll reservasjoner fra bibliotekene"
+      - 
+        class: multi
+        pref: StaticHoldsQueueWeight
+      - "(som bibliotekkoder, adskilt med komma. Bruk alle bibliotek om feltet er tomt.)"
+      - 
+        choices: 
+          ? ""
+          : "i den rekkef\xC3\xB8lgen."
+          1: "i tilfeldig rekkef\xC3\xB8lge."
+        pref: RandomizeHoldsQueueWeight
+      - ~
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat (med IndependantBranches)"
+          1: Tillat
+        pref: canreservefromotherbranches
+      - "en l\xC3\xA5ner fra ett bibliotek \xC3\xA5 reservere eksemplarer som tilh\xC3\xB8rer et annet bibliotek"
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: OPACAllowUserToChooseBranch
+      - "l\xC3\xA5nere \xC3\xA5 velge hvilket bibliotek de \xC3\xB8nsker \xC3\xA5 hente reserverte b\xC3\xB8ker ved."
+    - 
+      - 
+        choices: 
+          ? ""
+          : Automatisk
+          1: "Ikke automatisk"
+        pref: ReservesNeedReturns
+      - "marker reservasjoner som funnet og ventende n\xC3\xA5r en reservasjon gj\xC3\xB8res p\xC3\xA5 et spesifikt eksemplar og eksemplaret allerede er inne."
+    - 
+      - "L\xC3\xA5nere kan bare ha"
+      - 
+        class: integer
+        pref: maxreserves
+      - "reserveringer til en hver tid."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke aktiver"
+          1: Aktiver
+        pref: emailLibrarianWhenHoldIsPlaced
+      - "sending av e-pos til Kohas administrator-epostadresse n\xC3\xA5r reservasjoner legges inn."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: DisplayMultiPlaceHold
+      - "at det kan legges inn reservasjoner p\xC3\xA5 flere enn én bibliografisk post fra trefflister"
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke overf\xC3\xB8r"
+          1: Overf\xC3\xB8r
+        pref: TransferWhenCancelAllWaitingHolds
+      - "eksemplarer n\xC3\xA5r alle ventede reservasjoner avsluttes."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: AutoResumeSuspendedHolds
+      - "reservasjoner som er satt p\xC3\xA5 vent \xC3\xA5 automatisk bli aktive igjen p\xC3\xA5 en gitt dato."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: SuspendHoldsIntranet
+      - "reservasjoner \xC3\xA5 bli opphevet gjennom det interne grensesnittet."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: SuspendHoldsOpac
+      - "reservasjoner \xC3\xA5 bli opphevet gjennom publikumskatalogen."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke sl\xC3\xA5 p\xC3\xA5"
+          1: "Sl\xC3\xA5 p\xC3\xA5"
+        pref: decreaseLoanHighHolds
+      - "reduksjon av l\xC3\xA5netiden til"
+      - 
+        class: integer
+        pref: decreaseLoanHighHoldsDuration
+      - "dager for eksemplarer med mer enn"
+      - 
+        class: integer
+        pref: decreaseLoanHighHoldsValue
+      - reservasjoner.
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: AllowHoldsOnPatronsPossessions
+      - "l\xC3\xA5nere \xC3\xA5 legge inn reservering p\xC3\xA5 en post n\xC3\xA5r de allerede har l\xC3\xA5nt ett eller flere eksemplarer som er knyttet til den samme posten."
+  ? "Selvbetjent utl\xC3\xA5n"
+  : 
+    - 
+      - "Innkluder f\xC3\xB8lgende JavaScript p\xC3\xA5 alle sider i det web-baserte systemet for selvbetjent utl\xC3\xA5n:"
+      - 
+        class: code
+        pref: SCOUserJS
+        type: textarea
+    - 
+      - "Innkluder f\xC3\xB8lgende CSS p\xC3\xA5 alle sider i det web-baserte systemet for selvbetjent utl\xC3\xA5n:"
+      - 
+        class: code
+        pref: SCOUserCSS
+        type: textarea
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke vis"
+          1: Vis
+        pref: ShowPatronImageInWebBasedSelfCheck
+      - "l\xC3\xA5nernes bilde (om et slikt bilde finnes) n\xC3\xA5r de bruker det web-baserte grensesnittet for selvbetjent l\xC3\xA5n."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke aktiver"
+          1: Aktiver
+        pref: WebBasedSelfCheck
+      - "det web-baserte grensesnittet for selvbetjent l\xC3\xA5n. (Tilgjengelig p\xC3\xA5 adressen /cgi-bin/koha/sco/sco-main.pl)"
+    - 
+      - "La l\xC3\xA5nerne logge inn i det web-baserte grensesnittet for selvbetjent l\xC3\xA5n ved help av"
+      - 
+        choices: 
+          ? ""
+          : Strekkode
+          1: "brukernavn og passord"
+        pref: SelfCheckoutByLogin
+    - 
+      - "La l\xC3\xA5nernes innlogging i det web-baserte grensesnittet for selvbetjent l\xC3\xA5n g\xC3\xA5 ut p\xC3\xA5 tid etter"
+      - 
+        class: integer
+        pref: SelfCheckTimeout
+      - sekunder.
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: AllowSelfCheckReturns
+      - "at l\xC3\xA5nere returnerer l\xC3\xA5n gjennom det web-baserte selvbetjeningssystemet."
+    - 
+      - "Ta med den f\xC3\xB8lgende HTML-teksten i hjelpesiden for det web-baserte grensesnittet for selvbetjent l\xC3\xA5n:"
+      - 
+        class: code
+        pref: SelfCheckHelpMessage
+        type: textarea
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: AutoSelfCheckAllowed
+      - "det web-baserte grensesnittet for sevbetjening \xC3\xA5 automatisk logg inn som ansatt-brukeren"
+      - 
+        pref: AutoSelfCheckID
+      - "og dette passordet"
+      - 
+        pref: AutoSelfCheckPass
+      - "."
+  Utl\xC3\xA5nsregler: 
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: AllowTooManyOverride
+      - "ansatte \xC3\xA5 overstyre begrensningene og l\xC3\xA5ne ut eksemplarer til l\xC3\xA5nere som har n\xC3\xA5dd maksimalt antall utl\xC3\xA5n. "
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Do not"
+          1: Do
+        pref: AutoRemoveOverduesRestrictions
+      - "allow OVERDUES restrictions triggered by sent notices to be cleared automatically when all overdue items are returned by a patron."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: AllowNotForLoanOverride
+      - "ansatte \xC3\xA5 l\xC3\xA5ne ut eksemplarer som er merket som ikke til utl\xC3\xA5n."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: AllowRenewalLimitOverride
+      - "ansatte \xC3\xA5 overstyre reglene for fornyinger, og fornye et l\xC3\xA5n som selv om dette medf\xC3\xB8rer at antall fornyinger overskrider grensen."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: AllowItemsOnHoldCheckout
+      - "utl\xC3\xA5n av eksemplarer som er reservert av andre. Dersom dette tillates vil advarslene RESERVE_WAITING og RESERVED ikke bli generert. Dette gj\xC3\xB8r det mulig \xC3\xA5 l\xC3\xA5ne disse eksemplarene via selvbetjent utl\xC3\xA5n."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke krev"
+          1: Krev
+        pref: AllFinesNeedOverride
+      - "at ansatte menuelt m\xC3\xA5 overstyre alle gebyrer, ogs\xC3\xA5 de som er mindre enn grensen definert i innstillingen \"noissuescharge\"."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: AllowFineOverride
+      - "at ansatte kan overstyre gebyrer og l\xC3\xA5ne ut til l\xC3\xA5nere som har mere i gebyrer enn den grensa som er satt med systempreferansen \"noissuescharge\"."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke flytt"
+          1: Flytt
+        pref: InProcessingToShelvingCart
+      - "eksemplarer som har plasseringen PROC (til behandling) til plasseringen CART (tralle) n\xC3\xA5r de leveres inn."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke flytt"
+          1: Flytt
+        pref: ReturnToShelvingCart
+      - "alle eksmeplarer til plasseringen CART (tralle) n\xC3\xA5r de leveres inn."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke overf\xC3\xB8r automatisk"
+          1: "Overf\xC3\xB8r automatisk"
+        pref: AutomaticItemReturn
+      - "overf\xC3\xB8r automatisk eksemplarer til deres hjemmebibliotek n\xC3\xA5r de leveres inn."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke h\xC3\xA5ndhev"
+          1: "H\xC3\xA5ndhev"
+        pref: UseBranchTransferLimits
+      - "begrensninger p\xC3\xA5 overf\xC3\xB8ringer mellom bibliotek basert p\xC3\xA5"
+      - 
+        choices: 
+          ccode: samlingskode
+          itemtype: dokumenttype
+        pref: BranchTransferLimitsType
+      - "."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke bruk"
+          1: Bruk
+        pref: UseTransportCostMatrix
+      - "systemet for transportkostnader for \xC3\xA5 beregne optimal behandling av reservasjon mellom ulike bibliotek."
+    - 
+      - "Bruk reglene for utl\xC3\xA5n og gebyrer fra"
+      - 
+        choices: 
+          ItemHomeLibrary: "biblioteket eksemplaret tilh\xC3\xB8rer."
+          PatronLibrary: "biblioteket l\xC3\xA5neren h\xC3\xB8rer til ved."
+          PickupLibrary: "biblioteket du er logget inn ved."
+        pref: CircControl
+        type: choice
+    - 
+      - "Bruk reglene for utl\xC3\xA5n og gebyrer til"
+      - 
+        choices: 
+          holdingbranch: "biblioteket eksemplaret ble l\xC3\xA5nt ut ved."
+          homebranch: "biblioteket eksemplaret tilh\xC3\xB8rer."
+        pref: HomeOrHoldingBranch
+        type: choice
+    - 
+      - "Tillat at dokumenter blir levert tilbake til"
+      - 
+        choices: 
+          anywhere: "til et hvilket som helst bibliotek."
+          holdingbranch: "bare biblioteket der det ble l\xC3\xA5nt."
+          homebranch: "bare biblioteket der dokumentet h\xC3\xB8rer hjemme."
+          homeorholdingbranch: "enten biblioteket der dokumentet h\xC3\xB8rer hjemme eller biblioteket der det ble l\xC3\xA5nt."
+        pref: AllowReturnToBranch
+        type: choice
+    - 
+      - "Beregn forfallsdato ut i fra"
+      - 
+        choices: 
+          Calendar: "kalenderen, for \xC3\xA5 hoppe over alle dager biblioteket er stengt."
+          Datedue: "kalendere, for \xC3\xA5 endre forfallsdatoen til f\xC3\xB8rste dag biblioteket holder \xC3\xA5pent"
+          Days: "utl\xC3\xA5nsreglene alene"
+        pref: useDaysMode
+    - 
+      - "Ved fornying, baser den nye forfallsdatoen p\xC3\xA5"
+      - 
+        choices: 
+          date_due: "den gamle forfallsdatoen til l\xC3\xA5net."
+          now: "dagens dato."
+        pref: RenewalPeriodBase
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke send"
+          1: Send
+        pref: RenewalSendNotice
+      - "en fornyingsmelding i tr\xC3\xA5d med l\xC3\xA5nerens preferanser for utl\xC3\xA5nsmeldinger."
+    - 
+      - "Hindre l\xC3\xA5nere fra \xC3\xA5 reservere i publikumskatalogen dersom de er skyldig mer enn"
+      - 
+        class: currency
+        pref: maxoutstanding
+      - "[% local_currency %] i gebyrer."
+    - 
+      - "Vis en advarsel p\xC3\xA5 skjermildet \"Overf\xC3\xB8ringer til mottak\" dersom overf\xC3\xB8ringen ikke har blitt mottatt"
+      - 
+        class: integer
+        pref: TransfersMaxDaysWarning
+      - "dager etter at den ble sendt."
+    - 
+      - 
+        choices: 
+          ? ""
+          : Hindre
+          1: "Ikke hindre"
+        pref: IssuingInProcess
+      - "l\xC3\xA5nere fra \xC3\xA5 l\xC3\xA5ne et eksemplar som har en leiepris som ville bring dem over grensen."
+    - 
+      - "S\xC3\xB8rg for at l\xC3\xA5nere med f\xC3\xB8lgende m\xC3\xA5lgruppeverdier ikke kan l\xC3\xA5ne upassende materiale:"
+      - 
+        pref: AgeRestrictionMarker
+      - "Legg inn n\xC3\xB8kkelord for m\xC3\xA5lgruppe, adskilt med vertikal strek (\xC2\xAB|\xC2\xBB), feks: \xC2\xABFSK|PEGI|Age\xC2\xBB. Ikke bruk mellomrom i forbindelse med den vertikale streken. En MARC-felt verdi \xC2\xABFSK 12\xC2\xBB eller \xC2\xABPEGI 12\xC2\xBB vil bety at l\xC3\xA5neren m\xC3\xA5 v\xC3\xA6re minst 12 \xC3\xA5r. La feltet st\xC3\xA5 tomt om det ikke skal brukes aldersbegrensninger."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke tillat"
+          1: Tillat
+        pref: AgeRestrictionOverride
+      - "ansatte \xC3\xA5 l\xC3\xA5ne ut eksemplarer med aldersbegrensing."
+    - 
+      - "Hindre l\xC3\xA5nere fra \xC3\xA5 l\xC3\xA5ne nye dokumenter dersom de har mer enn"
+      - 
+        class: integer
+        pref: noissuescharge
+      - "[% local_currency %] i gebyrer."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke inkluder"
+          1: Inkluder
+        pref: RentalsInNoissuesCharge
+      - "leiekostnader n\xC3\xA5r 'noissuescharge' skal oppsummeres."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke inkluder"
+          1: Inkluder
+        pref: ManInvInNoissuesCharge
+      - "MANUAL_INV gebyrer n\xC3\xA5r gebyrer for 'noissuescharge' skal oppsummeres."
+    - 
+      - 
+        choices: 
+          ? ""
+          : "Ikke krev"
+          1: Krev
+        pref: ReturnBeforeExpiry
+      - "at l\xC3\xA5nere leverer tilbake l\xC3\xA5n f\xC3\xB8r kontoen deres g\xC3\xA5r ut p\xC3\xA5 dato (ved \xC3\xA5 avgrense returdatoen til datoer f\xC3\xB8r l\xC3\xA5nerens utl\xC3\xB8psdato)."
+    - 
+      - "Send alle meldinger som BCC til denne adressen"
+      - 
+        pref: OverdueNoticeBcc
+    - 
+      - "Inkluder opp til"
+      - 
+        class: integer
+        pref: PrintNoticesMaxLines
+      - "eksemplar-linjer i en trykt purring. Om antallet l\xC3\xA5n er st\xC3\xB8rre enn dette tallet, vil purringen avsluttes med en advarsel om at l\xC3\xA5neren m\xC3\xA5 sjekke sin status i publikumskatalogen for \xC3\xA5 f\xC3\xA5 en full lister over forfalte l\xC3\xA5n. Sett til 0 for \xC3\xA5 ta med alle l\xC3\xA5nene i purringer, uavhengig av antallet."
+    - 
+      - 
+        choices: 
+          block: Sperr
+          confirmation: "Be om bekreftelse"
+          noblock: "Ikke sperr"
+        pref: OverduesBlockCirc
+      - "ved utl\xC3\xA5n til en l\xC3\xA5ner som har utest\xC3\xA5ende gebyrer"
+    - 
+      - "Ved innlevering, styr det innleverte eksemplaret til"
+      - 
+        choices: 
+          holdingbranch: "biblioteket eksemplaret ble l\xC3\xA5nt ut ved."
+          homebranch: "biblioteket eksemplaret tilh\xC3\xB8rer."
+        pref: HomeOrHoldingBranchReturn
+        type: choice
+    - 
+      - "Ved utl\xC3\xA5n av et eksemplar som har blitt registrert som tapt, "
+      - 
+        choices: 
+          alert: "vis en melding"
+          confirm: "krev bekreftelse"
+          nothing: "ikke gj\xC3\xB8r noe"
+        pref: IssueLostItem
+      - "."

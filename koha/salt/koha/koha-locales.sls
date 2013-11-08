@@ -28,7 +28,7 @@
 
 translate:
   cmd.run:
-    - name: sudo koha-translate --install nb-NO
+    - name: sudo koha-translate --update nb-NO
     - require:
       - file: /usr/share/koha/misc/translator/po/nb-NO-i-staff-t-prog-v-3006000.po
       - file: /usr/share/koha/misc/translator/po/nb-NO-i-opac-t-prog-v-3006000.po
@@ -39,3 +39,25 @@ translate:
       - file: /usr/share/koha/misc/translator/po/nb-NO-i-opac-t-prog-v-3006000.po
       - file: /usr/share/koha/misc/translator/po/nb-NO-opac-bootstrap.po
       - file: /usr/share/koha/misc/translator/po/nb-NO-pref.po
+
+########
+# LOCAL MODS - ENCODING ISSUES
+########
+
+/usr/share/koha/intranet/htdocs/intranet-tmpl/prog/nb-NO/modules/admin/preferences/circulation.pref:
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/koha-tmpl/circulation.pref
+    - watch:
+      - cmd: translate
+
+/usr/share/koha/intranet/htdocs/intranet-tmpl/prog/nb-NO/modules/admin/preferences/opac.pref:
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/koha-tmpl/opac.pref
+    - watch:
+      - cmd: translate
+
+/usr/share/koha/intranet/htdocs/intranet-tmpl/prog/nb-NO/modules/admin/preferences/patrons.pref:
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/koha-tmpl/patrons.pref
+    - watch:
+      - cmd: translate

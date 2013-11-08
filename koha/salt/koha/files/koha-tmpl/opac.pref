@@ -1,0 +1,704 @@
+--- 
+Publikumskatalog: 
+  Egenregistrering: 
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        pref: PatronSelfRegistration
+      - "nye l\xC3\xA5nere \xC3\xA5 registrere seg selv via publikumskatalogen."
+    - 
+      - 
+        choices: 
+          "": Ikke krev
+          1: krev
+        pref: PatronSelfRegistrationVerifyByEmail
+      - "at en l\xC3\xA5ner som har registrert seg selv via publikumskatalogen m\xC3\xA5 verifisere registreringen ved hjelp av e-post."
+    - 
+      - Bruk l\xC3\xA5ntagerkategorien
+      - 
+        class: short
+        pref: PatronSelfRegistrationDefaultCategory
+      - "som standard kategori for nye l\xC3\xA5nere som har registrert seg selv i publikumskatalogen."
+    - 
+      - "Slett l\xC3\xA5nere som har registrert seg via publikumskatalogen, men som ikke har verifiset registreringen, etter"
+      - 
+        class: integer
+        pref: PatronSelfRegistrationExpireTemporaryAccountsDelay
+      - dager.
+    - 
+      - "De f\xC3\xB8lgende  <a href='http://schema.koha-community.org/tables/borrowers.html' target='blank'>database-kolonnene</a> m\xC3\xA5 fylles ut i skjemaet for egenregistrering av l\xC3\xA5nere:"
+      - 
+        class: multi
+        pref: PatronSelfRegistrationBorrowerMandatoryField
+      - "(skill kolonner med tegnet \xC2\xAB|\xC2\xBB)"
+    - 
+      - "F\xC3\xB8lgende  <a href='http://schema.koha-community.org/tables/borrowers.html' target='blank'>database-kolonner</a> skal ikke vises i skjemaet for egenregistrering av l\xC3\xA5nere:"
+      - 
+        class: multi
+        pref: PatronSelfRegistrationBorrowerUnwantedField
+      - "(skill kolonner med tegnet \xC2\xAB|\xC2\xBB)"
+    - 
+      - "Vis f\xC3\xB8lgende ekstra meldinger til nye l\xC3\xA5nere som registrerer seg selv via publikumskatalogen (du kan bruke HTML):"
+      - 
+        class: html
+        pref: PatronSelfRegistrationAdditionalInstructions
+        type: textarea
+  Egenskaper: 
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        pref: opacuserlogin
+      - "l\xC3\xA5nere \xC3\xA5 logge inn p\xC3\xA5 sin egen konto i OPACen."
+    - 
+      - Vis
+      - 
+        choices: 
+          callnum: bare hyllesignatur
+          ccode: samlingskode (ccode)
+          location: plassering
+        pref: OpacItemLocation
+      - for eksemplarer i trefflister i publikumskatalogen.
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        pref: OpacPasswordChange
+      - "l\xC3\xA5nere \xC3\xA5 endre sitt eget passord i OPACen. NB! Dette m\xC3\xA5 v\xC3\xA6re sl\xC3\xA5tt av dersom man \xC3\xB8nsker \xC3\xA5 bruke LDAP for autentisering."
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        pref: OPACPatronDetails
+      - "innloggede l\xC3\xA5nere \xC3\xA5 gi biblioteket beskjed om endret kontaktinformasjon gjennom publikumskatalogen."
+    - 
+      - 
+        choices: 
+          "": Ikke vis
+          1: Vis
+        pref: OPACpatronimages
+      - "bilder av l\xC3\xA5nerne p\xC3\xA5 profilsiden i publikumskatalogen"
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        pref: OPACFinesTab
+      - "l\xC3\xA5nerne \xC3\xA5 se fanen for gebyrer p\xC3\xA5 'Min side' i publikumskatalogen."
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        pref: OpacBrowser
+      - "l\xC3\xA5nere i bla i emneautoriteter i publikumskatalogen (kj\xC3\xB8r misc/cronjobs/build_browser_and_cloud.pl for \xC3\xA5 bygge listene)"
+    - 
+      - 
+        choices: 
+          "": Ikke vis
+          1: Vis
+        pref: OpacCloud
+      - "en emnesky i publikumskatalogen (kj\xC3\xB8r misc/cronjobs/build_browser_and_cloud.pl jevnlig for \xC3\xA5 bygge emneskya)"
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        pref: OpacAuthorities
+      - "l\xC3\xA5nere \xC3\xA5 s\xC3\xB8ke i autoritetsposter."
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        pref: opacbookbag
+      - "l\xC3\xA5nere \xC3\xA5 lagre poster i en midlertidig 'handlekurv' i OPACen."
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        pref: OpacTopissue
+      - "l\xC3\xA5nerne \xC3\xA5 se en liste over de mest utl\xC3\xA5nte dokumentene i OPACen. Denne funksjonen er delvis eksperimentell og b\xC3\xB8r unng\xC3\xA5s for samlinger med et stort antall eksemplarer."
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        pref: suggestion
+      - "l\xC3\xA5nere \xC3\xA5 legge inn inkj\xC3\xB8psforslag i OPACen."
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        pref: reviewson
+      - "l\xC3\xA5nere \xC3\xA5 legge inn kommentarer p\xC3\xA5 poster i OPACen."
+    - 
+      - Vis
+      - 
+        choices: 
+          first: fornavn
+          firstandinitial: fornavn og initial fra etternavn
+          full: fullt navn
+          none: ikke noe navn
+          surname: etternavn
+          username: brukernavn
+        pref: ShowReviewer
+      - til den som har lagt inn en kommentar i publikumskatalogen.
+    - 
+      - 
+        choices: 
+          "": Skjul
+          1: Vis
+        pref: ShowReviewerPhoto
+      - "bilde av den som har lagt inn en kommentar i OPACen (basert p\xC3\xA5 den eksterne tjenesten Gravatar)."
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        pref: RequestOnOpac
+      - "l\xC3\xA5nerne \xC3\xA5 utf\xC3\xB8re reservasjoner i OPACen."
+    - 
+      - Vis
+      - 
+        class: long
+        pref: numSearchRSSResults
+      - "poster i RSS-str\xC3\xB8mmer."
+    - 
+      - 
+        choices: 
+          "": "Sl\xC3\xA5 av"
+          1: "Sl\xC3\xA5 p\xC3\xA5"
+        default: 0
+        pref: SocialNetworks
+      - lenker til sosiale nettverk i detaljvisninger i publikumskatalogen
+    - 
+      - 
+        choices: 
+          "": "Sl\xC3\xA5 av"
+          1: "Sl\xC3\xA5 p\xC3\xA5"
+        default: 1
+        pref: OpacBrowseResults
+      - "blaing i trefflister p\xC3\xA5 sider for detaljvisning i publikumskatalogen."
+    - 
+      - 
+        choices: 
+          "": "Sl\xC3\xA5 av"
+          1: "Sl\xC3\xA5 p\xC3\xA5"
+        default: 0
+        pref: QuoteOfTheDay
+      - "visningen av \xC2\xABDagens sitat\xC2\xBB p\xC3\xA5 publikumskatalogens forside"
+    - 
+      - 
+        choices: 
+          "": Ikke vis
+          1: Vis
+        default: 0
+        pref: OPACPopupAuthorsSearch
+      - "lista med forfattere/emner i et popup-vindu for et kombinert s\xC3\xB8k i detaljvisningen i publikumskatalogen. (Fungerer ikke dersom visning med XSLT er aktivert.)"
+    - 
+      - 
+        choices: 
+          "": Do not allow
+          1: Allow
+        default: 0
+        pref: OpacHoldNotes
+      - users to add a note when placing a hold.
+  Hylleviser: 
+    - 
+      - 
+        choices: 
+          "": Ikke vis
+          1: Vis
+        pref: OPACShelfBrowser
+      - "en hylleblaer p\xC3\xA5 sider for detlajvisning i publikumskatalogen, som gj\xC3\xB8r det mulig for l\xC3\xA5nerne \xC3\xA5 se hva som st\xC3\xA5r i n\xC3\xA6rheten av et gitt dokument p\xC3\xA5 hylla. NB! Dette legger beslag p\xC3\xA5 en ikke ubetydelig mengde ressurser p\xC3\xA5 serveren, og b\xC3\xB8r ikke sl\xC3\xA5s p\xC3\xA5 om samlingen din har et stort antall poster."
+    - 
+      - 
+        choices: 
+          "": Ikke bruk
+          1: Bruk
+        default: 1
+        pref: ShelfBrowserUsesLocation
+      - "eksemplarets plassering n\xC3\xA5r dokumenter skal velges ut til funksjonen Bla i hylla."
+    - 
+      - 
+        choices: 
+          "": Ikke bruk
+          1: Bruk
+        default: 1
+        pref: ShelfBrowserUsesHomeBranch
+      - "eksemplarets eierbibliotek n\xC3\xA5r det skal finnes eksemplarer til 'Bla i hylla'-funksjonen."
+    - 
+      - 
+        choices: 
+          "": Ikke bruk
+          1: Bruk
+        default: 0
+        pref: ShelfBrowserUsesCcode
+      - eksemplarets samlingskode ved valg av eksemplarer til hylleviseren.
+  Personvern: 
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        pref: AnonSuggestions
+      - "l\xC3\xA5nere som ikke er logget inn \xC3\xA5 legge inn innkj\xC3\xB8psforslag. Forslagene knyttes til l\xC3\xA5neren som er definert med systempreferansen AnonymousPatron."
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        pref: opacreadinghistory
+      - "l\xC3\xA5nere \xC3\xA5 se sin egen l\xC3\xA5nehistorikk. Lagring av historikken er ikke avhengig av denne innstillingen."
+    - 
+      - 
+        choices: 
+          "": Ikke behold
+          1: Behold
+        default: 0
+        pref: EnableOpacSearchHistory
+      - "l\xC3\xA5nernes s\xC3\xB8kehistorikk i publikumskatalogen."
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        default: 0
+        pref: OPACPrivacy
+      - "l\xC3\xA5nerne \xC3\xA5 selv velge personverninnstillinger for l\xC3\xA5nehistorikken. Dette forutsetter at systempreferansene opacreadinghistory og AnonymousPatron er sl\xC3\xA5tt p\xC3\xA5."
+    - 
+      - "Bruker l\xC3\xA5nernummer"
+      - 
+        class: integer
+        pref: AnonymousPatron
+      - "som den anonyme l\xC3\xA5neren (for anonyme innkj\xC3\xB8psforslag og l\xC3\xA5nehistorikk)."
+    - 
+      - 
+        choices: 
+          "": Ikke registrer
+          anonymous: Registrer anonymt
+          track: Registrer
+        default: 0
+        pref: TrackClicks
+      - "lenker som l\xC3\xA5nerne klikker p\xC3\xA5"
+  Politikk: 
+    - 
+      - 
+        choices: 
+          "": Tillat
+          1: Ikke tillat
+        default: 0
+        pref: singleBranchMode
+      - "l\xC3\xA5nere \xC3\xA5 velge bibliotek i OPAC eller vis navn p\xC3\xA5 bibliotek med hyllesignatur."
+    - 
+      - 
+        choices: 
+          "": Ikke avgrens
+          1: Avgrens
+        pref: SearchMyLibraryFirst
+      - "l\xC3\xA5nernes s\xC3\xB8k til det biblioteket de er registrert ved."
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        pref: OPACItemHolds
+      - "at l\xC3\xA5nere reservere bestemte eksemplarer i publikumskatalogen. Om dette ikke er sl\xC3\xA5tt p\xC3\xA5 vil de bare kunne reservere neste tilgjengelige eksemplar."
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        pref: OpacRenewalAllowed
+      - "l\xC3\xA5nere \xC3\xA5 fornye egne l\xC3\xA5n i OPACen."
+    - 
+      - Bruk
+      - 
+        choices: 
+          "": 'NULL'
+          checkoutbranch: "biblioteket eksemplaret ble l\xC3\xA5nt ut ved"
+          itemhomebranch: eksemplarets eierbibliotek
+          opacrenew: "'OPACRenew'"
+          patronhomebranch: "l\xC3\xA5neren hjemmebibliotek"
+        pref: OpacRenewalBranch
+      - "som bibliotekkode til \xC3\xA5 lagre i statistikk-tabellen."
+    - 
+      - "Tillat l\xC3\xA5nerne bare \xC3\xA5 fornye egne l\xC3\xA5n i publikumskatalogen dersom de har mindre enn"
+      - 
+        class: currency
+        pref: OPACFineNoRenewals
+      - "[% local_currency %] i gebyrer (la st\xC3\xA5 tom for \xC3\xA5 deaktivere)."
+    - 
+      - 
+        choices: 
+          "": Ikke vis
+          1: Vis
+        pref: OPACViewOthersSuggestions
+      - "innkj\xC3\xB8psforslag fra andre l\xC3\xA5nere i publikumskatalogen."
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        default: 0
+        pref: AllowPurchaseSuggestionBranchChoice
+      - "l\xC3\xA5nere \xC3\xA5 velge bibliotek n\xC3\xA5r de legger inn et innkj\xC3\xB8ps\xC3\xB8nske"
+    - 
+      - 
+        class: code
+        pref: OpacHiddenItems
+        type: textarea
+      - "Gj\xC3\xB8r det mulig \xC3\xA5 definere egne regler for skjuling av eksemplarer i publikumskatalogen. Se See docs/opac/OpacHiddenItems.txt for mer informasjon"
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        default: 1
+        pref: OpacAllowPublicListCreation
+      - "brukere \xC3\xA5 opprette offentlige lister i publikumskatalogen"
+    - 
+      - 
+        choices: 
+          "": Ikke tillat
+          1: Tillat
+        default: 0
+        pref: OpacAllowSharingPrivateLists
+      - "brukere  \xC3\xA5 dele private lister med andre brukere i publikumskatalogen. Denne funksjonen er ikke aktiv enda, men vil komme snart."
+  Utseense: 
+    - 
+      - Bruk temaet
+      - 
+        choices: opac-templates
+        pref: opacthemes
+      - "p\xC3\xA5 OPACen."
+    - 
+      - OPACen har adressen http://
+      - 
+        class: url
+        pref: OPACBaseURL
+      - "Ikke ta med den avsluttende skr\xC3\xA5streken i URLen. (M\xC3\xA5 fylles ut for at RSS, unAPI, og innstikk til s\xC3\xB8k skal fungere korrekt.)"
+    - 
+      - Vis
+      - 
+        class: long
+        pref: LibraryName
+      - "som navn p\xC3\xA5 biblioteket i publikumskatalogen."
+    - 
+      - 
+        choices: 
+          "": "Ikke gj\xC3\xB8r"
+          1: "Gj\xC3\xB8r"
+        pref: OpacPublic
+      - "Kohas OPAC offentlig tilgjengelig. En privat OPAC krever innlogging f\xC3\xB8r l\xC3\xA5nerne f\xC3\xA5r tilgang til OPACen."
+    - 
+      - 
+        choices: 
+          "": Ikke fremhev
+          1: fremhev
+        pref: HighlightOwnItemsOnOPAC
+      - "resultater fra "
+      - 
+        choices: 
+          OpacURLBranch: biblioteket satt i publikumskatalogen via URLen
+          PatronBranch: "l\xC3\xA5nerens hjemmebibliotek"
+        pref: HighlightOwnItemsOnOPACWhich
+      - "ved \xC3\xA5 flytte resultatene til starten og \xC3\xB8ke st\xC3\xB8rrelsen eller uthevingen for de aktuelle resultatene. (Fungerer ikke med XSLT-visning.)"
+    - 
+      - Vis stjernevurderinger
+      - 
+        choices: 
+          all: trefflister og detaljvisning
+          details: i detaljvisning
+          disable: ingen sted
+        pref: OpacStarRatings
+      - i publikumskatalogen.
+    - 
+      - 
+        choices: 
+          "": Ikke vis
+          1: Vis
+        pref: OpacMaintenance
+      - "en advarsel om at publikumskatalogen er under vedlikehold, i stedet for selve publikumskatalogen. NB! Dette viser den samme advarselen som n\xC3\xA5r databasen m\xC3\xA5 oppgraderes, men uten forbehold."
+    - 
+      - Som standard, vis bibliografiske poster
+      - 
+        choices: 
+          isbd: som spesifisert i ISBD-malen.
+          marc: i MARC-form.
+          normal: i enkel form.
+        pref: BiblioDefaultView
+    - 
+      - "N\xC3\xA5r en l\xC3\xA5ner klikker p\xC3\xA5 en lenke i publikumskatalogen til et annet vevsted (som Amazon eller OCLC),"
+      - 
+        choices: 
+          "": "ikke \xC3\xA5pne"
+          1: "\xC3\xA5pne"
+        pref: OPACURLOpenInNewWindow
+      - lenka i et nytt vindu/fane.
+    - 
+      - 
+        choices: 
+          "": Vis
+          1: Ikke vis
+        pref: hidelostitems
+      - tapte eksemplarer i trefflister og detaljvisninger.
+    - 
+      - "Vis trefflister i publikumskatalogen med XSLT stilarket: "
+      - 
+        class: file
+        pref: OPACXSLTResultsDisplay
+      - "<br />Valgmuligheter:<ul><li><a href="#" class="set_syspref" data-syspref="OPACXSLTResultsDisplay" data-value="">La st\xC3\xA5 tom</a> for "uten XSLT"</li><li>legg inn "<a href="#" class="set_syspref" data-syspref="OPACXSLTResultsDisplay" data-value="default">default</a>" for standard XSLT</li><li>legg inn en filsti for \xC3\xA5 definere din egen XSLT-visning</li><li>legg inn en URL for \xC3\xA5 bruke en ekstern XSLT-fil.</li></ul>{langcode} vil bli erstattet med den spr\xC3\xA5kkoden som til en hver tid er valgt i grensesnittet"
+    - 
+      - "Vis detaljvisningen i publikumskatalogen med XSLT stilarket: "
+      - 
+        class: file
+        pref: OPACXSLTDetailsDisplay
+      - "<br />Valgmuligheter:<ul><li><a href="#" class="set_syspref" data-syspref="OPACXSLTDetailsDisplay" data-value="">La st\xC3\xA5 tom</a> for "uten XSLT"</li><li>legg inn "<a href="#" class="set_syspref" data-syspref="OPACXSLTDetailsDisplay" data-value="default">default</a>" for standard XSLT</li><li>legg inn en filsti for \xC3\xA5 definere din egen XSLT-visning</li><li>legg inn en URL for \xC3\xA5 bruke en ekstern XSLT-fil.</li></ul>{langcode} vil bli erstattet med den spr\xC3\xA5kkoden som til en hver tid er valgt i grensesnittet"
+    - 
+      - 
+        choices: 
+          "": Ikke vis
+          1: Vis
+        pref: DisplayOPACiconsXSLT
+      - "ikoner for format, m\xC3\xA5lgruppe og materialtype i trefflister og detaljvisninger i publikumskatalogen, n\xC3\xA5r XSLT brukes for MARC21."
+    - 
+      - 
+        choices: 
+          "": Ikke ta med
+          1: Ta med
+        pref: COinSinOPACResults
+      - "COinS / OpenURL / Z39.88 in treffflister i publikumskatalogen.<br/>Advarsel: \xC3\x85 sl\xC3\xA5 dette p\xC3\xA5 vil f\xC3\xB8re til lenger s\xC3\xB8ketid i publikumskatalogen."
+    - 
+      - 
+        choices: 
+          "": Ikke vis
+          1: Vis
+        pref: OPACShowUnusedAuthorities
+      - ubrukte autoritetsposter i systemet for blaing i autoriteter i publikumskatalogen.
+    - 
+      - 
+        choices: 
+          holds: Vis reservasjoner
+          holds_priority: Vis reservasjoner og prioritet
+          none: Ikke vis detaljer om reservasjoner
+          priority: Vis prioritet
+        pref: OPACShowHoldQueueDetails
+      - "til l\xC3\xA5nere i publikumskatalogen."
+    - 
+      - 
+        choices: 
+          "": Ikke vis
+          1: Vis
+        default: 0
+        pref: OPACShowCheckoutName
+      - "navnet p\xC3\xA5 l\xC3\xA5neren som har l\xC3\xA5nt et dokument i detaljvisningen i publikumskatalogen. NB! B\xC3\xB8r bare bruke si spesielle tilfeller."
+    - 
+      - 
+        choices: 
+          "": IKke vis
+          1: Vis
+        default: 0
+        pref: OpacKohaUrl
+      - "Teksten 'Powered by Koha' nederst p\xC3\xA5 alle sider i publikumskatalogen."
+    - 
+      - 
+        choices: 
+          "": Ikke vis
+          1: Vis
+        default: 0
+        pref: OpacShowRecentComments
+      - "en lenke til de nyeste kommentarene \xC3\xB8verst i publikumskatalogen."
+    - 
+      - 
+        choices: 
+          "": Ikke vis
+          1: Vis
+        default: 0
+        pref: OPACShowBarcode
+      - eksemplarets strekkode i fanen for beholdning.
+    - 
+      - 
+        choices: 
+          "": Ikke fremhev
+          1: Fremhev
+        pref: OpacHighlightedWords
+      - "ordene l\xC3\xA5neren s\xC3\xB8kte etter, i trefflister og detaljvisning."
+    - 
+      - 
+        choices: 
+          "": Ikke vis
+          1: Vis
+        pref: AuthorisedValueImages
+      - bilder for <a href="/cgi-bin/koha/admin/authorised_values.pl">autoriserte verdier</a> (som taptstatus og plasseringer) i trefflister og detaljvisninger i publikumskatalogen.
+    - 
+      - Bruk bildet
+      - 
+        class: url
+        pref: opacsmallimage
+      - "\xC3\xB8verst p\xC3\xA5 alle sidene i OPACen, i stedet for Koha-logoen. Dersom bildet har andre dimensjoner enn Koha-logoen m\xC3\xA5 du tilpasse CSS-stilarkene. (Legg inn en komplett URL som starter med <code>http://</code>.)"
+    - 
+      - Bruk bildet
+      - 
+        class: url
+        pref: OpacFavicon
+      - "som publikumskatalogens favicon. (Dette skal v\xC3\xA6re en komplett URL som starter med <code>http://</code>.)"
+    - 
+      - "Inkluder f\xC3\xB8lgende JavaScript-kode p\xC3\xA5 alle sider i OPACen:"
+      - 
+        class: code
+        pref: opacuserjs
+        type: textarea
+    - 
+      - Inkluder det ekstra CSS stilarket
+      - 
+        class: file
+        pref: opaccolorstylesheet
+      - "for \xC3\xA5 overstyre spesifikke stiler fra standard CSSen. La feltet st\xC3\xA5 tomt for \xC3\xA5 bruke standard CSS. Legg inn bare et filnavn, en full filsti eller en komplett URL som starter med <code>http://</code> (dersom fila ligger p\xC3\xA5 en annen server). NB! Dersom du bare legger inn et filnavn, m\xC3\xA5 denne fila foreligge i mappa \xC2\xABcss\xC2\xBB i alle aktive temaer og spr\xC3\xA5k i Koha sin mal-mappe. En full, lokal filsti forventes \xC3\xA5 starte ved rota for HTTP-dokumenter."
+    - 
+      - Bruk CSS-stilarket
+      - 
+        class: file
+        pref: opaclayoutstylesheet
+      - "p\xC3\xA5 alle sider i publikumskatalogen, i stedet for den vanlige CSSen (som brukes om dette feltet st\xC3\xA5r tomt). Legg inn bare et filnavn, en full filsti eller en komplett URL som starter med <code>http://</code> (dersom fila ligger p\xC3\xA5 en annen server). NB! Dersom du bare legger inn et filnavn, m\xC3\xA5 denne fila foreligge i mappa \xC2\xABcss\xC2\xBB i alle aktive temaer og spr\xC3\xA5k i Koha sin mal-mappe. En full, lokal filsti forventes \xC3\xA5 starte ved rota for HTTP-dokumenter."
+    - 
+      - "Ta med f\xC3\xB8lgende CSS p\xC3\xA5 alle sider i publikumskatalogen:"
+      - 
+        class: code
+        pref: OPACUserCSS
+        type: textarea
+    - 
+      - "Inkluder f\xC3\xB8lgende CSS i alle sider i publikumskatalogen, n\xC3\xA5r visning for mobiler er valgt:"
+      - 
+        class: code
+        pref: OPACMobileUserCSS
+        type: textarea
+    - 
+      - "Vis denne HTML-kodede teksten i en egen kolonne p\xC3\xA5 forsiden til publikumskatalogen:"
+      - 
+        class: code
+        pref: OpacMainUserBlock
+        type: textarea
+    - 
+      - "Vis den f\xC3\xB8lgende HTMLen i en egen kolonne p\xC3\xA5 hvedsiden i publikumskatalogen, n\xC3\xA5r mobil-visning er valgt:"
+      - 
+        class: code
+        pref: OpacMainUserBlockMobile
+        type: textarea
+    - 
+      - 
+        choices: 
+          "": Ikke vis
+          1: Vis
+        pref: OpacShowLibrariesPulldownMobile
+      - nedtrekksmenyen for bibliotek i den mobile versjonen av publikumskatalogen.
+    - 
+      - 
+        choices: 
+          "": Ikke vis
+          1: Vis
+        pref: OpacShowFiltersPulldownMobile
+      - "nedtrekksmenyen for s\xC3\xB8kefilter i den mobile versjonen av publikumskatalogen."
+    - 
+      - "Vis den f\xC3\xB8lgende HTML-kodede teksten i venstre kolonne p\xC3\xA5 publikumskatalogens forside og \"Mine sider\" (godt egnet til navigasjonslenker):"
+      - 
+        class: code
+        pref: OpacNav
+        type: textarea
+    - 
+      - "Vis f\xC3\xB8lgende HTML i h\xC3\xB8yre kolonnen p\xC3\xA5 hovedsiden i publikumskatalogen, under skjemaet for innlogging:"
+      - 
+        class: code
+        pref: OpacNavRight
+        type: textarea
+    - 
+      - "Vis den f\xC3\xB8lgende HTML-koden i venstre kolonne p\xC3\xA5 hovedsiden og profilsiden i publikumskatalogen (etter OpacNav og f\xC3\xB8r lenkene til brukerens profil, n\xC3\xA5r disse vises):"
+      - 
+        class: code
+        pref: OpacNavBottom
+        type: textarea
+    - 
+      - "Inkluder f\xC3\xB8lgende HTML-kodede tekst \xC3\xB8verst p\xC3\xA5 alle sider i OPACen:"
+      - 
+        class: code
+        pref: opacheader
+        type: textarea
+    - 
+      - "Inkluder f\xC3\xB8lgende HTML-kodede tekst nederst p\xC3\xA5 alle sider i OPACen:"
+      - 
+        class: code
+        pref: opaccredits
+        type: textarea
+    - 
+      - "Inkluder en boks for \"Flere s\xC3\xB8k\" p\xC3\xA5 sider for detaljvisning i publikumskatalogen, med f\xC3\xB8lgende HTML-kodede tekst (la st\xC3\xA5 tom for \xC3\xA5 sl\xC3\xA5 av funksjonen):"
+      - "<br />NB: Plassholderne {BIBLIONUMBER}, {CONTROLNUMBER}, {TITLE}, {ISBN}, {ISSN} og {AUTHOR} vil bli erstattet med informasjon fra den viste posten."
+      - 
+        class: code
+        pref: OPACSearchForTitleIn
+        type: textarea
+    - 
+      - "Vis en kolonne kalt \xC2\xABLenker\xC2\xBB p\xC3\xA5 fanene \xC2\xABMitt sammendrag\xC2\xBB og \xC2\xABMin lesehistorikk\xC2\xBB for innloggede brukere, med f\xC3\xB8lgende HTML (la st\xC3\xA5 tom for \xC3\xA5 deaktivere denne funksjonen):"
+      - "<br />NB: Plassholderne {BIBLIONUMBER}, {TITLE}, {ISBN} og {AUTHOR} vil bli erstattet med informasjon fra den aktuelle posten."
+      - 
+        class: code
+        pref: OPACMySummaryHTML
+        type: textarea
+    - 
+      - "Vis f\xC3\xB8lgende HTML-kodede tekst under fasettene for s\xC3\xB8k i publikumskatalogen."
+      - 
+        class: code
+        pref: OPACResultsSidebar
+        type: textarea
+    - 
+      - 
+        choices: 
+          "": Ikke legg til
+          1: Legg til
+        pref: OpacAddMastheadLibraryPulldown
+      - "en nedtrekksmeny for \xC3\xA5 velge bibliotek i den faste menyen \xC3\xB8verst p\xC3\xA5 alle sider i publikumskatalogen."
+    - 
+      - "Vis denne HTML-kodede teksten n\xC3\xA5r et s\xC3\xB8k i publikumskatalogen gir 0 treff:"
+      - <br />NB! Du lan legge inn plassholderen {QUERY_KW} som vil bli erstattet med brukerens s\xC3\xB8keord.
+      - 
+        class: code
+        pref: OPACNoResultsFound
+        type: textarea
+    - 
+      - "Vis URIen i 856$u som et bilde: "
+      - 
+        choices: 
+          "": Hverken detaljvisning eller treffliste
+          Both: "B\xC3\xA5de detaljvisning og treffliste"
+          Details: Bare detaljvisning
+          Results: Bare treffliste
+        pref: OPACDisplay856uAsImage
+      - "NB: Den tilsvarende sysmpreferansen OPAC XSLT m\xC3\xA5 v\xC3\xA6re sl\xC3\xA5tt p\xC3\xA5."
+    - 
+      - "angi eksporformater som skal v\xC3\xA6re tilgjengelige i publikumskatalogen. Skill alternativene med tegnet \"|\":"
+      - 
+        class: multi
+        pref: OpacExportOptions
+      - "<br />Merk: Tilgjengelige valg er: BIBTEX (<code>bibtex</code>), Dublin Core (<code>dc</code>),"
+      - MARCXML (<code>marcxml</code>), MARC-8 kodet MARC (<code>marc8</code>), Unicode/UTF-8 kodet MARC (<code>utf8</code>),
+      - "Unicode/UTF-8-kodet MARC uten felt og delfelt beregnet p\xC3\xA5 lokal bruk (9xx, x9x, xx9 - <code>marcstd</code>), MODS (<code>mods</code>), RIS (<code>ris</code>)"
+    - 
+      - 
+        choices: 
+          "": Ikke skill
+          1: Skill
+        pref: OpacSeparateHoldings
+      - "visningen av eksemplarer i to faner, der den f\xC3\xB8rste fanen inneholder eksemplarer der"
+      - 
+        choices: 
+          holdingbranch: midlertidig bibliotek
+          homebranch: eiende bibliotek
+        pref: OpacSeparateHoldingsBranch
+      - "er den innloggede l\xC3\xA5nerens bibliotek. Den andre fanen vil vise alle andre eksemplarer."

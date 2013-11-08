@@ -1,0 +1,166 @@
+--- 
+"L\xC3\xA5nere": 
+  - 
+    - Vis
+    - 
+      choices: 
+        category_type: "generelle l\xC3\xA5nertyper"
+        categorycode: spesifikke kategorier
+      pref: AddPatronLists
+    - "under menyen Ny l\xC3\xA5ner".
+  - 
+    - 
+      choices: 
+        "": Ikke send
+        1: Send
+      pref: AutoEmailOpacUser
+    - "en e-post til l\xC3\xA5nere med detaljer om deres konto n\xC3\xA5r kontoen opprettes."
+  - 
+    - Bruk
+    - 
+      choices: 
+        B_email: alternativ
+        "OFF": "f\xC3\xB8rste gyldige"
+        cardnumber: kortnummer som
+        email: hjemme
+        emailpro: arbeid
+      default: 'OFF'
+      pref: AutoEmailPrimaryAddress
+    - e-postadresse ved utsending av e-post.
+  - 
+    - 
+      choices: 
+        "": Ikke sett
+        1: Sett
+      pref: autoMemberNum
+    - "standard l\xC3\xA5nekortnummer i skjemaet for registrering av nye l\xC3\xA5nere til neste ledige nummer. (For eksempel: dersom det h\xC3\xB8yeste nummeret som er i bruk er 26345000012941 s\xC3\xA5 vil feltet forsl\xC3\xA5 26345000012942.)"
+  - 
+    - "F\xC3\xB8lgende <a href='http://schema.koha-community.org/tables/borrowers.html' target='blank'>database-kolonner</a> m\xC3\xA5 fylles ut i skjemaet for registrering av l\xC3\xA5nere:"
+    - 
+      class: multi
+      pref: BorrowerMandatoryField
+    - (adskill kolonner med tegnet "|")
+  - 
+    - "F\xC3\xB8lgende <a href='http://schema.koha-community.org/tables/borrowers.html' target='blank'>database-kolonner</a> skal ikke vises i skjemaet for registrering av l\xC3\xA5nere:"
+    - 
+      class: multi
+      pref: BorrowerUnwantedField
+    - (skill kolonner med tegnet "|")
+  - 
+    - "Garantister kan ha f\xC3\xB8lgende forhold til den de garanterer for:"
+    - 
+      class: multi
+      pref: borrowerRelationship
+    - "(skill valgene med tegnet '|''). La feltet st\xC3\xA5 tomt for \xC3\xA5 ikke aktivere."
+  - 
+    - "L\xC3\xA5nere kan ha f\xC3\xB8lgende titler:"
+    - 
+      class: multi
+      pref: BorrowersTitles
+    - (skill valgene med tegnet "|")
+  - 
+    - 
+      choices: 
+        katipo: Bruk
+        none: Ikke bruk
+      pref: checkdigit
+    - "Katipo-format p\xC3\xA5 l\xC3\xA5nekortnummer. Dette overstyrer <code>autoMemberNum</code> dersom det sl\xC3\xA5s p\xC3\xA5."
+  - 
+    - 
+      choices: 
+        "": Ikke tillat
+        1: Tillat
+      pref: EnhancedMessagingPreferences
+    - "l\xC3\xA5nere \xC3\xA5 velge hvilke meldinger de mottar og n\xC3\xA5r de mottar dem. Merk at dette bare gjelder noen typer meldinger."
+  - 
+    - 
+      choices: 
+        "": "Ikke sl\xC3\xA5 p\xC3\xA5"
+        1: "Sl\xC3\xA5 p\xC3\xA5"
+      pref: ExtendedPatronAttributes
+    - "s\xC3\xB8king, redigering og visning av lokalt definerte egenskaper for l\xC3\xA5nere."
+  - 
+    - 
+      choices: 
+        "": Ikke tillat
+        1: Tillat
+      pref: intranetreadinghistory
+    - "ansatte \xC3\xA5 se l\xC3\xA5nehistorikken til l\xC3\xA5nere. (Historikken lagres uavhengig av denne innstillingen.)"
+  - 
+    - "Forsinkelsesgebyret for alle l\xC3\xA5n begrenses oppad til"
+    - 
+      class: currency
+      pref: MaxFine
+    - "[% local_currency %]."
+    - "La feltet st\xC3\xA5 tomt dersom du ikke \xC3\xB8nsker noen begrensning. Øvre grense for enkelte eksmeplarer spesifiseres i systemet for sirkulasjonsregler."
+  - 
+    - 
+      choices: 
+        "": Ikke tillat
+        1: Tillat
+      pref: memberofinstitution
+    - "at l\xC3\xA5nere knyttes til institusjoner (som m\xC3\xA5 v\xC3\xA6re registrert som l\xC3\xA5nere av typen Institusjon)."
+  - 
+    - "Passord for ansatte og l\xC3\xA5nere m\xC3\xA5 v\xC3\xA6re minst"
+    - 
+      class: integer
+      pref: minPasswordLength
+    - tegn lange.
+  - 
+    - "Vis en melding om at en l\xC3\xA5nerkonto er i ferd med \xC3\xA5 f\xC3\xA5 ut p\xC3\xA5 dato"
+    - 
+      class: integer
+      pref: NotifyBorrowerDeparture
+    - "dager p\xC3\xA5 forh\xC3\xA5nd."
+  - 
+    - 
+      choices: 
+        "": Ikke tillat
+        1: Tillat
+      pref: patronimages
+    - "opplasting og visning av bilder av l\xC3\xA5nere i det interne grensesnittet."
+  - 
+    - Vis som standard
+    - 
+      class: integer
+      pref: PatronsPerPage
+    - "l\xC3\xA5nere pr side som standard i det interne grensesnittet"
+  - 
+    - "Bruk driveren SMS::Send::"
+    - 
+      pref: SMSSendDriver
+    - "for \xC3\xA5 sende tekstmeldinger."
+  - 
+    - 
+      choices: 
+        "": Ikke lagre og vis
+        1: Lagre og vis
+      pref: uppercasesurnames
+    - etternavn med store bokstaver.
+  - 
+    - "N\xC3\xA5r l\xC3\xA5nere fornyes skal den nye forfallsdatoen baseres p\xC3\xA5"
+    - 
+      choices: 
+        dateexpiry: "utl\xC3\xB8psdato for gjeldende medlemsskap."
+        now: dagens dato
+      pref: BorrowerRenewalPeriodBase
+  - 
+    - 
+      choices: 
+        "": "Sl\xC3\xA5 av"
+        1: "Sl\xC3\xA5 p\xC3\xA5"
+      pref: TalkingTechItivaPhoneNotification
+    - "telefonmeldinger til l\xC3\xA5nere via \xC2\xABTalking Tech i-tiva\xC2\xBB. (St\xC3\xB8tter forel\xC3\xB8pig purringer, forh\xC3\xA5ndsvarsler og reservasjonsmeldinger. Krever abonnement.)"
+  - 
+    - "Vis f\xC3\xB8lgende kolonner fra tabellen for eksemplarer i statistikk-fanen knyttet til en l\xC3\xA5ner: "
+    - 
+      class: multi
+      pref: StatisticsFields
+    - "(skill felter med tegnet \xC2\xAB|\xC2\xBB)"
+  - 
+    - 
+      choices: 
+        "": Ikke tillat
+        1: Tillat
+      pref: EnableBorrowerFiles
+    - "at vilk\xC3\xA5rlige filer lastes opp og knyttes til en l\xC3\xA5ner."
