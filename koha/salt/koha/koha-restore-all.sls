@@ -12,16 +12,16 @@ include:
 ##########
 
 # full database for knakk
-/tmp/knakk-2013-10-30.sql.gz:
+/tmp/{{ pillar['kohaname'] }}-2013-11-08.sql.gz:
   file.managed:
-    - source: {{ pillar['filerepo'] }}/knakk-2013-10-30.sql.gz
-    - source_hash: md5=82578e870de70976bbf228bb6c526e45
+    - source: {{ pillar['filerepo'] }}/{{ pillar['kohaname'] }}-2013-11-08.sql.gz
+    - source_hash: md5=d3cbf01dd6d654f4f58ac5767ce0b98f
 
 # full file structure for knakk
-/tmp/knakk-2013-10-30.tar.gz:
+/tmp/{{ pillar['kohaname'] }}-2013-11-08.tar.gz:
   file.managed:
-    - source: {{ pillar['filerepo'] }}/knakk-2013-10-30.tar.gz
-    - source_hash: md5=575af677290edd2000ad5ff5faad2936
+    - source: {{ pillar['filerepo'] }}/{{ pillar['kohaname'] }}-2013-11-08.tar.gz
+    - source_hash: md5=ef2d6127c118addd1359d78fa534121e
 
 ##########
 # RESTORE COMMANDS
@@ -29,8 +29,8 @@ include:
 
 restore{{ pillar['kohaname'] }}all:
   cmd.run:
-    - name: koha-restore {{ pillar['kohaname'] }}-2013-10-30.sql.gz {{ pillar['kohaname'] }}-2013-10-30.tar.gz > /dev/null 2>&1
+    - name: koha-restore {{ pillar['kohaname'] }}-2013-11-08.sql.gz {{ pillar['kohaname'] }}-2013-11-08.tar.gz > /dev/null 2>&1
     - require:
-      - file: /tmp/{{ pillar['kohaname'] }}-2013-10-30.sql.gz
-      - file: /tmp/{{ pillar['kohaname'] }}-2013-10-30.tar.gz
+      - file: /tmp/{{ pillar['kohaname'] }}-2013-11-08.sql.gz
+      - file: /tmp/{{ pillar['kohaname'] }}-2013-11-08.tar.gz
       - cmd: createkohadb
