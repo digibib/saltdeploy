@@ -5,6 +5,11 @@
 # include:
 #   - koha.koha-create
 
+# remove koha instance first
+removekohainstance:
+  cmd.run:
+    - name: koha-remove {{ pillar['kohaname'] }}
+
 ##########
 # RESTORE FILES
 ##########
@@ -29,5 +34,6 @@ restore{{ pillar['kohaname'] }}500ex:
   cmd.run:
     - name: koha-restore /tmp/{{ pillar['kohaname'] }}-2013-10-22.sql.gz /tmp/{{ pillar['kohaname'] }}-2013-10-22.tar.gz
     - require:
+      - cmd: removekohainstance
       - file: /tmp/{{ pillar['kohaname'] }}-2013-10-22.sql.gz
       - file: /tmp/{{ pillar['kohaname'] }}-2013-10-22.tar.gz
