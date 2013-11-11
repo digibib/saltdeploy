@@ -30,10 +30,6 @@ include:
 # RESTORE COMMANDS
 ##########
 
-# createdirs:
-#   cmd.run:
-#     - name: koha-create-dirs {{ pillar['kohaname'] }}
-
 recreate_files:
   cmd.run:
     - name: tar -C / -xf /tmp/{{ pillar['kohaname'] }}-2013-10-22.tar.gz

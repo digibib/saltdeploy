@@ -4,13 +4,8 @@
 # - make sure vbox has at least 40G space
 ##########
 
-# include:
-#   - koha.koha-create
-
-# remove koha instance first
-removekohainstance:
-  cmd.run:
-    - name: koha-remove {{ pillar['kohaname'] }}
+include:
+  - koha.koha-create
 
 ##########
 # RESTORE FILES
@@ -32,10 +27,15 @@ removekohainstance:
 # RESTORE COMMANDS
 ##########
 
-restore{{ pillar['kohaname'] }}all:
+recreate_files:
   cmd.run:
-    - name: koha-restore /tmp/{{ pillar['kohaname'] }}-2013-11-08.sql.gz /tmp/{{ pillar['kohaname'] }}-2013-11-08.tar.gz > /dev/null 2>&1
+    - name: tar -C / -xf /tmp/{{ pillar['kohaname'] }}-2013-11-08.tar.gz
     - require:
-      - cmd: removekohainstance
-      - file: /tmp/{{ pillar['kohaname'] }}-2013-11-08.sql.gz
       - file: /tmp/{{ pillar['kohaname'] }}-2013-11-08.tar.gz
+
+recreate_mysql:
+  cmd.run:
+    - name: zcat /tmp/{{ pillar['kohaname'] }}-2013-11-08.sql.gz | koha-mysql {{ pillar['kohaname'] }}
+    - require: 
+      - cmd: recreate_files
+      - file: /tmp/{{ pillar['kohaname'] }}-2013-11-08.sql.gz
