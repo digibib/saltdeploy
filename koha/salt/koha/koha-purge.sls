@@ -14,8 +14,14 @@ dropmysqlusers:
     - require: 
       - cmd: purgekohainstance
 
-deletezebra:
+purgezebra:
   cmd.run:
     - name: rm -rf /var/lib/koha/{{ pillar['kohaname'] }}
     - watch: 
-      - cmd: purgekohainstance      
+      - cmd: purgekohainstance
+
+purgeconfig:
+  cmd.run:
+    - name: rm -rf /etc/koha/sites/{{ pillar['kohaname'] }}
+    - watch: 
+      - cmd: purgekohainstance
