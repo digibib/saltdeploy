@@ -456,7 +456,7 @@ Publikumskatalog:
       - 
         class: file
         pref: OPACXSLTResultsDisplay
-      - "<br />Valgmuligheter:<ul><li><a href=\"#\" class="\set_syspref\" data-syspref=\"OPACXSLTResultsDisplay\" data-value=\"\">La st\xC3\xA5 tom</a> for \"uten XSLT\"</li><li>legg inn \"<a href=\"#\" class=\"set_syspref\" data-syspref=\"OPACXSLTResultsDisplay\" data-value=\"default\">default</a>\" for standard XSLT</li><li>legg inn en filsti for \xC3\xA5 definere din egen XSLT-visning</li><li>legg inn en URL for \xC3\xA5 bruke en ekstern XSLT-fil.</li></ul>{langcode} vil bli erstattet med den spr\xC3\xA5kkoden som til en hver tid er valgt i grensesnittet"
+      - "<br />Valgmuligheter:<ul><li><a href=\"#\" class=\"set_syspref\" data-syspref=\"OPACXSLTResultsDisplay\" data-value=\"\">La st\xC3\xA5 tom</a> for \"uten XSLT\"</li><li>legg inn \"<a href=\"#\" class=\"set_syspref\" data-syspref=\"OPACXSLTResultsDisplay\" data-value=\"default\">default</a>\" for standard XSLT</li><li>legg inn en filsti for \xC3\xA5 definere din egen XSLT-visning</li><li>legg inn en URL for \xC3\xA5 bruke en ekstern XSLT-fil.</li></ul>{langcode} vil bli erstattet med den spr\xC3\xA5kkoden som til en hver tid er valgt i grensesnittet"
     - 
       - "Vis detaljvisningen i publikumskatalogen med XSLT stilarket: "
       - 
