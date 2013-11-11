@@ -31,4 +31,3 @@ restore{{ pillar['kohaname'] }}500ex:
     - require:
       - file: /tmp/{{ pillar['kohaname'] }}-2013-10-22.sql.gz
       - file: /tmp/{{ pillar['kohaname'] }}-2013-10-22.tar.gz
-      - cmd: createkohadb

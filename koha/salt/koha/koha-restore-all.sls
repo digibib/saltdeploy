@@ -33,4 +33,3 @@ restore{{ pillar['kohaname'] }}all:
     - require:
       - file: /tmp/{{ pillar['kohaname'] }}-2013-11-08.sql.gz
       - file: /tmp/{{ pillar['kohaname'] }}-2013-11-08.tar.gz
-      - cmd: createkohadb
