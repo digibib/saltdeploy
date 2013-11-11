@@ -4,8 +4,8 @@
 # - make sure vbox has at least 40G space
 ##########
 
-include:
-  - koha.koha-create
+# include:
+#   - koha.koha-create
 
 ##########
 # RESTORE FILES

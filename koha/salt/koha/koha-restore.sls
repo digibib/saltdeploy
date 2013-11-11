@@ -2,8 +2,8 @@
 # KOHA RESTORE STATE
 ##########
 
-include:
-  - koha.koha-create
+# include:
+#   - koha.koha-create
 
 ##########
 # RESTORE FILES
