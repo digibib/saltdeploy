@@ -29,7 +29,7 @@ include:
 
 restore{{ pillar['kohaname'] }}all:
   cmd.run:
-    - name: koha-restore {{ pillar['kohaname'] }}-2013-11-08.sql.gz {{ pillar['kohaname'] }}-2013-11-08.tar.gz > /dev/null 2>&1
+    - name: koha-restore /tmp/{{ pillar['kohaname'] }}-2013-11-08.sql.gz /tmp/{{ pillar['kohaname'] }}-2013-11-08.tar.gz > /dev/null 2>&1
     - require:
       - file: /tmp/{{ pillar['kohaname'] }}-2013-11-08.sql.gz
       - file: /tmp/{{ pillar['kohaname'] }}-2013-11-08.tar.gz
