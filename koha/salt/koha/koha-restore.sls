@@ -30,19 +30,19 @@ include:
 # RESTORE COMMANDS
 ##########
 
-createdirs:
-  cmd.run:
-    - name: koha-create-dirs {{ pillar['kohaname'] }}
+# createdirs:
+#   cmd.run:
+#     - name: koha-create-dirs {{ pillar['kohaname'] }}
 
-recreate_tarball:
+recreate_files:
   cmd.run:
     - name: tar -C / -xf /tmp/{{ pillar['kohaname'] }}-2013-10-22.tar.gz
-    - file: /tmp/{{ pillar['kohaname'] }}-2013-10-22.tar.gz
+    - require:
+      - file: /tmp/{{ pillar['kohaname'] }}-2013-10-22.tar.gz
 
 recreate_mysql:
   cmd.run:
     - name: zcat /tmp/{{ pillar['kohaname'] }}-2013-10-22.sql.gz | koha-mysql {{ pillar['kohaname'] }}
     - require: 
-      - cmd: createdirs
-      - cmd: recreate_tarball
+      - cmd: recreate_files
       - file: /tmp/{{ pillar['kohaname'] }}-2013-10-22.sql.gz
