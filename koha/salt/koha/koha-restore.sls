@@ -2,13 +2,13 @@
 # KOHA RESTORE STATE
 ##########
 
-# include:
-#   - koha.koha-create
+include:
+  - koha.koha-create
 
-# remove koha instance first
-removekohainstance:
-  cmd.run:
-    - name: koha-remove {{ pillar['kohaname'] }}
+# # remove koha instance first
+# removekohainstance:
+#   cmd.run:
+#     - name: koha-remove {{ pillar['kohaname'] }}
 
 ##########
 # RESTORE FILES
@@ -30,10 +30,19 @@ removekohainstance:
 # RESTORE COMMANDS
 ##########
 
-restore{{ pillar['kohaname'] }}500ex:
+createdirs:
   cmd.run:
-    - name: koha-restore /tmp/{{ pillar['kohaname'] }}-2013-10-22.sql.gz /tmp/{{ pillar['kohaname'] }}-2013-10-22.tar.gz
-    - require:
-      - cmd: removekohainstance
+    - name: koha-create-dirs {{ pillar['kohaname'] }}
+
+recreate_tarball:
+  cmd.run:
+    - name: tar -C / -xf /tmp/{{ pillar['kohaname'] }}-2013-10-22.tar.gz
+    - file: /tmp/{{ pillar['kohaname'] }}-2013-10-22.tar.gz
+
+recreate_mysql:
+  cmd.run:
+    - name: zcat /tmp/{{ pillar['kohaname'] }}-2013-10-22.sql.gz | koha-mysql {{ pillar['kohaname'] }}
+    - require: 
+      - cmd: createdirs
+      - cmd: recreate_tarball
       - file: /tmp/{{ pillar['kohaname'] }}-2013-10-22.sql.gz
-      - file: /tmp/{{ pillar['kohaname'] }}-2013-10-22.tar.gz
