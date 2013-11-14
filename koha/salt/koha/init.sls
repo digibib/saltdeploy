@@ -15,7 +15,6 @@ installpkgs:
     - pkgs:
       - language-pack-nb
       - git
-      - chromium-browser
       - build-essential
       - curl
       - imagemagick
