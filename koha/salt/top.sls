@@ -2,7 +2,7 @@ base:
   '*':
     - koha
     - koha.koha-create
-    - koha.koha-locales
+    # - koha.koha-locales
     # - koha.koha-restore
     # - koha.koha-import
     # - koha.koha-import-15000

@@ -5,7 +5,7 @@
 libcgi-application-dispatch-perl:
   pkg.latest
 
-https://github.com/clrh/koha-restful:
+https://github.com/bensinober/koha-restful:
   git.latest:
     - rev: master
     - target: /usr/local/src/koha-restful
