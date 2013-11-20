@@ -32,3 +32,4 @@ https://github.com/bensinober/koha-restful:
     - group: {{ pillar['kohaname'] }}-koha    
     - require:
       - file: /etc/koha/sites/{{ pillar['kohaname'] }}/rest
+

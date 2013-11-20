@@ -5,3 +5,5 @@ filerepo: http://171.23.133.203/saltfiles/koha
 circulationstart: "2013-10-01"
 daysbeforereturn: 14
 dummypatrons: 100
+authorizedips:
+  - "127.0.0.1"

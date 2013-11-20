@@ -50,6 +50,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.share_folder "salt_file_root", "/srv", "salt/roots/"
   
   config.vm.synced_folder ".", "/srv"
+  config.vm.synced_folder "../../koha-restful", "/usr/local/src/koha-restful"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
