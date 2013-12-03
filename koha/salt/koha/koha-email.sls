@@ -7,9 +7,10 @@
     - source: {{ pillar['saltfiles'] }}/smtp.conf
     - template: jinja
 
+# Write unbuffered smtpd debugging to file
 fakesmtp:
   cmd.run:
-    - name: python -m smtpd -n -c DebuggingServer localhost:25 >> /tmp/fakesmtp.log
+    - name: python -u -m smtpd -n -c DebuggingServer localhost:25 >> /tmp/fakesmtp.log
     - require: 
       - file: /etc/nullmailer/remotes
 
