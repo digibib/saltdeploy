@@ -16,9 +16,13 @@
 #   file.append:
 #     - text: 
 #       - 'local6.*    -/var/log/sip2.log'
+stop_sip:
+  cmd.run:
+    - name: koha-stop-sip {{ pillar['kohaname'] }}
 
-start_sip:
+restart_sip:
   cmd.run:
     - name: koha-start-sip {{ pillar['kohaname'] }}
     - require:
       - file: /etc/koha/sites/{{ pillar['kohaname'] }}/SIPconfig.xml
+      - cmd: stop_sip
