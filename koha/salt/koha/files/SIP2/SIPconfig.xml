@@ -30,14 +30,14 @@
       
 <!-- external listener -->
     <service
-      port="0.0.0.0:6001/tcp"
+      port="{{ sip_host }}:{{ sip_port }}/tcp"
       transport="RAW"
       protocol="SIP/2.00"
       timeout="60" />
   </listeners>
 
   <accounts>
-      <login id="{{ Autouser1 }}"  password="{{ Autopass1 }}" delimiter="|" error-detect="enabled" institution="HUTL" />
+      <login id="{{ autouser1 }}"  password="{{ autopass1 }}" delimiter="|" error-detect="enabled" institution="HUTL" />
 <!-- 
       <login id="koha"   password="koha"  delimiter="|" error-detect="enabled" institution="kohalibrary" />
       <login id="koha2"  password="koha" institution="kohalibrary2" />

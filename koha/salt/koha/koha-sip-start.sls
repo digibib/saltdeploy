@@ -7,13 +7,15 @@
     - source: {{ pillar['saltfiles'] }}/SIP2/SIPconfig.xml
     - template: jinja
     - context:
-      Autouser1: {{ pillar['autouser1'] }}
-      Autopass1: {{ pillar['autopass1'] }}
+      sip_host: {{ pillar['sip_host'] }}
+      sip_port: {{ pillar['sip_port'] }}
+      autouser1: {{ pillar['autouser1'] }}
+      autopass1: {{ pillar['autopass1'] }}
 
-/etc/syslog.conf:
-  file.append:
-    - text: 
-      - 'local6.*    -/var/log/sip2.log'
+# /etc/sysctl.conf:
+#   file.append:
+#     - text: 
+#       - 'local6.*    -/var/log/sip2.log'
 
 start_sip:
   cmd.run:

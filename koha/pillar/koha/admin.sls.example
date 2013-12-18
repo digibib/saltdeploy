@@ -2,3 +2,5 @@ adminuser: admin
 adminpass: secret
 autouser1: autohoved1
 autopass1: pass
+sip_host: 127.0.0.1
+sip_port: 6001
