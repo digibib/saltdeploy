@@ -1,2 +1,4 @@
 adminuser: admin
 adminpass: secret
+autouser1: autohoved1
+autopass1: pass

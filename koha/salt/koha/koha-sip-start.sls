@@ -7,8 +7,13 @@
     - source: {{ pillar['saltfiles'] }}/SIP2/SIPconfig.xml
     - template: jinja
     - context:
-      Adminuser: {{ pillar['adminuser'] }}
-      Adminpass: {{ pillar['adminpass'] }}
+      Autouser1: {{ pillar['autouser1'] }}
+      Autopass1: {{ pillar['autopass1'] }}
+
+/etc/syslog.conf:
+  file.append:
+    - text: 
+      - 'local6.*    -/var/log/sip2.log'
 
 start_sip:
   cmd.run:
