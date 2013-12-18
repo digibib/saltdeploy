@@ -37,11 +37,113 @@
   </listeners>
 
   <accounts>
-      <login id="{{ autouser1 }}"  password="{{ autopass1 }}" delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="{{ autouser1 }}"  password="{{ autopass1 }}" delimiter="|" error-detect="enabled" institution="HUTL" />
 <!-- 
       <login id="koha"   password="koha"  delimiter="|" error-detect="enabled" institution="kohalibrary" />
       <login id="koha2"  password="koha" institution="kohalibrary2" />
 --> 
+    <!-- stresstest automats -->
+    <login id="stresstest1" password="stresstest1" delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest2" password="stresstest2" delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest3" password="stresstest3" delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest4" password="stresstest4" delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest5" password="stresstest5" delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest6" password="stresstest6" delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest7" password="stresstest7" delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest8" password="stresstest8" delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest9" password="stresstest9" delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest10 " password="stresstest10 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest11 " password="stresstest11 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest12 " password="stresstest12 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest13 " password="stresstest13 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest14 " password="stresstest14 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest15 " password="stresstest15 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest16 " password="stresstest16 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest17 " password="stresstest17 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest18 " password="stresstest18 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest19 " password="stresstest19 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest20 " password="stresstest20 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest21 " password="stresstest21 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest22 " password="stresstest22 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest23 " password="stresstest23 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest24 " password="stresstest24 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest25 " password="stresstest25 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest26 " password="stresstest26 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest27 " password="stresstest27 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest28 " password="stresstest28 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest29 " password="stresstest29 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest30 " password="stresstest30 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest31 " password="stresstest31 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest32 " password="stresstest32 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest33 " password="stresstest33 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest34 " password="stresstest34 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest35 " password="stresstest35 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest36 " password="stresstest36 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest37 " password="stresstest37 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest38 " password="stresstest38 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest39 " password="stresstest39 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest40 " password="stresstest40 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest41 " password="stresstest41 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest42 " password="stresstest42 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest43 " password="stresstest43 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest44 " password="stresstest44 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest45 " password="stresstest45 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest46 " password="stresstest46 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest47 " password="stresstest47 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest48 " password="stresstest48 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest49 " password="stresstest49 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest50 " password="stresstest50 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest51 " password="stresstest51 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest52 " password="stresstest52 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest53 " password="stresstest53 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest54 " password="stresstest54 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest55 " password="stresstest55 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest56 " password="stresstest56 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest57 " password="stresstest57 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest58 " password="stresstest58 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest59 " password="stresstest59 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest60 " password="stresstest60 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest61 " password="stresstest61 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest62 " password="stresstest62 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest63 " password="stresstest63 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest64 " password="stresstest64 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest65 " password="stresstest65 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest66 " password="stresstest66 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest67 " password="stresstest67 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest68 " password="stresstest68 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest69 " password="stresstest69 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest70 " password="stresstest70 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest71 " password="stresstest71 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest72 " password="stresstest72 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest73 " password="stresstest73 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest74 " password="stresstest74 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest75 " password="stresstest75 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest76 " password="stresstest76 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest77 " password="stresstest77 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest78 " password="stresstest78 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest79 " password="stresstest79 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest80 " password="stresstest80 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest81 " password="stresstest81 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest82 " password="stresstest82 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest83 " password="stresstest83 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest84 " password="stresstest84 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest85 " password="stresstest85 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest86 " password="stresstest86 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest87 " password="stresstest87 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest88 " password="stresstest88 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest89 " password="stresstest89 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest90 " password="stresstest90 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest91 " password="stresstest91 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest92 " password="stresstest92 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest93 " password="stresstest93 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest94 " password="stresstest94 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest95 " password="stresstest95 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest96 " password="stresstest96 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest97 " password="stresstest97 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest98 " password="stresstest98 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest99 " password="stresstest99 " delimiter="|" error-detect="enabled" institution="HUTL" />
+    <login id="stresstest100" password="stresstest100" delimiter="|" error-detect="enabled" institution="HUTL" />
+
   </accounts>
 
 <!--
