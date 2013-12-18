@@ -28,7 +28,7 @@
 
 translate:
   cmd.run:
-    - name: sudo koha-translate --install nb-NO
+    - name: koha-translate --install nb-NO
     - require:
       - file: /usr/share/koha/misc/translator/po/nb-NO-i-staff-t-prog-v-3006000.po
       - file: /usr/share/koha/misc/translator/po/nb-NO-i-opac-t-prog-v-3006000.po

@@ -2,3 +2,4 @@
 base:
   '*':
     - koha
+    - koha.admin
