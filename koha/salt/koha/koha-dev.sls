@@ -37,7 +37,7 @@ https://github.com/mkfifo/koha-gitify:
 
 gitify:
   cmd.run:
-    - name: /usr/local/src/koha-gitify {{ pillar['kohaname'] }} /usr/local/src/kohaclone
+    - name: /usr/local/src/koha-gitify/koha-gitify {{ pillar['kohaname'] }} /usr/local/src/kohaclone
     - cwd: /usr/local/src/kohaclone
 
 /var/lib/koha/{{ pillar['kohaname'] }}/.gitconfig:
