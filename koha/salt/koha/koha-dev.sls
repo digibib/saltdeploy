@@ -22,18 +22,25 @@ https://github.com/Koha-Community/git-bz.git:
   git.latest:
     - rev: fishsoup
     - target: /usr/local/src/git-bz
-    - user: {{ pillar['kohaname'] }}-koha
 
 /usr/local/bin/git-bz:
   file.symlink:
     - target: /usr/local/src/git-bz/git-bz
 
+########
+# KOHA GITIFY
+########
+
+https://github.com/mkfifo/koha-gitify:
+  git.latest:
+    - target: /usr/local/src/koha-gitify
+
 gitify:
   cmd.run:
-    - name: ./koha-gitify {{ pillar['kohaname'] }} /usr/local/src/kohaclone
+    - name: /usr/local/src/koha-gitify {{ pillar['kohaname'] }} /usr/local/src/kohaclone
     - cwd: /usr/local/src/kohaclone
 
-/var/lib/koha/{{ pillar['kohaname'] }}-koha/.gitconfig:
+/var/lib/koha/{{ pillar['kohaname'] }}/.gitconfig:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/koha-tmpl/gitconfig.tmpl
     - template: jinja

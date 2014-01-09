@@ -3,7 +3,7 @@
 ########
 # needs to stop SIP
 include:
-  - koha.sip-stop
+  - koha.koha-sip-stop
 
 startSIP:
   cmd.run:
