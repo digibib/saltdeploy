@@ -7,12 +7,19 @@ installpkgs:
     - pkgs:
       - tig
 
+masterkohabranch:
+  cmd.run:
+    - cwd: /usr/local/src/kohaclone
+    - name: git checkout master
+
 # koha dev mirror
 http://repo.or.cz/r/koha.git:
   git.latest:
     - rev: master
     - target: /usr/local/src/kohaclone
     - user: {{ pillar['kohaname'] }}-koha
+    - require:
+      - cmd: masterkohabranch
 
 ########
 # KOHA BUGZILLA SETUP
