@@ -18,14 +18,10 @@ http://repo.or.cz/r/koha.git:
 # KOHA BUGZILLA SETUP
 ########
 
-https://github.com/Koha-Community/git-bz.git:
-  git.latest:
-    - rev: fishsoup
-    - target: /usr/local/src/git-bz
-
 /usr/local/bin/git-bz:
-  file.symlink:
-    - target: /usr/local/src/git-bz/git-bz
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/git-bz
+    - mode: 755
 
 ########
 # KOHA GITIFY
