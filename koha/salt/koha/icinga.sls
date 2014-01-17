@@ -27,6 +27,8 @@ icingarepo:
 icingaplugins:
   cmd.run:
     - name: for plug in graphite livestatus perfdata statusdata compatlog ; do icinga2-enable-feature $plug ; done
+    - require:
+      - pkg: icingapkgs
 
 icinga2:
   service:
