@@ -8,6 +8,8 @@ icingapkgs:
       - icinga2
       - icinga2-ido-mysql
       - graphite-carbon
+      - python-pip
+      - libapache2-mod-wsgi
 
 # icinga-web:
 #   pkg.latest:
@@ -24,17 +26,39 @@ icingarepo:
     - require_in:
       - pkg: icingapkgs
 
+/etc/default/graphite-carbon:
+  file.replace:
+    - pattern: "false"
+    - repl: "true"
+
+carbon-cache:
+  service:
+    - running
+    - watch:
+      - file: /etc/default/graphite-carbon
+
 icingaplugins:
   cmd.run:
-    - name: for plug in graphite livestatus perfdata statusdata compatlog ; do icinga2-enable-feature $plug ; done
+    - name: for plug in graphite livestatus perfdata statusdata compatlog ido-mysql; do icinga2-enable-feature $plug ; done
     - require:
       - pkg: icingapkgs
+      - service: carbon-cache
 
 icinga2:
   service:
     - running
     - watch:
       - cmd: icingaplugins
+
+# graphite-web:
+#   pip.installed:
+#     - require:
+#       - pkg: icingapkgs
+
+graphite-web-db:
+  cmd.run:
+    - name: python /usr/share/pyshared/graphite/manage.py syncdb --noinput
+
 
 ########
 # THRUK
