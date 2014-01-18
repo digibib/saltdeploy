@@ -6,11 +6,13 @@ icingapkgs:
   pkg.latest:
     - pkgs:
       - icinga2
-      - icinga2-ido-mysql
+      # - icinga2-ido-mysql
       - graphite-carbon
-      - python-pip
+      # - python-pip
       - libapache2-mod-wsgi
+      - graphite-web
 
+# Icinga web disabled until further need
 # icinga-web:
 #   pkg.latest:
 #     - require:
@@ -26,17 +28,6 @@ icingarepo:
     - require_in:
       - pkg: icingapkgs
 
-/etc/default/graphite-carbon:
-  file.replace:
-    - pattern: "false"
-    - repl: "true"
-
-carbon-cache:
-  service:
-    - running
-    - watch:
-      - file: /etc/default/graphite-carbon
-
 icingaplugins:
   cmd.run:
     - name: for plug in graphite livestatus perfdata statusdata compatlog ido-mysql; do icinga2-enable-feature $plug ; done
@@ -50,15 +41,57 @@ icinga2:
     - watch:
       - cmd: icingaplugins
 
+########
+# GRAPHITE SETUP
+########
+
+/etc/default/graphite-carbon:
+  file.replace:
+    - pattern: "false"
+    - repl: "true"
+
+carbon-cache:
+  service:
+    - running
+    - watch:
+      - file: /etc/default/graphite-carbon
+      - file: /var/lib/graphite/graphite.db
+
+/var/lib/graphite/graphite.db:
+  file.managed:
+    - group: _graphite
+    - mode: 664
+
+graphite-web-db:
+  cmd.run:
+    - name: python /usr/share/pyshared/graphite/manage.py syncdb --noinput
+    - require:
+      - file: /var/lib/graphite/graphite.db
+
+/etc/apache2/sites-enabled/apache2-graphite.conf:
+  file.symlink:
+    - target: /usr/share/graphite-web/apache2-graphite.conf
+
+apache2:
+  service:
+    - running
+    - watch:
+      - file: /etc/apache2/sites-enabled/apache2-graphite.conf
+
 # graphite-web:
 #   pip.installed:
 #     - require:
 #       - pkg: icingapkgs
 
-graphite-web-db:
-  cmd.run:
-    - name: python /usr/share/pyshared/graphite/manage.py syncdb --noinput
+########
+# NAGIOS PLUGINS
+# https://github.com/monitoring-plugins
+########
 
+nagiospkgs:
+  pkg.latest:
+    - pkgs:
+      - nagios-plugins
 
 ########
 # THRUK

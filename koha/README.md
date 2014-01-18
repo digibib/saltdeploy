@@ -3,13 +3,9 @@ Koha Vagrant and Salt Config
 
 Prerequisites:
 
-1. Files not included in the repo that must be created
+1. Sensitive are sent via pillar: file admin.sls 
 
-    ./salt/koha/files/passwd:
-    {{ pillar['kohaname'] }}:username:password
-
-    ./salt/koha/files/marc2rdf/marc2rdf_settings.json
-    marc2rdf settings file. (see example on github.com/digibib/marc2rdf)
+    cp ./pillar/koha/admin.sls.example ./pillar/koha/admin.sls
 
 2. Pillar variables (local settings):
 
@@ -41,20 +37,20 @@ to get into the box.
 
 States that can be run after provisioning:
 
-* koha-create.sls        create empty instance
-* koha-defaults.sls      load defaults
-* koha-dummycirc.sls     dummy circulation
-* koha-dummypatrons.sls  dummy patrons
-* koha-import-15000.sls  import 15000 biblio items
-* koha-import-all.sls    import all biblio items (takes a LONG time) 
-* koha-import.sls        import 500 biblio items
-* koha-locales.sls       install nb locales
-* koha-marc2rdf.sls      install and setup marc2rdf and virtuoso
-* koha-oai.sls           force rebuild oai sets
-* koha-purge.sls         purge instance
-* koha-restore-all.sls   restore full instance from backup
-* koha-restore.sls       restore 500 biblio backup
-* koha-virtuoso.sls      setup virtuoso 7 (Not used)
+* koha.koha-create.sls        create empty instance
+* koha.koha-defaults.sls      load defaults
+* koha.koha-dummycirc.sls     dummy circulation
+* koha.koha-dummypatrons.sls  dummy patrons
+* koha.koha-import-15000.sls  import 15000 biblio items
+* koha.koha-import-all.sls    import all biblio items (takes a LONG time) 
+* koha.koha-import.sls        import 500 biblio items
+* koha.koha-locales.sls       install nb locales
+* koha.koha-marc2rdf.sls      install and setup marc2rdf and virtuoso
+* koha.koha-oai.sls           force rebuild oai sets
+* koha.koha-purge.sls         purge instance
+* koha.koha-restore-all.sls   restore full instance from backup
+* koha.koha-restore.sls       restore 500 biblio backup
+* koha.koha-virtuoso.sls      setup virtuoso 7 (Not used)
 
 To run individual states, run e.g.: (without .sls)
 
