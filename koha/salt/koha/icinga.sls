@@ -30,7 +30,7 @@ icingarepo:
 
 icingaplugins:
   cmd.run:
-    - name: for plug in graphite livestatus perfdata statusdata compatlog ido-mysql; do icinga2-enable-feature $plug ; done
+    - name: for plug in graphite livestatus perfdata statusdata compatlog ; do icinga2-enable-feature $plug ; done
     - require:
       - pkg: icingapkgs
       - service: carbon-cache
@@ -76,6 +76,7 @@ apache2:
   service:
     - running
     - watch:
+      - file: /var/lib/graphite/graphite.db
       - file: /etc/apache2/sites-enabled/apache2-graphite.conf
 
 # graphite-web:

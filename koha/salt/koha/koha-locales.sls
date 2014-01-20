@@ -28,7 +28,7 @@
 
 translate:
   cmd.run:
-    - name: koha-translate --install nb-NO
+    - name: koha-translate --update nb-NO
     - require:
       - file: /usr/share/koha/misc/translator/po/nb-NO-i-staff-t-prog-v-3006000.po
       - file: /usr/share/koha/misc/translator/po/nb-NO-i-opac-t-prog-v-3006000.po
@@ -47,17 +47,20 @@ translate:
 /usr/share/koha/intranet/htdocs/intranet-tmpl/prog/nb-NO/modules/admin/preferences/circulation.pref:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/koha-tmpl/circulation.pref
+    - mode: 664
     - watch:
       - cmd: translate
 
 /usr/share/koha/intranet/htdocs/intranet-tmpl/prog/nb-NO/modules/admin/preferences/opac.pref:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/koha-tmpl/opac.pref
+    - mode: 664
     - watch:
       - cmd: translate
 
 /usr/share/koha/intranet/htdocs/intranet-tmpl/prog/nb-NO/modules/admin/preferences/patrons.pref:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/koha-tmpl/patrons.pref
+    - mode: 664
     - watch:
       - cmd: translate

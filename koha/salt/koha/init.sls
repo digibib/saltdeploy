@@ -45,15 +45,13 @@ installpkgs:
 /etc/apache2/ports.conf:
   file.append:
     - text:
-      - NameVirtualHost *:8080
       - Listen 8080
-      - NameVirtualHost *:8081
       - Listen 8081
     - stateful: True
 
 apacheconfig:
   file.managed:
-    - name: /etc/apache2/sites-available/{{ pillar['kohaname'] }}
+    - name: /etc/apache2/sites-available/{{ pillar['kohaname'] }}.conf
     - source: {{ pillar['saltfiles'] }}/apache.tmpl
     - template: jinja
     - context:
@@ -62,6 +60,11 @@ apacheconfig:
       ServerName: {{ pillar['kohaname'] }}
 
 sudo a2enmod rewrite:
+  cmd.run:
+    - require:
+      - pkg: installpkgs
+
+sudo a2enmod cgi:
   cmd.run:
     - require:
       - pkg: installpkgs
@@ -77,6 +80,7 @@ apache2:
     - require:
       - pkg: installpkgs
       - cmd: sudo a2enmod rewrite
+      - cmd: sudo a2enmod cgi
       - cmd: sudo a2dissite 000-default
       - file: /etc/apache2/ports.conf
 
