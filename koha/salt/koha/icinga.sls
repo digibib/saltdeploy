@@ -84,6 +84,10 @@ apache2:
 #     - require:
 #       - pkg: icingapkgs
 
+# graphite-carbon-clean:
+#   cmd.run:
+#     - name: rm -rf /var/lib/graphite/whisper/
+
 ########
 # NAGIOS PLUGINS
 # https://github.com/monitoring-plugins
