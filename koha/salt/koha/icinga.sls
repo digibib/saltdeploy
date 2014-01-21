@@ -1,5 +1,5 @@
 ########
-# ICINGA2 SETUP
+# ICINGA2 SETUP (WITH GRAPHITE)
 ########
 
 icingapkgs:
@@ -30,73 +30,44 @@ icingarepo:
 
 icingaplugins:
   cmd.run:
-    - name: for plug in graphite livestatus perfdata statusdata compatlog ; do icinga2-enable-feature $plug ; done
+    - name: for plug in livestatus perfdata statusdata compatlog ; do icinga2-enable-feature $plug ; done
     - require:
       - pkg: icingapkgs
-      - service: carbon-cache
+
+########
+# ICINGA2 CONFIG FILES
+# /etc/icinga2/conf.d
+########
+
+/etc/icinga2/conf.d:
+  file.recurse:
+    - template: jinja
+    - source: {{ pillar['saltfiles'] }}/icinga/conf.d
+    - include_empty: True
 
 icinga2:
   service:
     - running
     - watch:
       - cmd: icingaplugins
-
-########
-# GRAPHITE SETUP
-########
-
-/etc/default/graphite-carbon:
-  file.replace:
-    - pattern: "false"
-    - repl: "true"
-
-carbon-cache:
-  service:
-    - running
-    - watch:
-      - file: /etc/default/graphite-carbon
-      - file: /var/lib/graphite/graphite.db
-
-/var/lib/graphite/graphite.db:
-  file.managed:
-    - group: _graphite
-    - mode: 664
-
-graphite-web-db:
-  cmd.run:
-    - name: python /usr/share/pyshared/graphite/manage.py syncdb --noinput
-    - require:
-      - file: /var/lib/graphite/graphite.db
-
-/etc/apache2/sites-enabled/apache2-graphite.conf:
-  file.symlink:
-    - target: /usr/share/graphite-web/apache2-graphite.conf
-
-apache2:
-  service:
-    - running
-    - watch:
-      - file: /var/lib/graphite/graphite.db
-      - file: /etc/apache2/sites-enabled/apache2-graphite.conf
-
-# graphite-web:
-#   pip.installed:
-#     - require:
-#       - pkg: icingapkgs
-
-# graphite-carbon-clean:
-#   cmd.run:
-#     - name: rm -rf /var/lib/graphite/whisper/
+      - file: /etc/icinga2/conf.d
 
 ########
 # NAGIOS PLUGINS
 # https://github.com/monitoring-plugins
+# installs to /usr/lib/nagios/plugins
 ########
 
 nagiospkgs:
   pkg.latest:
     - pkgs:
       - nagios-plugins
+
+/usr/lib/nagios/plugins/check_mysqld.pl:
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/icinga/plugins/check_mysqld.pl
+    - mode: 755
+    - stateful: True
 
 ########
 # THRUK
