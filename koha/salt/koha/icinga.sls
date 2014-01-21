@@ -30,7 +30,7 @@ icingarepo:
 
 icingaplugins:
   cmd.run:
-    - name: for plug in livestatus perfdata statusdata compatlog ; do icinga2-enable-feature $plug ; done
+    - name: for plug in perfdata statusdata compatlog ; do icinga2-enable-feature $plug ; done
     - require:
       - pkg: icingapkgs
 
@@ -39,17 +39,34 @@ icingaplugins:
 # /etc/icinga2/conf.d
 ########
 
+
+# http://mathias-kettner.de/checkmk_livestatus.html#H1:LQL%20-%20The%20Livestatus%20Query%20Language
+# echo -e "GET hosts\n\n" | nc 10.0.2.15 6558
+/etc/icinga2/features-available/livestatus.conf:
+  file.managed:
+    - template: jinja
+    - mode: 644
+    - source: {{ pillar['saltfiles'] }}/icinga/livestatus.conf
+
+enable-livestatus:
+  cmd.run:
+    - name: icinga2-enable-feature livestatus
+    - require:
+      - file: /etc/icinga2/features-available/livestatus.conf
+
 /etc/icinga2/conf.d:
   file.recurse:
     - template: jinja
     - source: {{ pillar['saltfiles'] }}/icinga/conf.d
     - include_empty: True
+    - clean: True
 
 icinga2:
   service:
     - running
     - watch:
       - cmd: icingaplugins
+      - cmd: enable-livestatus
       - file: /etc/icinga2/conf.d
 
 ########
