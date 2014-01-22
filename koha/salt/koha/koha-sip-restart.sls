@@ -5,6 +5,8 @@
 /etc/koha/sites/{{ pillar['kohaname'] }}/SIPconfig.xml:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/SIP2/SIPconfig.xml
+    - user: {{ pillar['kohaname'] }}-koha
+    - mode: 640
     - template: jinja
     - context:
       sip_workers: {{ pillar['sip_workers'] }}
