@@ -7,6 +7,7 @@
     - source: {{ pillar['saltfiles'] }}/SIP2/SIPconfig.xml
     - template: jinja
     - context:
+      sip_workers: {{ pillar['sip_workers'] }}
       sip_host: {{ pillar['sip_host'] }}
       sip_port: {{ pillar['sip_port'] }}
       autouser1: {{ pillar['autouser1'] }}
