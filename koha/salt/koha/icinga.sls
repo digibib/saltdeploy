@@ -57,6 +57,7 @@ enable-livestatus:
 /etc/icinga2/conf.d:
   file.recurse:
     - template: jinja
+    - file_mode: 644
     - source: {{ pillar['saltfiles'] }}/icinga/conf.d
     - include_empty: True
     - clean: True
@@ -68,6 +69,8 @@ icinga2:
       - cmd: icingaplugins
       - cmd: enable-livestatus
       - file: /etc/icinga2/conf.d
+      - file: /usr/lib/nagios/plugins/check_mysqld.pl
+      - file: /usr/lib/nagios/plugins/check_json.pl
 
 ########
 # NAGIOS PLUGINS
@@ -79,12 +82,24 @@ nagiospkgs:
   pkg.latest:
     - pkgs:
       - nagios-plugins
+      - libjson-perl
+      - libnagios-plugin-perl
 
 /usr/lib/nagios/plugins/check_mysqld.pl:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/icinga/plugins/check_mysqld.pl
     - mode: 755
     - stateful: True
+    - require:
+      - pkg: nagiospkgs
+
+/usr/lib/nagios/plugins/check_json.pl:
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/icinga/plugins/check_json.pl
+    - mode: 755
+    - stateful: True
+    - require:
+      - pkg: nagiospkgs
 
 ########
 # THRUK
