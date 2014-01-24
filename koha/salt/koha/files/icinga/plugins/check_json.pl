@@ -104,6 +104,12 @@ my $result = $np->check_threshold($check_value);
 
 my @statusmsg;
 
+# need threshold on all perfvalues for carbon-graphite to work
+my $dummythreshold = Nagios::Plugin::Threshold->set_thresholds(
+        warning  => "0",
+        critical => "0",
+);
+
 # routine to add perfdata from JSON response based on a loop of keys given in perfvals (csv)
 if ($np->opts->perfvars) {
     foreach my $key (split(',', $np->opts->perfvars)) {
@@ -128,6 +134,7 @@ if ($np->opts->perfvars) {
                 $np->add_perfdata(
                     label => lc $label,
                     value => $perf_value,
+                    threshold => $dummythreshold,
                 );            
             }
         }
