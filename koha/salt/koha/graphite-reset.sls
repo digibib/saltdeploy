@@ -5,12 +5,20 @@
 # clear carbon graphs
 graphite-carbon-clean:
   cmd.run:
-    - name: rm -rf /var/lib/graphite/whisper/
+    - name: rm -rf /var/lib/graphite/whisper/*
 
 # remove graphite db
 purge-graphite-db:
   cmd.run:
     - name: rm -rf /var/lib/graphite/graphite.db
+
+purge-graphite-cache:
+  cmd.run:
+    - name: rm -rf /var/lib/graphite/.cache
+
+purge-graphite-index:
+  cmd.run:
+    - name: rm -rf /var/lib/graphite/search_index
 
 # initiate graphite-web sqlite database
 graphite-web-db:
@@ -21,8 +29,8 @@ graphite-web-db:
 
 /var/lib/graphite/graphite.db:
   file.managed:
+    - user: _graphite
     - group: _graphite
-    - mode: 664
     - require:
       - cmd: graphite-web-db
 
