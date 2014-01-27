@@ -8,7 +8,6 @@ icingapkgs:
       - icinga2
       # - icinga2-ido-mysql
       - graphite-carbon
-      # - python-pip
       - libapache2-mod-wsgi
       - graphite-web
 
@@ -101,24 +100,10 @@ nagiospkgs:
     - require:
       - pkg: nagiospkgs
 
-########
-# THRUK
-########
-
-# thrukpkgs:
-#   pkg.latest:
-#     - skip_verify: True
-#     - pkgs:
-#       - thruk
-#       - mk-livestatus
-
-# thrukrepo:
-#   pkgrepo.managed:
-#     - humanname: Thruk webmonitoring debian repo
-#     - name: deb http://labs.consol.de/repo/stable/ubuntu raring main
-#     - dist: raring
-#     # - keyserver: keys.gnupg.net
-#     # - keyid: F8C1CA08A57B9ED7
-#     - file: /etc/apt/sources.list.d/thruk.list
-#     - require_in:
-#       - pkg: thruk
+/usr/lib/nagios/plugins/check_sip2.pl:
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/icinga/plugins/check_sip2.pl
+    - mode: 755
+    - stateful: True
+    - require:
+      - pkg: nagiospkgs
