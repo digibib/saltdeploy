@@ -23,7 +23,7 @@ http://repo.or.cz/r/koha.git:
 
 /etc/apache2/sites-available/{{ pillar['kohaname'] }}-dev.conf:
   file.managed:
-    - source: {{ pillar['saltfiles'] }}/apache-git.tmpl
+    - source: {{ pillar['saltfiles'] }}/apache-dev.tmpl
     - mode: 755
     - stateful: True
 
@@ -71,11 +71,13 @@ disable_prod:
 enable_dev:
   cmd.run:
     - name: sudo a2ensite {{ pillar['kohaname'] }}-dev
+    - require:
+        -cmd: disable_prod
 
 apache2:
   service:
     - running
     - watch:
       - file: /etc/koha/apache-shared.conf
-      - cmd: enable_gitrepo
+      - cmd: enable_dev
 
