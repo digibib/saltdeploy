@@ -24,7 +24,11 @@ http://repo.or.cz/r/koha.git:
 /etc/apache2/sites-available/{{ pillar['kohaname'] }}-dev.conf:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/apache-dev.tmpl
-    - mode: 755
+    - template: jinja
+    - context:
+      OpacPort: 8080
+      IntraPort: 8081
+      ServerName: {{ pillar['kohaname'] }}
     - stateful: True
 
 ########
