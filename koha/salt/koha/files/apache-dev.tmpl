@@ -3,10 +3,18 @@
 # OPAC
 <VirtualHost *:{{ OpacPort }}>
   Include /etc/koha/apache-shared.conf
+  #Include /etc/koha/apache-shared-opac-git.conf
 
   ServerName {{ ServerName }}
   DocumentRoot /usr/local/src/kohaclone/koha-tmpl
   
+
+  <Directory "/usr/local/src/kohaclone">
+  Options All
+  AllowOverride All
+  Require all granted
+  </Directory>
+
   SetEnv KOHA_CONF "/etc/koha/sites/{{ ServerName }}/koha-conf.xml"
   SetEnv PERL5LIB "/usr/local/src/kohaclone"
   
@@ -22,7 +30,7 @@
 
   RewriteCond %{QUERY_STRING} (.*?)(?:[A-Za-z0-9_-]+)=&(.*)
   RewriteRule (.+) $1?%1%2 [N,R,NE]
-  RewriteRule ^/bib/([^\/]*)/?$ /cgi-bin/koha/detail\.pl?bib=$1 [PT]
+  RewriteRule ^/bib/([^\/]*)/?$ /cgi-bin/koha/opac-detail\.pl?bib=$1 [PT]
   RewriteRule ^/isbn/([^\/]*)/?$ /search?q=isbn:$1 [PT]
   RewriteRule ^/issn/([^\/]*)/?$ /search?q=issn:$1 [PT]
 
@@ -35,9 +43,16 @@
 # INTRANET
 <VirtualHost *:{{ IntraPort }}>
   Include /etc/koha/apache-shared.conf
+  #Include /etc/koha/apache-shared-intranet-git.conf
 
   ServerName {{ ServerName }}
   DocumentRoot /usr/local/src/kohaclone/koha-tmpl
+  
+  <Directory "/usr/local/src/kohaclone">
+  Options All
+  AllowOverride All
+  Require all granted
+  </Directory>
   
   SetEnv KOHA_CONF "/etc/koha/sites/{{ ServerName }}/koha-conf.xml"
   SetEnv PERL5LIB "/usr/local/src/kohaclone"
@@ -49,6 +64,7 @@
   ScriptAlias /cgi-bin/koha/ "/usr/local/src/kohaclone/"
   ScriptAlias /index.html "/usr/local/src/kohaclone/mainpage.pl"
   ScriptAlias /search "/usr/local/src/kohaclone/search.pl"
+
   RewriteCond %{QUERY_STRING} (.*?)(?:[A-Za-z0-9_-]+)=&(.*)
   RewriteRule (.+) $1?%1%2 [N,R,NE]
   RewriteRule ^/bib/([^\/]*)/?$ /cgi-bin/koha/detail\.pl?bib=$1 [PT]
