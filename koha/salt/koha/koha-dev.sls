@@ -21,6 +21,12 @@ http://repo.or.cz/r/koha.git:
     - require:
       - cmd: masterkohabranch
 
+/etc/apache2/sites-available/{{ pillar['kohaname'] }}-dev.conf:
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/apache-git.tmpl
+    - mode: 755
+    - stateful: True
+
 ########
 # KOHA BUGZILLA SETUP
 ########
@@ -54,13 +60,22 @@ gitify:
 /etc/koha/apache-shared.conf:
   file.replace:
     - pattern: \/usr\/share\/koha\/lib
-    - repl: \/usr\/local\/src\/kohaclone
+    - repl: /usr/local/src/kohaclone
     - require:
       - cmd: gitify
+
+disable_prod:
+  cmd.run:
+    - name: sudo a2dissite {{ pillar['kohaname'] }}
+
+enable_dev:
+  cmd.run:
+    - name: sudo a2ensite {{ pillar['kohaname'] }}-dev
 
 apache2:
   service:
     - running
     - watch:
       - file: /etc/koha/apache-shared.conf
+      - cmd: enable_gitrepo
 
