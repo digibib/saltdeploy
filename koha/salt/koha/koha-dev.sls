@@ -72,7 +72,7 @@ enable_dev:
   cmd.run:
     - name: sudo a2ensite {{ pillar['kohaname'] }}-dev
     - require:
-        -cmd: disable_prod
+      - cmd: disable_prod
 
 apache2:
   service:
