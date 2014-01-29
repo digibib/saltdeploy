@@ -50,3 +50,17 @@ gitify:
     - context:
       bz_user: {{ pillar['bz_user'] }}
       bz_pass: {{ pillar['bz_pass'] }}
+
+/etc/koha/apache-shared.conf:
+  file.replace:
+    - pattern: \/usr\/share\/koha\/lib
+    - repl: \/usr\/local\/src\/kohaclone
+    - require:
+      - cmd: gitify
+
+apache2:
+  service:
+    - running
+    - watch:
+      - file: /etc/koha/apache-shared.conf
+
