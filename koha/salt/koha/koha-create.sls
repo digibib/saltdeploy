@@ -19,12 +19,11 @@ createkohadb:
     - require:
       - cmd: createkohadb
 
-# enable koha plugins
+# koha config from template
 /etc/koha/sites/{{ pillar['kohaname'] }}/koha-conf.xml:
-  file.replace:
-    - name: /etc/koha/sites/{{ pillar['kohaname'] }}/koha-conf.xml
-    - pattern: <enable_plugins>0
-    - repl: <enable_plugins>1
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/koha-tmpl/koha-conf.xml.tmpl
+    - template: jinja
     - require:
       - cmd: createkohadb
 
