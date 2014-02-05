@@ -9,7 +9,7 @@
 -->
   <server-params
     min_servers='{{ sip_workers }}'
-    min_spare_servers='0'
+    min_spare_servers='2'
     log_file='Sys::Syslog'
     syslog_ident='koha_sip'
     syslog_facility='local6'
