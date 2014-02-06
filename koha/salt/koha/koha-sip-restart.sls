@@ -1,5 +1,5 @@
 ########
-# KOHA SIP2 ENABLE
+# KOHA SIP2 RESTART
 ########
 
 /etc/koha/sites/{{ pillar['kohaname'] }}/SIPconfig.xml:
@@ -25,7 +25,7 @@ stop_sip:
 
 restart_sip:
   cmd.run:
-    - name: koha-start-sip {{ pillar['kohaname'] }}
+    - name: sleep 3 ; koha-start-sip {{ pillar['kohaname'] }}
     - require:
       - file: /etc/koha/sites/{{ pillar['kohaname'] }}/SIPconfig.xml
       - cmd: stop_sip
