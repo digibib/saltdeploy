@@ -55,8 +55,6 @@ checkout_build_branch:
     - name: git checkout origindeichman/deichman-build
     - cwd: /usr/local/src/kohaclone
     - user: {{ pillar['kohaname'] }}-koha
-    - require:
-      - cmd: add_deichman_origin
 
 # pull branch - needs to be done manually, as there WILL be merge conflicts
 # gitpull:
