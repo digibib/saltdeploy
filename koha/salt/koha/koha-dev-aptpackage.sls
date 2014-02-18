@@ -79,13 +79,13 @@ checkout_build_branch:
 
 increase_version:
   cmd.run:
-    - name: printf %03d $[$(cat .version) + 1] > .version
+    - name: printf %03d $[$(cat /vagrant/debian/.version) + 1] > /vagrant/debian/.version
     - cwd: /vagrant/debian
 
 build_packages:
   cmd.run:
     - cwd: /usr/local/src/kohaclone/debian
-    - name: ./build-git-snapshot -r /vagrant/debian -v 3.14-$(cat /vagrant/debian/.version)~git -d
+    - name: ./build-git-snapshot -r /vagrant/debian --distribution squeeze -v 3.141-$(cat /vagrant/debian/.version)~git -d
     - require:
       - cmd: increase_version
 
