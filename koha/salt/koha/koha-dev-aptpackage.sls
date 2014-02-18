@@ -35,20 +35,20 @@ pbuilder_update:
 # KOHA GIT AND LOCAL BRANCH
 ########
 
-http://repo.or.cz/r/koha.git:
-  git.latest:
-    - rev: master
-    - target: /usr/local/src/kohaclone
-    - user: {{ pillar['kohaname'] }}-koha
+# http://repo.or.cz/r/koha.git:
+#   git.latest:
+#     - rev: master
+#     - target: /usr/local/src/kohaclone
+#     - user: {{ pillar['kohaname'] }}-koha
 
 # add deichman as origin branch
-add_deichman_origin:
-  cmd.run:
-    - name: git remote add origindeichman https://github.com/digibib/koha-work
-    - cwd: /usr/local/src/kohaclone
-    - user: {{ pillar['kohaname'] }}-koha
-    - require:
-      - git: http://repo.or.cz/r/koha.git
+# add_deichman_origin:
+#   cmd.run:
+#     - name: git remote add origindeichman https://github.com/digibib/koha-work
+#     - cwd: /usr/local/src/kohaclone
+#     - user: {{ pillar['kohaname'] }}-koha
+#     - require:
+#       - git: http://repo.or.cz/r/koha.git
 
 checkout_build_branch:
   cmd.run:
@@ -77,10 +77,16 @@ checkout_build_branch:
     - require:
       - pkg: installpkgs
 
+clear_old_packages:
+  cmd.run:
+    - name: rm /vagrant/debian/koha*
+
 increase_version:
   cmd.run:
     - name: printf %03d $[$(cat /vagrant/debian/.version) + 1] > /vagrant/debian/.version
     - cwd: /vagrant/debian
+    - require:
+      - cmd: clear_old_packages
 
 build_packages:
   cmd.run:
