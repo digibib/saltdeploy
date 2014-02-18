@@ -90,8 +90,8 @@ increase_version:
 
 build_packages:
   cmd.run:
-    - cwd: /usr/local/src/kohaclone/debian
-    - name: ./build-git-snapshot -r /vagrant/debian --distribution squeeze -v 3.141-$(cat /vagrant/debian/.version)~git -d
+    - cwd: /usr/local/src/kohaclone
+    - name: ./debian/build-git-snapshot -r /vagrant/debian --distribution squeeze -v 3.141-$(cat /vagrant/debian/.version)~git -d
     - require:
       - cmd: increase_version
 
