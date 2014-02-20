@@ -1,6 +1,6 @@
 saltfiles: salt://koha/files
 kohaname: knakk
-filerepo: http://171.23.133.203/saltfiles/koha
+filerepo: http://datatest.deichman.no/saltfiles/koha/
 circulationstart: "2013-10-01"
 daysbeforereturn: 14
 dummypatrons: 100
