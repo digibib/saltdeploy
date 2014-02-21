@@ -9,6 +9,7 @@
 plack_pkgs:
   pkg.latest:
   - pkgs:
+    - dh-make-perl
     - libplack-perl 
     - libcgi-emulate-psgi-perl 
     - libfile-pushd-perl 
@@ -16,26 +17,34 @@ plack_pkgs:
     - libclass-method-modifiers-perl
     - libcss-minifier-xs-perl 
     - libjavascript-minifier-xs-perl 
+    - libmodule-versions-report-perl
+    - libcgi-compile-perl
 
-cgi_compile:
-  cmd.run:
-    - name: sudo dh-make-perl --install --cpan CGI::Compile
+# cgi_compile:
+#   cmd.run:
+#     - name: sudo dh-make-perl --install --cpan CGI::Compile
 
-module_versions:
-  cmd.run:
-    - name: sudo dh-make-perl --install --cpan Module::Versions
+# module_versions:
+#   cmd.run:
+#     - name: sudo dh-make-perl --install --cpan Module::Versions
 
 plack_debug:
   cmd.run:
     - name: sudo dh-make-perl --install --cpan Plack::Middleware::Debug
+    - require:
+      - pkg: plack_pkgs
 
 plack_minifier:
   cmd.run:
     - name: sudo dh-make-perl --install --cpan Plack::Middleware::Static::Minifier
+    - require:
+      - pkg: plack_pkgs
 
 plack_dbiprofile:
   cmd.run:
     - name: sudo dh-make-perl --build --cpan Plack::Middleware::Debug::DBIProfile
+    - require:
+      - pkg: plack_pkgs
 
 ##########
 # PLACK .PSGI FILES
