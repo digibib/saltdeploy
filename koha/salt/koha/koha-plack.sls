@@ -6,22 +6,21 @@
 # PERL CPAN PACKAGES
 ##########
 
-plack_pkgs:
+plack_deps:
   pkg.latest:
   - pkgs:
     - dh-make-perl
-    - libmodule-build-perl
-    - libmodule-build-tiny-perl
-    - libextutils-autoinstall-perl
-    - libplack-perl
-    - libcgi-emulate-psgi-perl 
-    - libfile-pushd-perl 
-    - libtext-microtemplate-perl 
-    - libclass-method-modifiers-perl
-    - libcss-minifier-xs-perl 
-    - libjavascript-minifier-xs-perl 
-    - libmodule-versions-report-perl
-    - libcgi-compile-perl
+    - cpanminus
+    - pmuninstall
+    # - libplack-perl
+    # - libcgi-emulate-psgi-perl 
+    # - libfile-pushd-perl 
+    # - libtext-microtemplate-perl 
+    # - libclass-method-modifiers-perl
+    # - libcss-minifier-xs-perl 
+    # - libjavascript-minifier-xs-perl 
+    # - libmodule-versions-report-perl
+    # - libcgi-compile-perl
 
 # cgi_compile:
 #   cmd.run:
@@ -31,23 +30,35 @@ plack_pkgs:
 #   cmd.run:
 #     - name: sudo dh-make-perl --install --cpan Module::Versions
 
-plack_debug:
+cpanm_plack:
   cmd.run:
-    - name: sudo dh-make-perl --install --cpan Plack::Middleware::Debug
+    - name: cpanm Task::Plack
     - require:
-      - pkg: plack_pkgs
+      - pkg: plack_deps
 
-plack_minifier:
+cpanm_nytprof:
   cmd.run:
-    - name: sudo dh-make-perl --install --cpan Plack::Middleware::Static::Minifier
+    - name: cpanm Plack::Middleware::Debug::Profiler::NYTProf
     - require:
-      - pkg: plack_pkgs
+      - pkg: plack_deps
 
-plack_dbiprofile:
-  cmd.run:
-    - name: sudo dh-make-perl --build --cpan Plack::Middleware::Debug::DBIProfile
-    - require:
-      - pkg: plack_pkgs
+# plack_debug:
+#   cmd.run:
+#     - name: sudo dh-make-perl --install --cpan Plack::Middleware::Debug
+#     - require:
+#       - pkg: plack_pkgs
+
+# plack_minifier:
+#   cmd.run:
+#     - name: sudo dh-make-perl --install --cpan Plack::Middleware::Static::Minifier
+#     - require:
+#       - pkg: plack_pkgs
+
+# plack_dbiprofile:
+#   cmd.run:
+#     - name: sudo dh-make-perl --build --cpan Plack::Middleware::Debug::DBIProfile
+#     - require:
+#       - pkg: plack_pkgs
 
 ##########
 # PLACK .PSGI FILES
