@@ -10,7 +10,9 @@ plack_pkgs:
   pkg.latest:
   - pkgs:
     - dh-make-perl
-    - libplack-perl 
+    - libmodule-build-perl
+    - libextutils-autoinstall-perl
+    - libplack-perl
     - libcgi-emulate-psgi-perl 
     - libfile-pushd-perl 
     - libtext-microtemplate-perl 
@@ -20,13 +22,13 @@ plack_pkgs:
     - libmodule-versions-report-perl
     - libcgi-compile-perl
 
-cgi_compile:
-  cmd.run:
-    - name: sudo dh-make-perl --install --cpan CGI::Compile
+# cgi_compile:
+#   cmd.run:
+#     - name: sudo dh-make-perl --install --cpan CGI::Compile
 
-module_versions:
-  cmd.run:
-    - name: sudo dh-make-perl --install --cpan Module::Versions
+# module_versions:
+#   cmd.run:
+#     - name: sudo dh-make-perl --install --cpan Module::Versions
 
 plack_debug:
   cmd.run:
