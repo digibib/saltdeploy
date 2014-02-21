@@ -11,6 +11,7 @@ plack_pkgs:
   - pkgs:
     - dh-make-perl
     - libmodule-build-perl
+    - libmodule-build-tiny-perl
     - libextutils-autoinstall-perl
     - libplack-perl
     - libcgi-emulate-psgi-perl 
