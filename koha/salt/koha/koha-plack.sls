@@ -73,10 +73,10 @@ cpanm_nytprof:
     - source: {{ pillar['saltfiles'] }}/koha-tmpl/plack_intranet.psgi.tmpl
 
 # # run opac
-# KOHA_CONF=/etc/koha/sites/{{ pillar['kohaname'] }}/koha-conf.xml PERL5LIB=/usr/share/koha/lib plackup --reload opac.psgi
+# KOHA_CONF=/etc/koha/sites/{{ pillar['kohaname'] }}/koha-conf.xml PERL5LIB=/usr/share/koha/lib plackup --reload /usr/share/koha/opac.psgi
 
 # # run intranet
-# KOHA_CONF=/etc/koha/sites/{{ pillar['kohaname'] }}/koha-conf.xml PERL5LIB=/usr/share/koha/lib plackup --reload --port 5001 intranet.psgi
+# KOHA_CONF=/etc/koha/sites/{{ pillar['kohaname'] }}/koha-conf.xml PERL5LIB=/usr/share/koha/lib plackup --reload --port 5001 /usr/share/koha/intranet.psgi
 
 
 
