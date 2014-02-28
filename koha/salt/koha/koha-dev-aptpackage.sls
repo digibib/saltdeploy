@@ -81,7 +81,7 @@ clear_old_packages:
 
 increase_version:
   cmd.run:
-    - name: printf %03d $[$(cat /vagrant/debian/.version) + 1] > /vagrant/debian/.version
+    - name: echo $[$(cat /vagrant/debian/.version) + 1] > /vagrant/debian/.version
     - cwd: /vagrant/debian
     - require:
       - cmd: clear_old_packages
@@ -89,7 +89,7 @@ increase_version:
 build_packages:
   cmd.run:
     - cwd: /usr/local/src/kohaclone
-    - name: ./debian/build-git-snapshot -r /vagrant/debian --distribution squeeze -v 3.141-$(cat /vagrant/debian/.version)~git -d
+    - name: ./debian/build-git-snapshot -r /vagrant/debian --distribution squeeze -v 3.141-$(printf %03d $(cat /vagrant/debian/.version))~git -d
     - require:
       - cmd: increase_version
 
