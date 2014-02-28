@@ -50,11 +50,28 @@ pbuilder_update:
 #     - require:
 #       - git: http://repo.or.cz/r/koha.git
 
+# Make sure nothing is preventing checkout and pull
+clear_uncommitted:
+  cmd.run:
+    - name: git stash
+    - cwd: /usr/local/src/kohaclone
+    - user: {{ pillar['kohaname'] }}-koha
+
 checkout_build_branch:
   cmd.run:
     - name: git checkout origindeichman/deichman-build
     - cwd: /usr/local/src/kohaclone
     - user: {{ pillar['kohaname'] }}-koha
+    - require:
+      - cmd: clear_uncommitted
+
+gitpull:
+  cmd.run:
+    - name: git pull origindeichman deichman-build
+    - cwd: /usr/local/src/kohaclone
+    - user: {{ pillar['kohaname'] }}-koha
+    - require:
+      - cmd: checkout_build_branch
 
 # pull branch - needs to be done manually, as there WILL be merge conflicts
 # gitpull:
