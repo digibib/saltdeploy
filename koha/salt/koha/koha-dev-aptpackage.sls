@@ -77,7 +77,7 @@ checkout_build_branch:
 
 clear_old_packages:
   cmd.run:
-    - name: rm /vagrant/debian/koha*
+    - name: rm -f /vagrant/debian/koha*
 
 increase_version:
   cmd.run:
