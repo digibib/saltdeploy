@@ -2,6 +2,8 @@ adminuser: admin
 adminpass: secret
 autouser1: automat1
 autopass1: pass1
+zebrauser: kohauser
+zebrapass: SecretPassword
 sip_workers: 1
 sip_host: 127.0.0.1
 sip_port: 6001

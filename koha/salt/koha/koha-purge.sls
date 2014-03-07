@@ -2,7 +2,6 @@
 # KOHA PURGE STATE
 ##########
 
-sudo a2dissite
 # remove koha instance
 removekohainstance:
   cmd.run:

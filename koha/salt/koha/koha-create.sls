@@ -27,6 +27,14 @@ createkohadb:
     - require:
       - cmd: createkohadb
 
+# zebra internal password
+/etc/koha/sites/{{ pillar['kohaname'] }}/zebra.passwd:
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/koha-tmpl/zebra.passwd.tmpl
+    - template: jinja
+    - require:
+      - cmd: createkohadb
+
 # make sure instance config has right permissions
 /etc/koha/sites/{{ pillar['kohaname'] }}:
   file.directory:

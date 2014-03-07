@@ -18,7 +18,7 @@
 <listen id="mergeserver">tcp:@:__MERGE_SERVER_PORT__</listen>
 <server id="mergeserver"  listenref="mergeserver">
     <directory>/var/lib/koha/{{ pillar['kohaname'] }}/biblios</directory>
-    <config>/etc/koha/sites/{{ pillar['kohaname'] }}/zebra-biblios.cfg</config>
+    <config>/etc/koha/sites/{{ pillar['kohaname'] }}/zebra-biblios-dom.cfg</config>
     <cql2rpn>/var/lib/koha/{{ pillar['kohaname'] }}/pqf.properties</cql2rpn>
 </server>
 -->
@@ -26,9 +26,11 @@
 <!-- BIBLIOGRAPHIC RECORDS -->
 <server id="biblioserver"  listenref="biblioserver">
     <directory>/var/lib/koha/{{ pillar['kohaname'] }}/biblios</directory>
-    <config>/etc/koha/sites/{{ pillar['kohaname'] }}/zebra-biblios.cfg</config>
+    <config>/etc/koha/sites/{{ pillar['kohaname'] }}/zebra-biblios-dom.cfg</config>
     <cql2rpn>/etc/koha/zebradb/pqf.properties</cql2rpn>
-
+    <xi:include href="/etc/koha/normarc-retrieval-info-bib-dom.xml"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:fallback>
     <retrievalinfo>
        <retrieval syntax="normarc" name="F"/>
        <retrieval syntax="normarc" name="B"/>
@@ -77,6 +79,8 @@
          </backend>
        </retrieval>
     </retrievalinfo>
+  </xi:fallback>
+  </xi:include>
 
     <!-- The stuff below is used to enable SRU. It's currently disabled
          until we come up with a good way to make it get magically set up by
@@ -97,8 +101,8 @@
 </server>
 <serverinfo id="biblioserver">
         <ccl2rpn>/etc/koha/zebradb/ccl.properties</ccl2rpn>
-        <user>kohauser</user>
-        <password>QrsygfPSRm7OFDhu</password>
+        <user>{{ pillar['zebrauser'] }}</user>
+        <password>{{ pillar['zebrapass'] }}</password>
 </serverinfo>
 
 <!-- AUTHORITY RECORDS -->
@@ -172,8 +176,8 @@
 </server>
 <serverinfo id="authorityserver">
     <ccl2rpn>/etc/koha/zebradb/ccl.properties</ccl2rpn>
-    <user>kohauser</user>
-    <password>QrsygfPSRm7OFDhu</password>
+    <user>{{ pillar['zebrauser'] }}</user>
+    <password>{{ pillar['zebrapass'] }}</password>
 </serverinfo>
 
 <!-- PUBLICSERVER'S BIBLIOGRAPHIC RECORDS -->
@@ -181,10 +185,12 @@
 
 <server id="publicserver"  listenref="publicserver">
     <directory>/var/lib/koha/{{ pillar['kohaname'] }}/biblios</directory>
-    <config>/etc/koha/sites/{{ pillar['kohaname'] }}/zebra-biblios.cfg</config>
+    <config>/etc/koha/sites/{{ pillar['kohaname'] }}/zebra-biblios-dom.cfg</config>
     <cql2rpn>/etc/koha/zebradb/pqf.properties</cql2rpn>
-
-    <retrievalinfo>
+    <xi:include href="/etc/koha/normarc-retrieval-info-bib-dom.xml"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:fallback>
+  <retrievalinfo>
        <retrieval syntax="normarc" name="F"/>
        <retrieval syntax="normarc" name="B"/>
        <retrieval syntax="xml" name="F"/>
@@ -232,6 +238,8 @@
          </backend>
        </retrieval>
     </retrievalinfo>
+  </xi:fallback>
+  </xi:include>
 
     <xi:include href="__KOHA_CONF_DIR__/zebradb/explain-biblios.xml"
                 xmlns:xi="http://www.w3.org/2001/XInclude">
@@ -285,7 +293,7 @@
  <useldapserver>0</useldapserver><!-- see C4::Auth_with_ldap for extra configs you must add if you want to turn this on -->
  <memcached_servers></memcached_servers>
  <memcached_namespace></memcached_namespace>
- <zebra_bib_index_mode>grs1</zebra_bib_index_mode>
+ <zebra_bib_index_mode>dom</zebra_bib_index_mode>
  <zebra_auth_index_mode>dom</zebra_auth_index_mode>
  <queryparser_config>/etc/koha/searchengine/queryparser.yaml</queryparser_config>
 </config>
