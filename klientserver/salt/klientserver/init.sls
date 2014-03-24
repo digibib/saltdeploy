@@ -88,6 +88,7 @@ isc-dhcp-server:
     - running
     - watch:
       - file: /etc/dhcp/dhcpd.conf
+      - file: /etc/default/isc-dhcp-server
     - require:
       - file: /etc/default/isc-dhcp-server
 
