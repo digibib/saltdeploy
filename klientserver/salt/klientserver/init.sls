@@ -48,6 +48,7 @@ installpkgs:
 
 /etc/dhcp/dhcpd.conf:
   file.managed:
+    - template: jinja
     - source: {{ pillar['saltfiles'] }}/dhcpd.conf
 
 /etc/exports:
