@@ -44,11 +44,11 @@ installpkgs:
 
 /etc/default/isc-dhcp-server:
   file.managed:
+    - template: jinja
     - source: {{ pillar['saltfiles'] }}/isc-dhcp-server
 
 /etc/dhcp/dhcpd.conf:
   file.managed:
-    - template: jinja
     - source: {{ pillar['saltfiles'] }}/dhcpd.conf
 
 /etc/exports:
