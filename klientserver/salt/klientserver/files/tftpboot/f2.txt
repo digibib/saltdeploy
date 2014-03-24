@@ -1,0 +1,29 @@
+                      -+ Prompt options +-
+
+These are standard options to load the setup system :
+
+ scsi-vga  - For SCSI and SMP support in standard VGA video mode.
+
+
+
+You can also pass several kernel options at this prompt.
+
+disable dynamic ticks:
+ nohz=off
+ 
+disable functionality:
+ nolapic, noapic, noresume, nosmp
+  
+plug'n play options:
+ pnpacpi=off
+ pnpbios=on | off | curr | res | no-curr | no-res
+    
+pci bus options:
+ pci=option[,option...]
+   off, bios, nobios, nomsi, noacpi, usepirqmask
+       
+acpi options:
+ acpi=force | off | ht | strict | noirq
+        
+high precision timer use:
+ hpet=disable | force

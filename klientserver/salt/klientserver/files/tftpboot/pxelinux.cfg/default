@@ -1,0 +1,11 @@
+default mycel
+prompt 1
+timeout 100
+menu title Deichmans publikumsklienter
+display message.txt
+F1 message.txt
+F2 f2.txt
+
+LABEL mycel
+KERNEL /boot/mounts/mycelimage/casper/vmlinuz
+APPEND initrd=/boot/mounts/mycelimage/casper/initrd.gz boot=casper netboot=nfs nfsroot=192.168.0.1:/tftpboot/boot/mounts/mycelimage splash quiet noacpi pci=noacpi acpi=force nomodeset snd-hda-intel.id=SB,HDMI snd-hda-intel.index=0,1 -
