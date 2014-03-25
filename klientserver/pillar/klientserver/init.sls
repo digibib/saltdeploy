@@ -1,3 +1,3 @@
 saltfiles: salt://klientserver/files
-httpfiles: http://melville10/salt/klientserver
+filerepo: http://melville10/saltfiles/klientserver
 dhcp-interface: eth1
