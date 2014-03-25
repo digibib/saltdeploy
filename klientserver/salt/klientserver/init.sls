@@ -60,7 +60,7 @@ installpkgs:
 /usr/local/bin/clientserver.sh:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/clientserver.sh
-    - file_mode: 700
+    - mode: 750
 
 ##########
 # TFTPBOOT FOLDER STRUCTURE
