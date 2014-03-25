@@ -87,7 +87,7 @@ mycelimage:
   file.managed:
     - name: /tftpboot/boot/newimages/mycelimage-newest.iso
     - source: {{ pillar['filerepo'] }}/newimages/mycelimage-newest.iso
-    - source_hash: md5={{ pillar['filerepo'] }}/newimages/mycelimage-newest.md5
+    - source_hash: {{ pillar['filerepo'] }}/newimages/mycelimage-newest.md5
 
 # mount:
 #   cmd.run:
