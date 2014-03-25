@@ -86,16 +86,16 @@ mkdirs:
 mycelimage:
   file.managed:
     - name: /tftpboot/boot/newimages/mycelimage-newest.iso
-    - source: {{ pillar['saltfiles'] }}/mycelimage-newest.iso
-    - source_hash: md5={{ pillar['saltfiles'] }}/mycelimage-newest.md5
+    - source: {{ pillar['httpfiles'] }}/newimages/mycelimage-newest.iso
+    - source_hash: md5={{ pillar['httpfiles'] }}/newimages/mycelimage-newest.md5
 
-mount:
-  cmd.run:
-    - name: mount -o loop,ro,remount /tftpboot/boot/newimages/mycelimage-newest.iso /tftpboot/boot/mounts/mycelimage
-    - require:
-      - cmd: mkdirs
-      - file: mycelimage
-      - service: nfs-kernel-server
+# mount:
+#   cmd.run:
+#     - name: mount -o loop,ro,remount /tftpboot/boot/newimages/mycelimage-newest.iso /tftpboot/boot/mounts/mycelimage
+#     - require:
+#       - cmd: mkdirs
+#       - file: mycelimage
+#       - service: nfs-kernel-server
 
 ##########
 # SERVICES
@@ -121,7 +121,12 @@ isc-dhcp-server:
 nfs-kernel-server:
   service:
     - running
-    - watch: 
-      - cmd: mount
     - require:
       - file: /etc/exports
+
+remount:
+  cmd.run:
+    - name: /usr/local/bin/clientserver.sh restart
+    - watch: 
+      - service: nfs-kernel-server
+      - file: mycelimage
