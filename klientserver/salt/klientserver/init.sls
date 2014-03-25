@@ -14,6 +14,8 @@ installpkgs:
       - subversion
       - syslinux
       - tftpd-hpa
+      - iptables
+      - bash-completion
       - curl
       - screen
       - openssh-server
@@ -71,6 +73,30 @@ installpkgs:
     - source: {{ pillar['saltfiles'] }}/tftpboot
     - include_empty: True
 
+
+##########
+# IMAGES
+##########
+
+# make sure dirs exist
+mkdirs:
+  cmd.run:
+  - name: mkdir -p /tftpboot/boot/{newimages/mycelimage,mounts/mycelimage}
+
+mycelimage:
+  file.managed:
+    - name: /tftpboot/boot/newimages/mycelimage-newest.iso
+    - source: {{ pillar['saltfiles'] }}/mycelimage-newest.iso
+    - source_hash: md5={{ pillar['saltfiles'] }}/mycelimage-newest.md5
+
+mount:
+  cmd.run:
+    - name: mount -o loop,ro,remount /tftpboot/boot/newimages/mycelimage-newest.iso /tftpboot/boot/mounts/mycelimage
+    - require:
+      - cmd: mkdirs
+      - file: mycelimage
+      - service: nfs-kernel-server
+
 ##########
 # SERVICES
 ##########
@@ -96,15 +122,6 @@ nfs-kernel-server:
   service:
     - running
     - watch: 
+      - cmd: mount
+    - require:
       - file: /etc/exports
-
-##########
-# IMAGES
-##########
-
-# mount:
-#   cmd.run:
-#     - name: mount -o loop,ro /tftpboot/boot/newimages/mycelimage-newest.iso /tftpboot/boot/mounts/mycelimage
-#     - require: 
-#       - file: /tftpboot
-#       - service: nfs-kernel-server
