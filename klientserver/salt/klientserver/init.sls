@@ -124,6 +124,14 @@ nfs-kernel-server:
     - require:
       - file: /etc/exports
 
+tftpd-hpa:
+  service:
+    - running
+    - watch:
+      - file: /etc/default/tftpd-hpa
+    - require:
+      - file: /tftpboot
+
 remount:
   cmd.run:
     - name: /usr/local/bin/clientserver.sh restart
