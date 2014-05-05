@@ -10,7 +10,7 @@ include:
 /tmp/all_eximport.xml:
   file.managed:
     - source: {{ pillar['filerepo'] }}/all_eximport.xml
-    - source_hash: md5=ec02b0fd8299d9302fc4b5d0ac76575e  
+    - source_hash: md5=2a0033bb9328f3761e12c1c705883288
 
 import_all:
   cmd.run:
