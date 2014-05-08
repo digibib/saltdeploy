@@ -923,8 +923,29 @@ class BugServer(object):
     def get_cookie_string(self):
         if self.cookiestring == '':
             if self.bz_user and self.bz_password:
+                # get a login request cookie
                 connection = get_connection(self.host, self.https)
-                connection.request("POST", self.path + "/index.cgi", urllib.urlencode({'Bugzilla_login':self.bz_user,'Bugzilla_password':self.bz_password}))
+                connection.request("GET", self.path + "/index.cgi")
+                res = connection.getresponse()
+                headers = dict({})
+                login_request_cookie = res.getheader('set-cookie')
+                headers['Cookie'] = login_request_cookie
+                connection.close()
+
+                # request again with the login request cookie, which in turns
+                # gets a login token set in the     response
+                connection = get_connection(self.host, self.https)
+                connection.request("GET", self.path + "/index.cgi", '', headers)
+                res = connection.getresponse()
+                match = re.search(r'name="Bugzilla_login_token"[\s]+value="([^"]*)', res.read())
+                login_token =  match.group(1)
+                headers = dict({})
+                headers['Cookie'] = login_request_cookie
+                headers['User-Agent'] = "git-bz"
+
+                # now that we have both token and login request cookie
+                # authentication should now work
+                connection.request("POST", self.path + "/index.cgi", urllib.urlencode({'Bugzilla_login':self.bz_user,'Bugzilla_password':self.bz_password,'Bugzilla_login_token':login_token}), headers)
                 res = connection.getresponse()
                 self.cookiestring = res.getheader('set-cookie')
                 connection.close()
