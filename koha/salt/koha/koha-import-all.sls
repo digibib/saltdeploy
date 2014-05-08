@@ -10,11 +10,11 @@ include:
 /tmp/all_eximport.xml:
   file.managed:
     - source: {{ pillar['filerepo'] }}/all_eximport.xml
-    - source_hash: md5=2a0033bb9328f3761e12c1c705883288
+    - source_hash: md5=1924ba3252731d0a4271ca0c2d4162de
 
 import_all:
   cmd.run:
-    - name: KOHA_CONF=/etc/koha/sites/{{ pillar['kohaname'] }}/koha-conf.xml perl -I /usr/share/koha/lib/ /usr/share/koha/bin/migration_tools/bulkmarcimport.pl -m marcxml -file /tmp/all_eximport.xml
+    - name: KOHA_CONF=/etc/koha/sites/{{ pillar['kohaname'] }}/koha-conf.xml perl -I /usr/share/koha/lib/ /usr/share/koha/bin/migration_tools/bulkmarcimport.pl -m marcxml -d -file /tmp/all_eximport.xml -g 001
     - user: {{ pillar['kohaname'] }}-koha
     - require:
       - file: /tmp/all_eximport.xml
