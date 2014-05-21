@@ -9,3 +9,7 @@ F2 f2.txt
 LABEL mycel
 KERNEL /boot/mounts/mycelimage/casper/vmlinuz
 APPEND initrd=/boot/mounts/mycelimage/casper/initrd.gz boot=casper netboot=nfs nfsroot=192.168.0.1:/tftpboot/boot/mounts/mycelimage splash quiet noacpi pci=noacpi acpi=force nomodeset snd-hda-intel.id=SB,HDMI snd-hda-intel.index=0,1 -
+
+LABEL searchstation
+KERNEL /boot/mounts/searchstation/casper/vmlinuz
+APPEND initrd=/boot/mounts/searchstation/casper/initrd.gz boot=casper netboot=nfs nfsroot=192.168.0.1:/tftpboot/boot/mounts/searchstation splash quiet noacpi pci=noacpi acpi=force nomodeset snd-hda-intel.id=SB,HDMI snd-hda-intel.index=0,1 -
