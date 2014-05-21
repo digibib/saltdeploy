@@ -81,13 +81,19 @@ installpkgs:
 # make sure dirs exist
 mkdirs:
   cmd.run:
-  - name: mkdir -p /tftpboot/boot/{newimages/mycelimage,mounts/mycelimage}
+  - name: mkdir -p /tftpboot/boot/{newimages/{mycelimage,searchstation},mounts/{mycelimage,searchstation}}
 
 mycelimage:
   file.managed:
     - name: /tftpboot/boot/newimages/mycelimage-newest.iso
     - source: {{ pillar['filerepo'] }}/newimages/mycelimage-newest.iso
     - source_hash: {{ pillar['filerepo'] }}/newimages/mycelimage-newest.md5
+
+searchimage:
+  file.managed:
+    - name: /tftpboot/boot/newimages/searchstation-newest.iso
+    - source: {{ pillar['filerepo'] }}/newimages/searchstation-newest.iso
+    - source_hash: {{ pillar['filerepo'] }}/newimages/searchstation-newest.md5
 
 # mount:
 #   cmd.run:

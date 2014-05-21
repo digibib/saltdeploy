@@ -10,3 +10,4 @@
 #
 
 /tftpboot/boot/mounts/mycelimage/     192.168.0.1/24(ro,async,no_root_squash,no_subtree_check)
+/tftpboot/boot/mounts/searchstation/  192.168.0.1/24(ro,async,no_root_squash,no_subtree_check)
