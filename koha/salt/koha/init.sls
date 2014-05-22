@@ -63,6 +63,16 @@ sudo a2enmod rewrite:
     - require:
       - pkg: installpkgs
 
+sudo a2dismod mpm_event:
+  cmd.run:
+    - require:
+      - pkg: installpkgs
+
+sudo a2enmod mpm_itk:
+  cmd.run:
+    - require:
+      - pkg: installpkgs
+
 sudo a2enmod cgi:
   cmd.run:
     - require:
