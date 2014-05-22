@@ -73,6 +73,11 @@ sudo a2dismod mpm_prefork:
     - require:
       - pkg: installpkgs
 
+sudo a2dismod mpm_itk:
+  cmd.run:
+    - require:
+      - pkg: installpkgs
+
 sudo a2enmod mpm_itk:
   cmd.run:
     - require:
