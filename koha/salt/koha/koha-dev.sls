@@ -7,19 +7,19 @@ installpkgs:
     - pkgs:
       - tig
 
-masterkohabranch:
-  cmd.run:
-    - cwd: /usr/local/src/kohaclone
-    - name: git checkout master
-
 # koha dev mirror
 http://repo.or.cz/r/koha.git:
   git.latest:
     - rev: master
     - target: /usr/local/src/kohaclone
     - user: {{ pillar['kohaname'] }}-koha
+
+masterkohabranch:
+  cmd.run:
+    - cwd: /usr/local/src/kohaclone
+    - name: git checkout master
     - require:
-      - cmd: masterkohabranch
+      - git: http://repo.or.cz/r/koha.git
 
 /etc/apache2/sites-available/{{ pillar['kohaname'] }}-dev.conf:
   file.managed:
