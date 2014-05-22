@@ -7,12 +7,21 @@ installpkgs:
     - pkgs:
       - tig
 
+/usr/local/src/kohaclone:
+  file.directory:
+    - user: {{ pillar['kohaname'] }}-koha
+    - group: {{ pillar['kohaname'] }}-koha
+    - mode: 755
+    - makedirs: True
+
 # koha dev mirror
 http://repo.or.cz/r/koha.git:
   git.latest:
     - rev: master
     - target: /usr/local/src/kohaclone
     - user: {{ pillar['kohaname'] }}-koha
+    - require:
+      - file: /usr/local/src/kohaclone
 
 masterkohabranch:
   cmd.run:
