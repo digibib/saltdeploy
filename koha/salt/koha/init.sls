@@ -19,7 +19,6 @@ installpkgs:
       - curl
       - imagemagick
       - screen
-      - vino
       - libav-tools
       - sqlite3
       - libsqlite3-dev
@@ -30,10 +29,10 @@ installpkgs:
       - libcrypt-ssleay-perl
       - openssh-server
       - lynx
-      - koha-common
+      - apache2
       - mysql-client
       - mysql-server
-      - apache2
+      - koha-common
     - skip_verify: True
     - require:
       - pkgrepo: koharepo
