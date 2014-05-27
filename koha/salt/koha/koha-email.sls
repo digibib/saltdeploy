@@ -1,10 +1,10 @@
 ########
-# KOHA EMAIL STATE
+# KOHA FAKEEMAIL STATE
 ########
 
 /etc/nullmailer/remotes:
   file.managed:
-    - source: {{ pillar['saltfiles'] }}/smtp.conf
+    - source: {{ pillar['saltfiles'] }}/smtp-fake.conf
     - template: jinja
 
 # Write unbuffered smtpd debugging to file

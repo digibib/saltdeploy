@@ -11,6 +11,9 @@ livestatus_host: 127.0.0.1
 livestatus_port: 6558
 bz_user: dummy@bugzilla.com
 bz_pass: pass
+maildomain: example.com
+mailfrom: noreply@example.com
+mailtype: smtp
 
 marc2rdf:
   user:            admin 
