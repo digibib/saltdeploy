@@ -86,7 +86,7 @@ install_virtuoso:
     - source: {{ pillar['saltfiles'] }}/virtuoso/virtuoso.conf
     - template: jinja
 
-virtuoso:
+virtuoso7:
   service.running:
     - enable: True
     - require:
