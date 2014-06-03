@@ -27,6 +27,11 @@ virtuoso-user:
     - recurse:
       - user
 
+/usr/local/src/virtuoso7:
+  file.directory:
+    - user: {{ pillar['kohaname'] }}-virtuoso
+    - makedirs: True
+
 /usr/local/src/virtuoso7.tar.gz:
   file.managed:
     - source: {{ pillar['filerepo'] }}/virtuoso7.tar.gz
@@ -36,6 +41,7 @@ unpack_virtuoso:
   cmd.run:
     - cwd: /usr/local/src/
     - user: {{ pillar['kohaname'] }}-virtuoso
+    - unless: test -f /usr/local/src/virtuoso7/INSTALL
     - name: tar zxvf virtuoso7.tar.gz -C /usr/local/src/virtuoso7
     - require:
       - file: /usr/local/src/virtuoso7
