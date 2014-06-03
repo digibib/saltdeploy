@@ -68,12 +68,12 @@ sudo a2dismod mpm_event:
     - require:
       - pkg: installpkgs
 
-sudo a2dismod mpm_prefork:
+sudo a2dismod mpm_itk:
   cmd.run:
     - require:
       - pkg: installpkgs
 
-sudo a2dismod mpm_itk:
+sudo a2dismod mpm_prefork:
   cmd.run:
     - require:
       - pkg: installpkgs

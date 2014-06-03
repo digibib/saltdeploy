@@ -16,21 +16,35 @@ virtuosopkgs:
       - bison
       - libtool
 
+virtuoso-user:
+  user.present:
+    - name: {{ pillar['kohaname'] }}-virtuoso
+
+{{ pillar['virtuoso']['installdir'] }}:
+  file.directory:
+    - user: {{ pillar['kohaname'] }}-virtuoso
+    - makedirs: True
+    - recurse:
+      - user
+
 /usr/local/src/virtuoso7.tar.gz:
   file.managed:
-  - source: {{ pillar['filerepo'] }}/virtuoso7.tar.gz
-  - source_hash: md5=fec308b5583ab956e5b96fe7e5a0e017
+    - source: {{ pillar['filerepo'] }}/virtuoso7.tar.gz
+    - source_hash: md5=fec308b5583ab956e5b96fe7e5a0e017
 
 unpack_virtuoso:
   cmd.run:
-    - name: tar zxvf virtuoso7.tar.gz -C /usr/local/src/virtuoso7
     - cwd: /usr/local/src/
+    - user: {{ pillar['kohaname'] }}-virtuoso
+    - name: tar zxvf virtuoso7.tar.gz -C /usr/local/src/virtuoso7
     - require:
+      - file: /usr/local/src/virtuoso7
       - file: /usr/local/src/virtuoso7.tar.gz
 
 autogen_virtuoso:
   cmd.run:
     - cwd: /usr/local/src/virtuoso7
+    - user: {{ pillar['kohaname'] }}-virtuoso
     - name: CFLAGS="-O2 -m64" ./autogen.sh
     - require:
       - cmd: unpack_virtuoso
@@ -38,19 +52,23 @@ autogen_virtuoso:
 build_virtuoso:
   cmd.run:
     - cwd: /usr/local/src/virtuoso7
+    - user: {{ pillar['kohaname'] }}-virtuoso
     - name: CFLAGS="-O2 -m64" ./configure --prefix={{ pillar['virtuoso']['installdir'] }} --disable-dbpedia-vad --disable-demo-vad --disable-fct-vad --disable-isparql-vad --disable-ods-vad --disable-rdfmappers-vad --disable-rdb2rdf-vad --disable-sparqldemo-vad --disable-syncml-vad --disable-tutorial-vad --disable-bpel-vad --with-port=1111
     - require:
       - cmd: autogen_virtuoso
+      - file: {{ pillar['virtuoso']['installdir'] }}
 
 install_virtuoso:
   cmd.run:
     - cwd: /usr/local/src/virtuoso7
+    - user: {{ pillar['kohaname'] }}-virtuoso
     - name: make install
     - require:
       - cmd: build_virtuoso
 
 /data/virtuoso7/database/virtuoso.ini:
   file.managed:
+    - user: {{ pillar['kohaname'] }}-virtuoso
     - source: {{ pillar['saltfiles'] }}/virtuoso/virtuoso.ini.production
     - template: jinja
 
