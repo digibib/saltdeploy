@@ -14,6 +14,7 @@ bz_pass: pass
 maildomain: example.com
 mailfrom: noreply@example.com
 mailtype: smtp
+sms_url: http://localhost/smsapi
 
 marc2rdf:
   user:            admin 
@@ -25,3 +26,7 @@ marc2rdf:
   default_graph:   http://example.com/graph
   default_prefix:  http://example.com/
   session_key:     justchangemewillyou
+
+virtuoso:
+  installdir: /data/virtuoso7
+  

@@ -11,7 +11,7 @@ marc2rdfpkgs:
       - libxslt1-dev 
       - zlib1g-dev
       - bundler
-      - virtuoso-minimal
+#      - virtuoso-minimal
 
 marc2rdf-user:
   user.present:

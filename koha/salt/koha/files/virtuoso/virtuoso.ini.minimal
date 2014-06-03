@@ -21,11 +21,11 @@
 ;  Database setup
 ;
 [Database]
-DatabaseFile       = /data/virtuoso/virtuoso.db
-ErrorLogFile       = /data/virtuoso/virtuoso.log
-LockFile           = /data/virtuoso/virtuoso.lck
-TransactionFile    = /data/virtuoso/virtuoso.trx
-xa_persistent_file = /data/virtuoso/virtuoso.pxa
+DatabaseFile       = {{ pillar['virtuoso']['installdir'] }}/database/virtuoso.db
+ErrorLogFile       = {{ pillar['virtuoso']['installdir'] }}/database/virtuoso.log
+LockFile           = {{ pillar['virtuoso']['installdir'] }}/database/virtuoso.lck
+TransactionFile    = {{ pillar['virtuoso']['installdir'] }}/database/virtuoso.trx
+xa_persistent_file = {{ pillar['virtuoso']['installdir'] }}/database/virtuoso.pxa
 ErrorLogLevel      = 7
 FileExtend         = 100
 MaxCheckpointRemap = 1000
@@ -33,8 +33,8 @@ Striping           = 0
 TempStorage        = TempDatabase
 
 [TempDatabase]
-DatabaseFile       = /data/virtuoso/virtuoso-temp.db
-TransactionFile    = /data/virtuoso/virtuoso-temp.trx
+DatabaseFile       = {{ pillar['virtuoso']['installdir'] }}/database/virtuoso-temp.db
+TransactionFile    = {{ pillar['virtuoso']['installdir'] }}/database/virtuoso-temp.trx
 MaxCheckpointRemap = 1000
 Striping           = 0
 
@@ -60,19 +60,26 @@ MaxStaticCursorRows      = 5000
 CheckpointAuditTrail     = 0
 AllowOSCalls             = 0
 SchedulerInterval        = 5
-DirsAllowed              = ., /usr/share/virtuoso-opensource-6.1/vad
+DirsAllowed              = ., {{ pillar['virtuoso']['installdir'] }}/share/virtuoso/vad
 ThreadCleanupInterval    = 0
 ThreadThreshold          = 10
 ResourcesCleanupInterval = 0
 FreeTextBatchSize        = 1000
 SingleCPU                = 0
-VADInstallDir            = /usr/share/virtuoso-opensource-6.1/vad/
+VADInstallDir            = {{ pillar['virtuoso']['installdir'] }}/share/virtuoso/vad/
 PrefixResultNames        = 0
 RdfFreeTextRulesSize     = 100
 MaxMemPoolSize           = 200000
 PrefixResultNames        = 0
 MacSpotlight             = 0
 IndexTreeMaps            = 64
+MaxQueryMem              = 2G    ; memory allocated to query processor
+VectorSize               = 1000    ; initial parallel query vector (array of query operations) size
+MaxVectorSize            = 100000 ; query vector size threshold.
+AdjustVectorSize         = 0
+ThreadsPerQuery          = 4
+AsyncQueueMaxThreads     = 10
+
 ;;
 ;; When running with large data sets, one should configure the Virtuoso
 ;; process to use between 2/3 to 3/5 of free system memory and to stripe
@@ -108,7 +115,7 @@ MaxDirtyBuffers          = 500
 
 [HTTPServer]
 ServerPort                  = 8890
-ServerRoot                  = /var/lib/virtuoso-opensource-6.1/vsp
+ServerRoot                  = {{ pillar['virtuoso']['installdir'] }}/var/lib/virtuoso/vsp
 ServerThreads               = 2
 DavRoot                     = DAV
 EnabledDavVSP               = 0
@@ -118,11 +125,15 @@ DefaultMailServer           = localhost:25
 MaxKeepAlives               = 10
 KeepAliveTimeout            = 5
 MaxCachedProxyConnections   = 10
+MaxClientConnections        = 10
 ProxyConnectionCacheTimeout = 15
 HTTPThreadSize              = 10000
 HttpPrintWarningsInOutput   = 0
 Charset                     = UTF-8
-;HTTPLogFile            = logs/http.log
+;HTTPLogFile                = logs/http.log
+MaintenancePage             = atomic.html
+EnabledGzipContent          = 1
+
 
 [AutoRepair]
 BadParentLinks = 0
@@ -193,7 +204,7 @@ Segment2 = 100M, db-seg2-1.db
 ;...
 
 [Zero Config]
-;ServerName = virtuoso
+ServerName = virtuoso
 ;ServerDSN      = ZDSN
 ;SSLServerName      =
 ;SSLServerDSN     =
@@ -222,4 +233,4 @@ DeferInferenceRulesInit    = 0  ; controls inference rules loading
 ;PingService          = http://rpc.pingthesemanticweb.com/
 
 [Plugins]
-LoadPath = /usr/lib/virtuoso-opensource-6.1/hosting
+; LoadPath = /usr/lib/virtuoso-opensource-6.1/hosting
