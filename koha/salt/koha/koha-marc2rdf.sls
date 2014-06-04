@@ -15,7 +15,7 @@ marc2rdfpkgs:
 
 marc2rdf-user:
   user.present:
-    - name: {{ pillar['kohaname'] }}-marc2rdf
+    - name: {{ pillar['koha']['instance'] }}-marc2rdf
 
 ########
 # UPSTART FILES
@@ -26,7 +26,7 @@ marc2rdf-user:
     - source: {{ pillar['saltfiles'] }}/marc2rdf/marc2rdf.conf
     - template: jinja
     - context:
-      User: {{ pillar['kohaname'] }}-marc2rdf
+      User: {{ pillar['koha']['instance'] }}-marc2rdf
     - require:
       - file: /etc/init/marc2rdf-app.conf
       - file: /etc/init/marc2rdf-scheduler.conf
@@ -38,7 +38,7 @@ marc2rdf-user:
     - template: jinja
     - context:
       Port: 3000
-      User: {{ pillar['kohaname'] }}-marc2rdf
+      User: {{ pillar['koha']['instance'] }}-marc2rdf
 
 /etc/init/marc2rdf-scheduler.conf:
   file.managed:
@@ -46,7 +46,7 @@ marc2rdf-user:
     - template: jinja
     - context:
       Port: 3100
-      User: {{ pillar['kohaname'] }}-marc2rdf
+      User: {{ pillar['koha']['instance'] }}-marc2rdf
 
 /etc/init/marc2rdf-load_schedules.conf:
   file.managed:
@@ -54,24 +54,25 @@ marc2rdf-user:
     - template: jinja
     - context:
       Port: 3200
-      User: {{ pillar['kohaname'] }}-marc2rdf
+      User: {{ pillar['koha']['instance'] }}-marc2rdf
 
 ########
 # VIRTUOSO
+# NOW HANDLED IN SEPARATE STATE
 ########
 
-/etc/init/virtuoso.conf:
-  file.managed:
-    - source: {{ pillar['saltfiles'] }}/virtuoso/virtuoso.conf
-    - template: jinja
-    - context:
-      User: {{ pillar['kohaname'] }}-marc2rdf
+# /etc/init/virtuoso.conf:
+#   file.managed:
+#     - source: {{ pillar['saltfiles'] }}/virtuoso/virtuoso.conf
+#     - template: jinja
+#     - context:
+#       User: {{ pillar['koha']['instance'] }}-marc2rdf
 
-/data/virtuoso/virtuoso.ini:
-  file.managed:
-    - source: {{ pillar['saltfiles'] }}/virtuoso/virtuoso.ini.minimal
-    - require: 
-      - pkg: marc2rdfpkgs
+# /data/virtuoso/virtuoso.ini:
+#   file.managed:
+#     - source: {{ pillar['saltfiles'] }}/virtuoso/virtuoso.ini.minimal
+#     - require: 
+#       - pkg: marc2rdfpkgs
 
 ########
 # MARC2RDF
@@ -117,7 +118,7 @@ bundle_marc2rdf:
 
 /usr/local/src/marc2rdf:
   file.directory:
-    - user: {{ pillar['kohaname'] }}-marc2rdf
+    - user: {{ pillar['koha']['instance'] }}-marc2rdf
     - recurse:
       - user
 
@@ -137,9 +138,9 @@ marc2rdf:
     - watch:
       - git: https://github.com/digibib/marc2rdf
 
-virtuoso:
-  service.running:
-    - enable: True
-    - require:
-      - file: /data/virtuoso/virtuoso.ini
-      - file: /etc/init/virtuoso.conf
+# virtuoso:
+#   service.running:
+#     - enable: True
+#     - require:
+#       - file: /data/virtuoso/virtuoso.ini
+#       - file: /etc/init/virtuoso.conf

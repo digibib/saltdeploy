@@ -1,0 +1,25 @@
+{
+  "ServePort": {{ pillar['armillaria']['port'] }},
+  "RDFStore": {
+    "Endpoint": "{{ pillar['virtuoso']['sparul_endpoint'] }}",
+    "Username": "{{ pillar['virtuoso']['sparul_user'] }}",
+    "Password": "{{ pillar['virtuoso']['sparul_pass'] }}"
+  },
+  "ExternalDataSources": [
+    {
+      "Name": "dewey.info",
+      "Endpoint": "http://dewey.info/sparql.php",
+      "Type": "SPARQL"
+    },
+    {
+      "Name": "data.deichman.no",
+      "Endpoint": "http://data.deichman.no/sparql",
+      "Type": "SPARQL"
+    },
+    {
+      "Name": "Z39.proxy",
+      "Endpoint": "http://datatest.deichman.no:8080",
+      "Type": "REST"
+    }
+  ]
+}

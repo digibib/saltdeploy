@@ -2,18 +2,18 @@
 # KOHA SIP2 RESTART
 ########
 
-/etc/koha/sites/{{ pillar['kohaname'] }}/SIPconfig.xml:
+/etc/koha/sites/{{ pillar['koha']['instance'] }}/SIPconfig.xml:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/SIP2/SIPconfig.xml
-    - user: {{ pillar['kohaname'] }}-koha
+    - user: {{ pillar['koha']['instance'] }}-koha
     - mode: 640
     - template: jinja
     - context:
-      sip_workers: {{ pillar['sip_workers'] }}
-      sip_host: {{ pillar['sip_host'] }}
-      sip_port: {{ pillar['sip_port'] }}
-      autouser1: {{ pillar['autouser1'] }}
-      autopass1: {{ pillar['autopass1'] }}
+      sip_workers: {{ pillar['sip']['workers'] }}
+      sip_host: {{ pillar['sip']['host'] }}
+      sip_port: {{ pillar['sip']['port'] }}
+      autouser1: {{ pillar['sip']['autouser1'] }}
+      autopass1: {{ pillar['sip']['autopass1'] }}
 
 # /etc/sysctl.conf:
 #   file.append:
@@ -21,11 +21,11 @@
 #       - 'local6.*    -/var/log/sip2.log'
 stop_sip:
   cmd.run:
-    - name: koha-stop-sip {{ pillar['kohaname'] }}
+    - name: koha-stop-sip {{ pillar['koha']['instance'] }}
 
 restart_sip:
   cmd.run:
-    - name: sleep 3 ; koha-start-sip {{ pillar['kohaname'] }}
+    - name: sleep 3 ; koha-start-sip {{ pillar['koha']['instance'] }}
     - require:
-      - file: /etc/koha/sites/{{ pillar['kohaname'] }}/SIPconfig.xml
+      - file: /etc/koha/sites/{{ pillar['koha']['instance'] }}/SIPconfig.xml
       - cmd: stop_sip

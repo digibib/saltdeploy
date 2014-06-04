@@ -39,14 +39,14 @@ pbuilder_update:
 #   git.latest:
 #     - rev: master
 #     - target: /usr/local/src/kohaclone
-#     - user: {{ pillar['kohaname'] }}-koha
+#     - user: {{ pillar['koha']['instance'] }}-koha
 
 # add deichman as origin branch
 # add_deichman_origin:
 #   cmd.run:
 #     - name: git remote add origindeichman https://github.com/digibib/koha-work
 #     - cwd: /usr/local/src/kohaclone
-#     - user: {{ pillar['kohaname'] }}-koha
+#     - user: {{ pillar['koha']['instance'] }}-koha
 #     - require:
 #       - git: http://repo.or.cz/r/koha.git
 
@@ -55,13 +55,13 @@ clear_uncommitted:
   cmd.run:
     - name: git stash
     - cwd: /usr/local/src/kohaclone
-    - user: {{ pillar['kohaname'] }}-koha
+    - user: {{ pillar['koha']['instance'] }}-koha
 
 checkout_build_branch:
   cmd.run:
     - name: git checkout origindeichman/deichman-build
     - cwd: /usr/local/src/kohaclone
-    - user: {{ pillar['kohaname'] }}-koha
+    - user: {{ pillar['koha']['instance'] }}-koha
     - require:
       - cmd: clear_uncommitted
 
@@ -69,7 +69,7 @@ gitpull:
   cmd.run:
     - name: git pull origindeichman deichman-build
     - cwd: /usr/local/src/kohaclone
-    - user: {{ pillar['kohaname'] }}-koha
+    - user: {{ pillar['koha']['instance'] }}-koha
     - require:
       - cmd: checkout_build_branch
 
@@ -79,7 +79,7 @@ gitpull:
 #     - rev: origindeichman/deichman-build
 #     - name: https://github.com/digibib/koha-work
 #     - target: /usr/local/src/kohaclone
-#     - user: {{ pillar['kohaname'] }}-koha
+#     - user: {{ pillar['koha']['instance'] }}-koha
 #     - require:
 #       - git: add_deichman_origin
 

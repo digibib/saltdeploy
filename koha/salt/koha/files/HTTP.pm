@@ -10,7 +10,7 @@ use URI::Escape;
 use HTTP::Request::Common qw(POST);
 use base 'SMS::Send::Driver';
 
-our $URL     = 'https://tjenester.oslo.kommune.no/intern/mailsms/SendSms'; # for now, hardcoded url
+our $URL     = "{{ pillar['sms']['url'] }}"; # for now, hardcoded url'
 our $AGENT   = 'SMS-Send-HTTP/' . $VERSION;
 our $METHOD  = 'POST';
 our $TIMEOUT = 3;

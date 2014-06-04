@@ -1,7 +1,7 @@
 <yazgfs>
 
-<listen id="biblioserver" >unix:/var/run/koha/{{ pillar['kohaname'] }}/bibliosocket</listen>
-<listen id="authorityserver" >unix:/var/run/koha/{{ pillar['kohaname'] }}/authoritysocket</listen>
+<listen id="biblioserver" >unix:/var/run/koha/{{ pillar['koha']['instance'] }}/bibliosocket</listen>
+<listen id="authorityserver" >unix:/var/run/koha/{{ pillar['koha']['instance'] }}/authoritysocket</listen>
 
 <!-- Uncomment the following entry if you want to run the public Z39.50 server.
     Also uncomment the <server> and <serverinfo> sections for id 'publicserver'
@@ -17,16 +17,16 @@
 <!--
 <listen id="mergeserver">tcp:@:__MERGE_SERVER_PORT__</listen>
 <server id="mergeserver"  listenref="mergeserver">
-    <directory>/var/lib/koha/{{ pillar['kohaname'] }}/biblios</directory>
-    <config>/etc/koha/sites/{{ pillar['kohaname'] }}/zebra-biblios-dom.cfg</config>
-    <cql2rpn>/var/lib/koha/{{ pillar['kohaname'] }}/pqf.properties</cql2rpn>
+    <directory>/var/lib/koha/{{ pillar['koha']['instance'] }}/biblios</directory>
+    <config>/etc/koha/sites/{{ pillar['koha']['instance'] }}/zebra-biblios-dom.cfg</config>
+    <cql2rpn>/var/lib/koha/{{ pillar['koha']['instance'] }}/pqf.properties</cql2rpn>
 </server>
 -->
 
 <!-- BIBLIOGRAPHIC RECORDS -->
 <server id="biblioserver"  listenref="biblioserver">
-    <directory>/var/lib/koha/{{ pillar['kohaname'] }}/biblios</directory>
-    <config>/etc/koha/sites/{{ pillar['kohaname'] }}/zebra-biblios-dom.cfg</config>
+    <directory>/var/lib/koha/{{ pillar['koha']['instance'] }}/biblios</directory>
+    <config>/etc/koha/sites/{{ pillar['koha']['instance'] }}/zebra-biblios-dom.cfg</config>
     <cql2rpn>/etc/koha/zebradb/pqf.properties</cql2rpn>
     <xi:include href="/etc/koha/normarc-retrieval-info-bib-dom.xml"
   xmlns:xi="http://www.w3.org/2001/XInclude">
@@ -101,14 +101,14 @@
 </server>
 <serverinfo id="biblioserver">
         <ccl2rpn>/etc/koha/zebradb/ccl.properties</ccl2rpn>
-        <user>{{ pillar['zebrauser'] }}</user>
-        <password>{{ pillar['zebrapass'] }}</password>
+        <user>{{ pillar['koha']['zebrauser'] }}</user>
+        <password>{{ pillar['koha']['zebrapass'] }}</password>
 </serverinfo>
 
 <!-- AUTHORITY RECORDS -->
 <server id="authorityserver"  listenref="authorityserver" >
-    <directory>/var/lib/koha/{{ pillar['kohaname'] }}/authorities</directory>
-    <config>/etc/koha/sites/{{ pillar['kohaname'] }}/zebra-authorities-dom.cfg</config>
+    <directory>/var/lib/koha/{{ pillar['koha']['instance'] }}/authorities</directory>
+    <config>/etc/koha/sites/{{ pillar['koha']['instance'] }}/zebra-authorities-dom.cfg</config>
     <cql2rpn>/etc/koha/zebradb/pqf.properties</cql2rpn>
 
     <xi:include href="/etc/koha/normarc-retrieval-info-auth-dom.xml"
@@ -176,16 +176,16 @@
 </server>
 <serverinfo id="authorityserver">
     <ccl2rpn>/etc/koha/zebradb/ccl.properties</ccl2rpn>
-    <user>{{ pillar['zebrauser'] }}</user>
-    <password>{{ pillar['zebrapass'] }}</password>
+    <user>{{ pillar['koha']['zebrauser'] }}</user>
+    <password>{{ pillar['koha']['zebrapass'] }}</password>
 </serverinfo>
 
 <!-- PUBLICSERVER'S BIBLIOGRAPHIC RECORDS -->
 <!-- This can be used to set up a public Z39.50/SRU server.
 
 <server id="publicserver"  listenref="publicserver">
-    <directory>/var/lib/koha/{{ pillar['kohaname'] }}/biblios</directory>
-    <config>/etc/koha/sites/{{ pillar['kohaname'] }}/zebra-biblios-dom.cfg</config>
+    <directory>/var/lib/koha/{{ pillar['koha']['instance'] }}/biblios</directory>
+    <config>/etc/koha/sites/{{ pillar['koha']['instance'] }}/zebra-biblios-dom.cfg</config>
     <cql2rpn>/etc/koha/zebradb/pqf.properties</cql2rpn>
     <xi:include href="/etc/koha/normarc-retrieval-info-bib-dom.xml"
   xmlns:xi="http://www.w3.org/2001/XInclude">
@@ -264,25 +264,25 @@
 <config>
  <template_cache_dir>/tmp</template_cache_dir>
  <db_scheme>mysql</db_scheme>
- <database>koha_{{ pillar['kohaname'] }}</database>
+ <database>koha_{{ pillar['koha']['instance'] }}</database>
  <hostname>localhost</hostname>
  <port>3306</port>
- <user>{{ pillar['adminuser'] }}</user>
- <pass>{{ pillar['adminpass'] }}</pass>
+ <user>{{ pillar['koha']['adminuser'] }}</user>
+ <pass>{{ pillar['koha']['adminpass'] }}</pass>
  <biblioserver>biblios</biblioserver>
  <biblioservershadow>1</biblioservershadow>
  <authorityserver>authorities</authorityserver>
  <authorityservershadow>1</authorityservershadow>
- <pluginsdir>/var/lib/koha/{{ pillar['kohaname'] }}/plugins</pluginsdir>
+ <pluginsdir>/var/lib/koha/{{ pillar['koha']['instance'] }}/plugins</pluginsdir>
  <enable_plugins>1</enable_plugins>
  <intranetdir>/usr/share/koha/intranet/cgi-bin</intranetdir>
  <opacdir>/usr/share/koha/opac/cgi-bin/opac</opacdir>
  <opachtdocs>/usr/share/koha/opac/htdocs/opac-tmpl</opachtdocs>
  <intrahtdocs>/usr/share/koha/intranet/htdocs/intranet-tmpl</intrahtdocs>
  <includes>/usr/share/koha/intranet/htdocs/intranet-tmpl/prog/en/includes/</includes>
- <logdir>/var/log/koha/{{ pillar['kohaname'] }}</logdir>
+ <logdir>/var/log/koha/{{ pillar['koha']['instance'] }}</logdir>
  <docdir>/usr/share/doc/koha-common</docdir>
- <backupdir>/var/spool/koha/{{ pillar['kohaname'] }}</backupdir>
+ <backupdir>/var/spool/koha/{{ pillar['koha']['instance'] }}</backupdir>
  <!-- Enable the two following to allow superlibrarians to download
       database and configuration dumps (respectively) from the Export
       tool -->

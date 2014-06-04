@@ -14,14 +14,14 @@ include:
 
 import_all:
   cmd.run:
-    - name: KOHA_CONF=/etc/koha/sites/{{ pillar['kohaname'] }}/koha-conf.xml perl -I /usr/share/koha/lib/ /usr/share/koha/bin/migration_tools/bulkmarcimport.pl -m marcxml -d -file /tmp/all_eximport.xml -g 001
-    - user: {{ pillar['kohaname'] }}-koha
+    - name: KOHA_CONF=/etc/koha/sites/{{ pillar['koha']['instance'] }}/koha-conf.xml perl -I /usr/share/koha/lib/ /usr/share/koha/bin/migration_tools/bulkmarcimport.pl -m marcxml -d -file /tmp/all_eximport.xml -g 001
+    - user: {{ pillar['koha']['instance'] }}-koha
     - require:
       - file: /tmp/all_eximport.xml
       - cmd: createkohadb
 
 rebuildzebra:
   cmd.run:
-    - name: koha-rebuild-zebra --full --quiet {{ pillar['kohaname'] }}
+    - name: koha-rebuild-zebra --full --quiet {{ pillar['koha']['instance'] }}
     - watch: 
       - cmd: import_all

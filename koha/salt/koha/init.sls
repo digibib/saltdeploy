@@ -50,13 +50,13 @@ installpkgs:
 
 apacheconfig:
   file.managed:
-    - name: /etc/apache2/sites-available/{{ pillar['kohaname'] }}.conf
+    - name: /etc/apache2/sites-available/{{ pillar['koha']['instance'] }}.conf
     - source: {{ pillar['saltfiles'] }}/apache.tmpl
     - template: jinja
     - context:
       OpacPort: 8080
       IntraPort: 8081
-      ServerName: {{ pillar['kohaname'] }}
+      ServerName: {{ pillar['koha']['instance'] }}
 
 sudo a2enmod rewrite:
   cmd.run:
@@ -136,7 +136,7 @@ mysql:
     - source: {{ pillar['saltfiles'] }}/koha-sites.conf
     - template: jinja
     - context:
-      ServerName: {{ pillar['kohaname'] }}
+      ServerName: {{ pillar['koha']['instance'] }}
 
 /etc/perl/XML/SAX/ParserDetails.ini:
   file.replace:
@@ -149,4 +149,4 @@ mysql:
     - mode: 0600
     - template: jinja
     - context:
-      ServerName: {{ pillar['kohaname'] }}
+      ServerName: {{ pillar['koha']['instance'] }}

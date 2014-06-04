@@ -13,14 +13,14 @@ include:
 
 import500ex:
   cmd.run:
-    - name: KOHA_CONF=/etc/koha/sites/{{ pillar['kohaname'] }}/koha-conf.xml perl -I /usr/share/koha/lib/ /usr/share/koha/bin/migration_tools/bulkmarcimport.pl -m marcxml -file /tmp/500_eximport.xml
-    - user: {{ pillar['kohaname'] }}-koha
+    - name: KOHA_CONF=/etc/koha/sites/{{ pillar['koha']['instance'] }}/koha-conf.xml perl -I /usr/share/koha/lib/ /usr/share/koha/bin/migration_tools/bulkmarcimport.pl -m marcxml -file /tmp/500_eximport.xml
+    - user: {{ pillar['koha']['instance'] }}-koha
     - require:
       - file: /tmp/500_eximport.xml
       - cmd: createkohadb
 
 rebuildzebra:
   cmd.run:
-    - name: koha-rebuild-zebra --full {{ pillar['kohaname'] }}
+    - name: koha-rebuild-zebra --full {{ pillar['koha']['instance'] }}
     - watch: 
       - cmd: import500ex

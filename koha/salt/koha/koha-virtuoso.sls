@@ -18,18 +18,18 @@ virtuosopkgs:
 
 virtuoso-user:
   user.present:
-    - name: {{ pillar['kohaname'] }}-virtuoso
+    - name: {{ pillar['koha']['instance'] }}-virtuoso
 
 {{ pillar['virtuoso']['installdir'] }}:
   file.directory:
-    - user: {{ pillar['kohaname'] }}-virtuoso
+    - user: {{ pillar['koha']['instance'] }}-virtuoso
     - makedirs: True
     - recurse:
       - user
 
 /usr/local/src/virtuoso7:
   file.directory:
-    - user: {{ pillar['kohaname'] }}-virtuoso
+    - user: {{ pillar['koha']['instance'] }}-virtuoso
     - makedirs: True
 
 /usr/local/src/virtuoso7.tar.gz:
@@ -40,7 +40,7 @@ virtuoso-user:
 unpack_virtuoso:
   cmd.run:
     - cwd: /usr/local/src/
-    - user: {{ pillar['kohaname'] }}-virtuoso
+    - user: {{ pillar['koha']['instance'] }}-virtuoso
     - unless: test -f /usr/local/src/virtuoso7/INSTALL
     - name: tar zxvf virtuoso7.tar.gz -C /usr/local/src/virtuoso7
     - require:
@@ -50,7 +50,7 @@ unpack_virtuoso:
 autogen_virtuoso:
   cmd.run:
     - cwd: /usr/local/src/virtuoso7
-    - user: {{ pillar['kohaname'] }}-virtuoso
+    - user: {{ pillar['koha']['instance'] }}-virtuoso
     - unless: test -f {{ pillar['virtuoso']['installdir'] }}/bin/virtuoso-t
     - name: CFLAGS="-O2 -m64" ./autogen.sh
     - require:
@@ -59,7 +59,7 @@ autogen_virtuoso:
 build_virtuoso:
   cmd.run:
     - cwd: /usr/local/src/virtuoso7
-    - user: {{ pillar['kohaname'] }}-virtuoso
+    - user: {{ pillar['koha']['instance'] }}-virtuoso
     - unless: test -f {{ pillar['virtuoso']['installdir'] }}/bin/virtuoso-t
     - name: CFLAGS="-O2 -m64" ./configure --prefix={{ pillar['virtuoso']['installdir'] }} --disable-dbpedia-vad --disable-demo-vad --disable-fct-vad --disable-isparql-vad --disable-ods-vad --disable-rdfmappers-vad --disable-rdb2rdf-vad --disable-sparqldemo-vad --disable-syncml-vad --disable-tutorial-vad --disable-bpel-vad --with-port=1111
     - require:
@@ -69,7 +69,7 @@ build_virtuoso:
 install_virtuoso:
   cmd.run:
     - cwd: /usr/local/src/virtuoso7
-    - user: {{ pillar['kohaname'] }}-virtuoso
+    - user: {{ pillar['koha']['instance'] }}-virtuoso
     - unless: test -f {{ pillar['virtuoso']['installdir'] }}/bin/virtuoso-t
     - name: make install
     - require:
@@ -77,7 +77,7 @@ install_virtuoso:
 
 /data/virtuoso7/database/virtuoso.ini:
   file.managed:
-    - user: {{ pillar['kohaname'] }}-virtuoso
+    - user: {{ pillar['koha']['instance'] }}-virtuoso
     - source: {{ pillar['saltfiles'] }}/virtuoso/virtuoso.ini.minimal
     - template: jinja
 

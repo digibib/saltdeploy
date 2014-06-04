@@ -1,32 +1,47 @@
-adminuser: admin
-adminpass: secret
-autouser1: automat1
-autopass1: pass1
-zebrauser: kohauser
-zebrapass: SecretPassword
-sip_workers: 1
-sip_host: 127.0.0.1
-sip_port: 6001
-livestatus_host: 127.0.0.1
-livestatus_port: 6558
-bz_user: dummy@bugzilla.com
-bz_pass: pass
-maildomain: example.com
-mailfrom: noreply@example.com
-mailtype: smtp
-sms_url: http://localhost/smsapi
+koha:
+  instance: instancename
+  adminuser: admin
+  adminpass: secret
+  zebrauser: kohauser
+  zebrapass: SecretPassword
+  bz_user: dummy@bugzilla.com
+  bz_pass: pass
+
+sip:
+  host: 127.0.0.1
+  port: 6001
+  workers: 1
+  autouser1: automat1
+  autopass1: pass1
+
+mail:
+  domain: example.com
+  from: noreply@example.com
+  type: smtp
+
+sms:
+  url: http://localhost/smsapi
+
+icinga:
+  livestatus_host: 127.0.0.1
+  livestatus_port: 6558
+
 
 marc2rdf:
   user:            admin 
   pass:            secret
-  sparql_endpoint: http://localhost:8890/sparql/
-  sparul_endpoint: http://localhost:8890/sparql-auth/
-  sparul_user:     dba
-  sparul_pass:     dba  
   default_graph:   http://example.com/graph
   default_prefix:  http://example.com/
   session_key:     justchangemewillyou
 
 virtuoso:
   installdir: /data/virtuoso7
+  sparql_endpoint: http://localhost:8890/sparql/
+  sparul_endpoint: http://localhost:8890/sparql-auth/
+  sparul_user:     dba
+  sparul_pass:     dba
+
+armillaria:
+  installdir: /usr/local/src/armillaria
+  port: 3001
   

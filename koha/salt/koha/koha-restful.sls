@@ -18,18 +18,18 @@ https://github.com/bensinober/koha-restful:
   file.symlink:
     - target: /usr/local/src/koha-restful/opac/rest.pl
 
-/etc/koha/sites/{{ pillar['kohaname'] }}/rest:
+/etc/koha/sites/{{ pillar['koha']['instance'] }}/rest:
   file.directory:
-    - user: {{ pillar['kohaname'] }}-koha
-    - group: {{ pillar['kohaname'] }}-koha
+    - user: {{ pillar['koha']['instance'] }}-koha
+    - group: {{ pillar['koha']['instance'] }}-koha
     - mode: 755
     - makedirs: True
 
-/etc/koha/sites/{{ pillar['kohaname'] }}/rest/config.yaml:
+/etc/koha/sites/{{ pillar['koha']['instance'] }}/rest/config.yaml:
   file.managed:
     - source: "{{ pillar['saltfiles'] }}/koha-restful-config.yaml"
-    - user: {{ pillar['kohaname'] }}-koha
-    - group: {{ pillar['kohaname'] }}-koha    
+    - user: {{ pillar['koha']['instance'] }}-koha
+    - group: {{ pillar['koha']['instance'] }}-koha    
     - require:
-      - file: /etc/koha/sites/{{ pillar['kohaname'] }}/rest
+      - file: /etc/koha/sites/{{ pillar['koha']['instance'] }}/rest
 

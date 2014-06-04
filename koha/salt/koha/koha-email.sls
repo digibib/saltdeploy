@@ -16,7 +16,7 @@ fakesmtp:
 
 enable_mail:
   cmd.run:
-    - name: koha-email-enable {{ pillar['kohaname'] }}
+    - name: koha-email-enable {{ pillar['koha']['instance'] }}
     - require: 
       - file: /etc/nullmailer/remotes
 

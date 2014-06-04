@@ -15,7 +15,7 @@ https://github.com/digibib/LibrioTools:
 # run circulation
 circulate:
   cmd.run:
-    - name: KOHA_CONF=/etc/koha/sites/{{ pillar['kohaname'] }}/koha-conf.xml perl -I /usr/share/koha/lib/ circ.pl -v -f {{ pillar['circulationstart'] }} -r {{ pillar['daysbeforereturn'] }} -c circulation.yaml
+    - name: KOHA_CONF=/etc/koha/sites/{{ pillar['koha']['instance'] }}/koha-conf.xml perl -I /usr/share/koha/lib/ circ.pl -v -f {{ pillar['circulationstart'] }} -r {{ pillar['daysbeforereturn'] }} -c circulation.yaml
     - cwd: /usr/local/src/LibrioTools/sim
     - require:
       - file: /usr/local/src/LibrioTools/sim/circulation.yaml
@@ -25,7 +25,7 @@ circulate:
 
 return:
   cmd.run:
-    - name: KOHA_CONF=/etc/koha/sites/{{ pillar['kohaname'] }}/koha-conf.xml perl -I /usr/share/koha/lib/ circ.pl -v -z -c circulation.yaml
+    - name: KOHA_CONF=/etc/koha/sites/{{ pillar['koha']['instance'] }}/koha-conf.xml perl -I /usr/share/koha/lib/ circ.pl -v -z -c circulation.yaml
     - cwd: /usr/local/src/LibrioTools/sim
     - require:
       - file: /usr/local/src/LibrioTools/sim/circulation.yaml

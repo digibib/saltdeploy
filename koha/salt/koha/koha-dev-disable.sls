@@ -4,7 +4,7 @@
 
 disable_dev:
   cmd.run:
-    - name: sudo a2dissite {{ pillar['kohaname'] }}-dev
+    - name: sudo a2dissite {{ pillar['koha']['instance'] }}-dev
 
 ########
 # KOHA GITIFY
@@ -23,7 +23,7 @@ https://github.com/mkfifo/koha-gitify:
 
 enable_prod:
   cmd.run:
-    - name: sudo a2ensite {{ pillar['kohaname'] }}
+    - name: sudo a2ensite {{ pillar['koha']['instance'] }}
 
 
 apache2:

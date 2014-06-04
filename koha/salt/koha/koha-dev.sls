@@ -9,8 +9,8 @@ installpkgs:
 
 /usr/local/src/kohaclone:
   file.directory:
-    - user: {{ pillar['kohaname'] }}-koha
-    - group: {{ pillar['kohaname'] }}-koha
+    - user: {{ pillar['koha']['instance'] }}-koha
+    - group: {{ pillar['koha']['instance'] }}-koha
     - mode: 755
     - makedirs: True
 
@@ -19,7 +19,7 @@ http://repo.or.cz/r/koha.git:
   git.latest:
     - rev: master
     - target: /usr/local/src/kohaclone
-    - user: {{ pillar['kohaname'] }}-koha
+    - user: {{ pillar['koha']['instance'] }}-koha
     - require:
       - file: /usr/local/src/kohaclone
 
@@ -30,14 +30,14 @@ masterkohabranch:
     - require:
       - git: http://repo.or.cz/r/koha.git
 
-/etc/apache2/sites-available/{{ pillar['kohaname'] }}-dev.conf:
+/etc/apache2/sites-available/{{ pillar['koha']['instance'] }}-dev.conf:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/apache-dev.tmpl
     - template: jinja
     - context:
       OpacPort: 8080
       IntraPort: 8081
-      ServerName: {{ pillar['kohaname'] }}
+      ServerName: {{ pillar['koha']['instance'] }}
     - stateful: True
 
 ########
@@ -59,16 +59,16 @@ https://github.com/mkfifo/koha-gitify:
 
 gitify:
   cmd.run:
-    - name: /usr/local/src/koha-gitify/koha-gitify {{ pillar['kohaname'] }} /usr/local/src/kohaclone
+    - name: /usr/local/src/koha-gitify/koha-gitify {{ pillar['koha']['instance'] }} /usr/local/src/kohaclone
     - cwd: /usr/local/src/kohaclone
 
-/var/lib/koha/{{ pillar['kohaname'] }}/.gitconfig:
+/var/lib/koha/{{ pillar['koha']['instance'] }}/.gitconfig:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/koha-tmpl/gitconfig.tmpl
     - template: jinja
     - context:
-      bz_user: {{ pillar['bz_user'] }}
-      bz_pass: {{ pillar['bz_pass'] }}
+      bz_user: {{ pillar['koha']['bz_user'] }}
+      bz_pass: {{ pillar['koha']['bz_pass'] }}
 
 /etc/koha/apache-shared.conf:
   file.replace:
@@ -79,11 +79,11 @@ gitify:
 
 disable_prod:
   cmd.run:
-    - name: sudo a2dissite {{ pillar['kohaname'] }}
+    - name: sudo a2dissite {{ pillar['koha']['instance'] }}
 
 enable_dev:
   cmd.run:
-    - name: sudo a2ensite {{ pillar['kohaname'] }}-dev
+    - name: sudo a2ensite {{ pillar['koha']['instance'] }}-dev
     - require:
       - cmd: disable_prod
 
