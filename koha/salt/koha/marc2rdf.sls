@@ -57,24 +57,6 @@ marc2rdf-user:
       User: {{ pillar['koha']['instance'] }}-marc2rdf
 
 ########
-# VIRTUOSO
-# NOW HANDLED IN SEPARATE STATE
-########
-
-# /etc/init/virtuoso.conf:
-#   file.managed:
-#     - source: {{ pillar['saltfiles'] }}/virtuoso/virtuoso.conf
-#     - template: jinja
-#     - context:
-#       User: {{ pillar['koha']['instance'] }}-marc2rdf
-
-# /data/virtuoso/virtuoso.ini:
-#   file.managed:
-#     - source: {{ pillar['saltfiles'] }}/virtuoso/virtuoso.ini.minimal
-#     - require: 
-#       - pkg: marc2rdfpkgs
-
-########
 # MARC2RDF
 ########
 
@@ -138,9 +120,3 @@ marc2rdf:
     - watch:
       - git: https://github.com/digibib/marc2rdf
 
-# virtuoso:
-#   service.running:
-#     - enable: True
-#     - require:
-#       - file: /data/virtuoso/virtuoso.ini
-#       - file: /etc/init/virtuoso.conf
