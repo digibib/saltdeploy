@@ -44,4 +44,6 @@ virtuoso:
 armillaria:
   installdir: /usr/local/src/armillaria
   port: 3001
-  
+
+elasticsearch:
+  url: http://localhost:9200
