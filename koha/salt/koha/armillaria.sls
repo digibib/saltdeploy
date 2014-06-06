@@ -38,7 +38,7 @@ https://github.com/digibib/armillaria:
 build_armillaria:
   cmd.run:
     - cwd: {{ pillar['armillaria']['installdir'] }}
-    - name: GOPATH=/usr/share/go make deps && GOPATH=/usr/share/go go build
+    - name: GOPATH=/usr/share/go make deps && GOPATH=/usr/share/go make build
     - require:
       - git: https://github.com/digibib/armillaria
 
