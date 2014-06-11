@@ -2,7 +2,7 @@
 # MARC2RDF SETUP
 ########
 
-marc2rdfpkgs:
+marc2rdf_pkgs:
   pkg.latest:
     - pkgs:
       - ruby1.9.3

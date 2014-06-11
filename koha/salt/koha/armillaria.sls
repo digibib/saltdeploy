@@ -1,9 +1,13 @@
 ##########
 # SALT STATE FOR ARMILLARIA
-# DEPS: VIRTUOSO
+# DEPS: VIRTUOSO + ELASTICSEARCH
 ##########
 
-installpkgs:
+include:
+  - .elasticsearch
+  - .virtuoso
+
+armillaria_pkgs:
   pkg.latest:
     - pkgs:  
       - golang
@@ -24,8 +28,8 @@ armillaria-user:
 # ARMILLARIA repo
 https://github.com/digibib/armillaria:
   git.latest:
-    - rev: master
     - target: {{ pillar['armillaria']['installdir'] }}
+    - rev: master
     - user: armillaria
 
 {{ pillar['armillaria']['installdir'] }}/data/config.json:
@@ -38,7 +42,7 @@ https://github.com/digibib/armillaria:
 build_armillaria:
   cmd.run:
     - cwd: {{ pillar['armillaria']['installdir'] }}
-    - name: GOPATH=/usr/share/go make deps && GOPATH=/usr/share/go make build
+    - name: GOPATH=/usr/share/go make build
     - require:
       - git: https://github.com/digibib/armillaria
 
@@ -55,3 +59,17 @@ armillaria:
       - file: /etc/init/armillaria.conf
     - watch: 
       - cmd: build_armillaria
+
+make_indexes:
+  cmd.run:
+    - cwd: {{ pillar['armillaria']['installdir'] }}
+    - name: GOPATH=/usr/share/go make indexes
+    - require:
+      - service: elasticsearch
+
+make_mappings:
+  cmd.run:
+    - cwd: {{ pillar['armillaria']['installdir'] }}
+    - name: GOPATH=/usr/share/go make mappings
+    - require:
+      - service: elasticsearch

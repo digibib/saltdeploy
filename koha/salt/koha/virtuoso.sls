@@ -3,7 +3,7 @@
 # NOT USED P.T. !!
 ########
 
-virtuosopkgs:
+virtuoso_pkgs:
   pkg.latest:
     - pkgs:
       - libssl-dev
