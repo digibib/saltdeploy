@@ -39,11 +39,20 @@ https://github.com/digibib/armillaria:
     - require:
       - git: https://github.com/digibib/armillaria
 
+armillaria_deps:
+  cmd.run:
+    - cwd: {{ pillar['armillaria']['installdir'] }}
+    - name: GOPATH=/usr/share/go make deps
+    - unless: test -d /usr/lib/go/src/pkg/github.com/julienschmidt/httprouter
+    - require:
+      - git: https://github.com/digibib/armillaria
+
 build_armillaria:
   cmd.run:
     - cwd: {{ pillar['armillaria']['installdir'] }}
     - name: GOPATH=/usr/share/go make build
     - require:
+      - cmd: armillaria_deps
       - git: https://github.com/digibib/armillaria
 
 /etc/init/armillaria.conf:

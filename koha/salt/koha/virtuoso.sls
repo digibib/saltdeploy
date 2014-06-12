@@ -75,11 +75,12 @@ install_virtuoso:
     - require:
       - cmd: build_virtuoso
 
-/data/virtuoso7/database/virtuoso.ini:
+{{ pillar['virtuoso']['installdir'] }}/database/virtuoso.ini:
   file.managed:
     - user: {{ pillar['koha']['instance'] }}-virtuoso
     - source: {{ pillar['saltfiles'] }}/virtuoso/virtuoso.ini.minimal
     - template: jinja
+    - makedirs: True    
 
 /etc/init/virtuoso7.conf:
   file.managed:
@@ -90,5 +91,5 @@ virtuoso7:
   service.running:
     - enable: True
     - require:
-      - file: /data/virtuoso7/database/virtuoso.ini
+      - file: {{ pillar['virtuoso']['installdir'] }}/database/virtuoso.ini
       - file: /etc/init/virtuoso7.conf
