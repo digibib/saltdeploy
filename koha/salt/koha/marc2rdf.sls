@@ -16,6 +16,7 @@ marc2rdf_pkgs:
 marc2rdf-user:
   user.present:
     - name: {{ pillar['koha']['instance'] }}-marc2rdf
+    - shell: /bin/bash
 
 ########
 # UPSTART FILES
