@@ -7,21 +7,19 @@
     "Password": "{{ pillar['virtuoso']['sparul_pass'] }}"
   },
   "Elasticsearch": "{{ pillar['elasticsearch']['url'] }}",
-  "ExternalDataSources": [
+  "ExternalDataSources": 
     {
-      "Name": "dewey.info",
+    "dewey.info": {
       "Endpoint": "http://dewey.info/sparql.php",
       "Type": "SPARQL"
     },
-    {
-      "Name": "data.deichman.no",
+    "data.deichman.no": {
       "Endpoint": "http://data.deichman.no/sparql",
       "Type": "SPARQL"
     },
-    {
-      "Name": "Z39.proxy",
+    "Z39.proxy": {
       "Endpoint": "http://datatest.deichman.no:8080",
       "Type": "REST"
     }
-  ]
+  }
 }
