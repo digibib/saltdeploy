@@ -1,0 +1,24 @@
+{
+  "login": {
+    "username": "{{ pillar['marc2rdf']['user'] }}",
+    "password": "{{ pillar['marc2rdf']['pass'] }}"
+  },
+  "repository": {
+    "sparql_endpoint": "{{ pillar['virtuoso']['sparql_endpoint'] }}", 
+    "sparul_endpoint": "{{ pillar['virtuoso']['sparul_endpoint'] }}", 
+    "username": "{{ pillar['virtuoso']['sparul_user'] }}", 
+    "password": "{{ pillar['virtuoso']['sparul_pass'] }}", 
+    "auth_method": "digest",
+    "timeout": 5
+  },
+  "global": {
+    "default_graph": "{{ pillar['marc2rdf']['default_graph'] }}",
+    "default_prefix": "{{ pillar['marc2rdf']['default_prefix'] }}"
+  },
+  "isql": {
+    "host": "localhost",
+    "port": 1111,
+    "binary": "/usr/bin/isql-vt"
+  },
+  "secret_session_key": "{{ pillar['marc2rdf']['session_key'] }}"
+}
