@@ -17,6 +17,7 @@ armillaria_pkgs:
 armillaria-user:
   user.present:
     - name: armillaria
+    - shell: /bin/bash
 
 {{ pillar['armillaria']['installdir'] }}:
   file.directory:

@@ -19,6 +19,7 @@ virtuoso_pkgs:
 virtuoso-user:
   user.present:
     - name: {{ pillar['koha']['instance'] }}-virtuoso
+    - shell: /bin/bash
 
 {{ pillar['virtuoso']['installdir'] }}:
   file.directory:

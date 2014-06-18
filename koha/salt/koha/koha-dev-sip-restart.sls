@@ -5,6 +5,19 @@
 include:
   - koha.koha-sip-stop
 
+/etc/koha/sites/{{ pillar['koha']['instance'] }}/SIPconfig.xml:
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/SIP2/SIPconfig.xml
+    - user: {{ pillar['koha']['instance'] }}-koha
+    - mode: 640
+    - template: jinja
+    - context:
+      sip_workers: {{ pillar['sip']['workers'] }}
+      sip_host: {{ pillar['sip']['host'] }}
+      sip_port: {{ pillar['sip']['port'] }}
+      autouser1: {{ pillar['sip']['autouser1'] }}
+      autopass1: {{ pillar['sip']['autopass1'] }}
+
 stop_devSIP:
   cmd.run:
     - user: {{ pillar['koha']['instance'] }}-koha

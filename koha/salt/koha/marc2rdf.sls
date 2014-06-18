@@ -16,6 +16,7 @@ marc2rdf_pkgs:
 marc2rdf-user:
   user.present:
     - name: {{ pillar['koha']['instance'] }}-marc2rdf
+    - shell: /bin/bash
 
 ########
 # UPSTART FILES
@@ -99,7 +100,7 @@ bundle_marc2rdf:
     - cwd: /usr/local/src/marc2rdf
     - name: bundle install
     - require:
-      - pkg: marc2rdfpkgs
+      - pkg: marc2rdf_pkgs
 
 /usr/local/src/marc2rdf:
   file.directory:
