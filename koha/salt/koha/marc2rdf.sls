@@ -76,18 +76,21 @@ https://github.com/digibib/marc2rdf:
 /usr/local/src/marc2rdf/db/libraries.json:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/marc2rdf/libraries.json
+    - unless: test -f /usr/local/src/marc2rdf/db/libraries.json
     - require:
       - git: https://github.com/digibib/marc2rdf
 
 /usr/local/src/marc2rdf/db/mappings.json:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/marc2rdf/mappings.json
+    - unless: test -f /usr/local/src/marc2rdf/db/mappings.json
     - require:
       - git: https://github.com/digibib/marc2rdf
 
 /usr/local/src/marc2rdf/db/rules.json:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/marc2rdf/rules.json
+    - unless: test -f /usr/local/src/marc2rdf/db/rules.json
     - require:
       - git: https://github.com/digibib/marc2rdf
 
