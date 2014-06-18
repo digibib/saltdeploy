@@ -69,7 +69,6 @@ https://github.com/digibib/marc2rdf:
 /usr/local/src/marc2rdf/config/settings.json:
   file.managed:
     - source: {{ pillar['saltfiles'] }}/marc2rdf/marc2rdf_settings.json
-    - stateful: True
     - template: jinja
     - require:
       - git: https://github.com/digibib/marc2rdf

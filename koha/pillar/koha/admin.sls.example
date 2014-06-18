@@ -28,7 +28,7 @@ icinga:
 
 
 marc2rdf:
-  user:            admin 
+  user:            admin
   pass:            secret
   default_graph:   http://example.com/graph
   default_prefix:  http://example.com/
