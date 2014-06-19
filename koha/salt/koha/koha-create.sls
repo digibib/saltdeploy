@@ -34,7 +34,7 @@ default_sysprefs1:
       - cmd: createkohadb
 
 ##########
-# KOHA CUSTOM SQLL
+# KOHA CUSTOM SQL
 ##########
 
 custom_sql:

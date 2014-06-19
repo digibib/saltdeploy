@@ -75,10 +75,15 @@ UNLOCK TABLES;
 TRUNCATE TABLE `borrowers`;
 LOCK TABLES `borrowers` WRITE;
 /*!40000 ALTER TABLE `borrowers` DISABLE KEYS */;
-INSERT INTO `borrowers` (borrowernumber,cardnumber,surname,firstname,address,city,branchcode,categorycode,dateenrolled,dateexpiry,password,flags,userid) 
+INSERT INTO `borrowers` (cardnumber,surname,firstname,address,city,branchcode,categorycode,dateenrolled,dateexpiry,password,flags,userid) 
 VALUES 
-(1,'1','Söze','Keyser','','','hutl','ADMIN','2013-09-19','2022-01-19','7AjNkXXC4JQpTOyXMhSOcQ',1,'flesk'),
-(2,'2','Automat_hoved1','','','','hutl','AUTO','2013-12-18','2022-03-18','$2a$08$IiT8vYz8Gn6yf0dq5eOmCuMBqoNw06V6wzmhaZurJ9YXuNWw7Qv66',2,'autohoved1');
+('1','Söze','Keyser','','','hutl','ADMIN','2013-09-19','2022-01-19','7AjNkXXC4JQpTOyXMhSOcQ',1,'flesk'),
+('2','Automat_hoved1','','','','hutl','AUTO','2013-12-18','2022-03-18','$2a$08$IiT8vYz8Gn6yf0dq5eOmCuMBqoNw06V6wzmhaZurJ9YXuNWw7Qv66',2,'autohoved1'),
+('11', 'Stresstest1','','','','hutl','AUTO','2013-12-18','2022-03-18','$2a$08$6CgbCkZeEejyx9.h5eXWMu5tneLsBZZCXV1soV9KM6JAAdzqGI9ka',2,'stresstest1'),
+('12', 'Stresstest2','','','','hutl','AUTO','2013-12-18','2022-03-18','$2a$08$Lr/9T3t97sCQQ1FUKcyr.ec.ZMyvRZdrTLNaGV3tZfeKaOxnyhg7K',2,'stresstest2'),
+('13', 'Stresstest3','','','','hutl','AUTO','2013-12-18','2022-03-18','$2a$08$CE5QCxgGW1ML5OEbDyHHxutPjJ1UdI5eonOHxKiIXFo0WRUq8Byt6',2,'stresstest3'),
+('14', 'Stresstest4','','','','hutl','AUTO','2013-12-18','2022-03-18','$2a$08$Az57rmvX6my70XN.s211rOuqnrP43Ov8kA9Zb0k33XP/rw2Yjzr3a',2,'stresstest4'),
+('15', 'Stresstest5','','','','hutl','AUTO','2013-12-18','2022-03-18','$2a$08$YfIMP84ZoBJKw88mRAwNbuYMwbQ6jVBTllNMeOfyViWVw5MCCoqDy',2,'stresstest5');
 /*!40000 ALTER TABLE `borrowers` ENABLE KEYS */;
 UNLOCK TABLES;
 
