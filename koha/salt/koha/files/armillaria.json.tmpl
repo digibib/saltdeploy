@@ -18,11 +18,11 @@
       "Type": "SPARQL"
     },
     "bibsentralen": {
-      "Endpoint": "http://melville10:8080?apikey=test&base=bibbi&isbn=%v",
+      "Endpoint": "http://melville10:8080?apikey={{ pillar['armillaria']['api4marc_apikey'] }}&base=bibbi&isbn=%v",
       "Type": "GET"
     },
     "Geonames": {
-      "Endpoint": "http://api.geonames.org/getJSON?geonameId=%v&username=boutros&style=full",
+      "Endpoint": "http://api.geonames.org/getJSON?geonameId=%v&username={{ pillar['armillaria']['geonames_username'] }}&style=full",
       "Type": "GET"
     },
     "OpenLibrary": {
