@@ -7,7 +7,7 @@
     "Password": "{{ pillar['virtuoso']['sparul_pass'] }}"
   },
   "Elasticsearch": "{{ pillar['elasticsearch']['url'] }}",
-  "ExternalDataSources": 
+  "ExternalDataSources":
   {
     "dewey.info": {
       "Endpoint": "http://dewey.info/sparql.php",
@@ -17,9 +17,25 @@
       "Endpoint": "http://data.deichman.no/sparql",
       "Type": "SPARQL"
     },
-    "Z39.proxy": {
-      "Endpoint": "http://datatest.deichman.no:8080",
-      "Type": "REST"
+    "bibsentralen": {
+      "Endpoint": "http://datatest.deichman.no:8080?apikey=test&base=bibbi&isbn=%v",
+      "Type": "GET"
+    },
+    "Geonames": {
+      "Endpoint": "http://api.geonames.org/getJSON?geonameId=%v&username=boutros&style=full",
+      "Type": "GET"
+    },
+    "OpenLibrary": {
+      "Endpoint": "https://openlibrary.org/api/books?bibkeys=ISBN:%v&format=json&jscmd=data",
+      "Type": "GET"
+    },
+    "GoogleBooks": {
+      "Endpoint": "https://www.googleapis.com/books/v1/volumes?q=isbn:%v",
+      "Type": "GET"
+    },
+    "Bibsys": {
+      "Endpoint": "http://sru.bibsys.no/search/biblio?version=1.2&operation=searchRetrieve&startRecord=1&maximumRecords=1&query=isbn=%v&recordSchema=marcxchange",
+      "Type": "GET"
     }
   }
 }
