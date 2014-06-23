@@ -33,7 +33,7 @@ UPDATE systempreferences SET value = '1' WHERE variable = 'AutomaticItemReturn';
 UPDATE systempreferences SET value = '1', options = '' WHERE variable = 'AllowItemsOnHoldCheckout';
 
 -- Issue #1870: Skjuling av felter i Koha sitt skjema for registrering av brukere
-UPDATE systempreferences SET value = 'surname|cardnumber' WHERE variable = 'BorrowerMandatoryField';
+UPDATE systempreferences SET value = 'borrowernumber|cardnumber|surname|city|zipcode|dateofbirth|categorycode|sex|password' WHERE variable = 'BorrowerMandatoryField';
 UPDATE systempreferences SET value = 'title|othernames|initials|streetnumber|streettype|state|fax|emailpro|B_streetnumber|B_streettype|B_state|B_email|B_phone|flags|opacnote|contactnote|sort1|sort2|altcontactfirstname|altcontactsurname|altcontactaddress1|altcontactaddress2|altcontactaddress3|altcontactstate|altcontactzipcode|altcontactcountry|altcontactphone' WHERE variable = 'BorrowerUnwantedField';
 
 UPDATE systempreferences SET value = '1' WHERE variable = 'EnhancedMessagingPreferences';
