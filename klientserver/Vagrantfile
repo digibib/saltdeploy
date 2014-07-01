@@ -26,8 +26,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.network :private_network, ip: "192.168.33.10"
   
   config.vm.define "server" do |server|
-    server.vm.box = "saucy64"
-    server.vm.box_url = "http://171.23.133.205/vagrant/saucy64.box"
+    server.vm.box = "trusty64"
+    server.vm.box_url = "http://datatest.deichman.no/vagrant/trusty64.box"
     #server.vm.network :public_network, :adapter => 1
     server.vm.network :private_network, :ip => "192.168.0.2", :adapter => 2
     server.vm.synced_folder ".", "/srv"

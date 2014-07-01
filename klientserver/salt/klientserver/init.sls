@@ -19,6 +19,7 @@ installpkgs:
       - curl
       - screen
       - openssh-server
+      - salt-master
     - skip_verify: True
 
 ##########
