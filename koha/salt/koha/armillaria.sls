@@ -16,12 +16,12 @@ armillaria_pkgs:
 
 armillaria-user:
   user.present:
-    - name: armillaria
+    - name: jenkins
     - shell: /bin/bash
 
 {{ pillar['armillaria']['installdir'] }}:
   file.directory:
-    - user: armillaria
+    - user: jenkins
     - makedirs: True
     - recurse:
       - user
@@ -31,7 +31,7 @@ https://github.com/digibib/armillaria:
   git.latest:
     - target: {{ pillar['armillaria']['installdir'] }}
     - rev: master
-    - user: armillaria
+    - user: jenkins
 
 {{ pillar['armillaria']['installdir'] }}/data/config.json:
   file.managed:
