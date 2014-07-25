@@ -3,7 +3,7 @@ Koha Vagrant and Salt Config
 
 Prerequisites:
 
-1. Sensitive are sent via pillar: file admin.sls 
+1. Sensitive data are sent via pillar: file admin.sls 
 
     cp ./pillar/koha/admin.sls.example ./pillar/koha/admin.sls
 
@@ -25,9 +25,9 @@ And the image will download, boot and provision automagically!
 
 Ports forwarded:
 
+* 8000: marc2rdf
 * 8080: OPAC
 * 8081: INTRANET
-* 3000: marc2rdf
 * 8890: virtuoso
 
     vagrant ssh
@@ -35,10 +35,11 @@ Ports forwarded:
 to get into the box.
 
 
-States that can be run after provisioning:
-
+States run on provisioning:
 * koha.koha-create.sls        create empty instance
 * koha.koha-defaults.sls      load defaults
+
+States that can be run after provisioning:
 * koha.koha-dummycirc.sls     dummy circulation
 * koha.koha-dummypatrons.sls  dummy patrons
 * koha.koha-import-15000.sls  import 15000 biblio items
@@ -54,6 +55,6 @@ States that can be run after provisioning:
 
 To run individual states, run e.g.: (without .sls)
 
-    echo "sudo salt-call state.sls examplestate" | vagrant ssh
+    vagtrant ssh -c "sudo salt-call state.sls examplestate"
 
-Or do it from within the Virtualbox
+Or do it from within the Virtualboxx

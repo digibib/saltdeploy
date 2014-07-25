@@ -1,0 +1,39 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "ubuntu/trusty64"
+
+  # http://fgrehm.viewdocs.io/vagrant-cachier
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.scope = :box
+  end
+
+  config.vm.network :forwarded_port, guest: 80, host: 8000  # MARC2RDF
+  #config.vm.network :forwarded_port, guest: 3000, host: 3000  # MARC2RDF
+  config.vm.network :forwarded_port, guest: 6001, host: 6001  # SIP2
+  config.vm.network :forwarded_port, guest: 8080, host: 8080  # OPAC
+  config.vm.network :forwarded_port, guest: 8081, host: 8081  # INTRA
+  config.vm.network :forwarded_port, guest: 3000, host: 3000  # SPARQL
+
+  config.vm.synced_folder "salt", "/srv/salt"
+  config.vm.synced_folder "pillar", "/srv/pillar"
+
+  config.vm.provision :salt do |salt|
+    salt.minion_config = "salt/minion"
+    salt.run_highstate = true
+    salt.verbose = true
+    salt.pillar_data
+  end
+
+  # A hack because we have trouble installing the first time
+  # http://wiki.koha-community.org/wiki/Debian
+  # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=734865
+  $hack = <<END_SCRIPT
+  sudo a2dismod mpm_event
+  sudo apt-get install -f
+  sudo salt-call --local state.highstate -l debug
+END_SCRIPT
+
+  config.vm.provision "shell", inline: $hack
+end
