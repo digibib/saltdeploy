@@ -28,7 +28,10 @@ Ports forwarded:
 * 8000: marc2rdf
 * 8080: OPAC
 * 8081: INTRANET
+* 6001: SIP2
 * 8890: virtuoso
+* 3000: sparql
+
 
     vagrant ssh
 
