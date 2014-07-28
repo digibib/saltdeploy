@@ -2,6 +2,8 @@ koha:
   instance: instancename
   adminuser: admin
   adminpass: secret
+  syncuser: sync
+  syncpass: sync
   zebrauser: kohauser
   zebrapass: SecretPassword
   bz_user: dummy@bugzilla.com
@@ -45,6 +47,8 @@ virtuoso:
 armillaria:
   installdir: /usr/local/src/armillaria
   port: 3001
+  api4marc_apikey: secret
+  geonames_username: also_secret
 
 elasticsearch:
   url: http://localhost:9200

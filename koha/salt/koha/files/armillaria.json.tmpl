@@ -4,9 +4,15 @@
   "RDFStore": {
     "Endpoint": "{{ pillar['virtuoso']['sparul_endpoint'] }}",
     "Username": "{{ pillar['virtuoso']['sparul_user'] }}",
-    "Password": "{{ pillar['virtuoso']['sparul_pass'] }}"
+    "Password": "{{ pillar['virtuoso']['sparul_pass'] }}",
+    "DefaultGraph": "http://data.deichman.no/books",
+    "DraftsGraph": "http://data.deichman.no/drafts"
   },
   "Elasticsearch": "{{ pillar['elasticsearch']['url'] }}",
+  "KohaPath": "http://localhost:8081",
+  "SyncToKoha": false,
+  "KohaSyncUser": "{{ pillar['koha']['syncuser'] }}",
+  "KohaSyncPass": "{{ pillar['koha']['syncpass'] }}",
   "ExternalDataSources":
   {
     "dewey.info": {
@@ -17,25 +23,37 @@
       "Endpoint": "http://data.deichman.no/sparql",
       "Type": "SPARQL"
     },
-    "bibsentralen": {
+    "BS": {
       "Endpoint": "http://melville10:8080?apikey={{ pillar['armillaria']['api4marc_apikey'] }}&base=bibbi&isbn=%v",
+      "Type": "GET"
+    },
+    "LOC": {
+      "Endpoint": "http://datatest.deichman.no:8080?apikey=test&base=loc&isbn=%v",
       "Type": "GET"
     },
     "Geonames": {
       "Endpoint": "http://api.geonames.org/getJSON?geonameId=%v&username={{ pillar['armillaria']['geonames_username'] }}&style=full",
       "Type": "GET"
     },
-    "OpenLibrary": {
+    "Open Library": {
       "Endpoint": "https://openlibrary.org/api/books?bibkeys=ISBN:%v&format=json&jscmd=data",
       "Type": "GET"
     },
-    "GoogleBooks": {
+    "Google Books": {
       "Endpoint": "https://www.googleapis.com/books/v1/volumes?q=isbn:%v",
       "Type": "GET"
     },
     "Bibsys": {
       "Endpoint": "http://sru.bibsys.no/search/biblio?version=1.2&operation=searchRetrieve&startRecord=1&maximumRecords=1&query=isbn=%v&recordSchema=marcxchange",
       "Type": "GET"
+    },
+    "OCLC": {
+      "Endpoint": "http://classify.oclc.org/classify2/Classify?isbn=%v",
+      "Type": "GET"
+    },
+    "British Library": {
+      "Endpoint": "http://bnb.data.bl.uk/sparql",
+      "Type": "SPARQL"
     }
   }
 }
