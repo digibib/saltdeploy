@@ -2,12 +2,9 @@
 # vi: set ft=ruby :
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "ubuntu/trusty64"
-
-#  config.vm.provider :virtualbox do |vb|
-    # Setting RAM to 1 GB
-    # vb.memory = 1024
-#  end
+  # Todo: Find out more about this box
+  config.vm.box = "koha_saucy64"
+  config.vm.box_url = "http://datatest.deichman.no/vagrant/koha_saucy64.box"
 
   # http://fgrehm.viewdocs.io/vagrant-cachier
   if Vagrant.has_plugin?("vagrant-cachier")
@@ -30,14 +27,4 @@ Vagrant.configure(2) do |config|
     salt.pillar_data
   end
 
-  # A hack because we have trouble installing the first time
-  # http://wiki.koha-community.org/wiki/Debian
-  # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=734865
-  $hack = <<END_SCRIPT
-  sudo a2dismod mpm_event
-  sudo apt-get install -f
-  sudo salt-call --local state.highstate -l debug
-END_SCRIPT
-
-  config.vm.provision "shell", inline: $hack
 end
