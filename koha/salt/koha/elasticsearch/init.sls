@@ -3,7 +3,7 @@
 ##########
 
 elasticsearch_pkgs:
-  pkg.latest:
+  pkg.installed:
     - pkgs:  
       - python-software-properties
       - openjdk-7-jre-headless
@@ -17,24 +17,24 @@ elasticsearch_repo:
     - require_in:
       - pkg: elasticsearch
 
-elasticsearch_pkg:
-  pkg.latest:
-    - pkgs:
-      - elasticsearch
-
 /etc/default/elasticsearch:
   file.managed:
-    - source: {{ pillar['saltfiles'] }}/elasticsearch.defaults.tmpl
+    - source: {{ pillar['elasticsearchfiles'] }}/elasticsearch.defaults.tmpl
     - template: jinja
-    - require:
-      - pkg: elasticsearch_pkgs
+    - require_in:
+      - pkg: elasticsearch_pkg
 
 /etc/init/elasticsearch.conf:
   file.managed:
-    - source: {{ pillar['saltfiles'] }}/elasticsearch.conf
+    - source: {{ pillar['elasticsearchfiles'] }}/elasticsearch.conf
     - template: jinja
-    - require:
-      - pkg: elasticsearch_pkgs
+    - require_in:
+      - pkg: elasticsearch_pkg
+
+elasticsearch_pkg:
+  pkg.installed:
+    - pkgs:
+      - elasticsearch
 
 ##########
 # ELASTICSEARCH PLUGINS
@@ -46,7 +46,7 @@ bigdesk:
     - name: ./plugin -install lukas-vlcek/bigdesk
     - unless: test -d /usr/share/elasticsearch/plugins/bigdesk
     - require:
-      - pkg: elasticsearch_pkgs
+      - pkg: elasticsearch_pkg
 
 head:
   cmd.run:
@@ -54,7 +54,7 @@ head:
     - name: ./plugin -install mobz/elasticsearch-head
     - unless: test -d /usr/share/elasticsearch/plugins/head
     - require:
-      - pkg: elasticsearch_pkgs
+      - pkg: elasticsearch_pkg
 
 # SHIT IS NOT WORKING!
 # rdf_river:
@@ -63,7 +63,7 @@ head:
 #     - name: ./plugin --url https://github.com/eea/eea.elasticsearch.river.rdf/raw/master/target/releases/eea-rdf-river-plugin-1.1.zip --install eea-rdf-river-1.1
 #     - unless: test -d /usr/share/elasticsearch/plugins/eea-rdf-river-1.1
 #     - require:
-#       - pkg: elasticsearch_pkgs
+#       - pkg: elasticsearch_pkg
 
 browser:
   cmd.run:
@@ -71,7 +71,7 @@ browser:
     - name: ./plugin -install OlegKunitsyn/elasticsearch-browser
     - unless: test -d /usr/share/elasticsearch/plugins/browser
     - require:
-      - pkg: elasticsearch_pkgs
+      - pkg: elasticsearch_pkg
 
 ##########
 # ELASTICSEARCH SERVICE
@@ -80,7 +80,7 @@ browser:
 elasticsearch:
   service.running:
     - require:
-      - pkgrepo: elasticsearch_repo
+      - pkg: elasticsearch_pkg
     - watch:
       - file: /etc/init/elasticsearch.conf
       - file: /etc/default/elasticsearch
