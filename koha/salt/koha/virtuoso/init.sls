@@ -4,7 +4,7 @@
 ########
 
 virtuoso_pkgs:
-  pkg.latest:
+  pkg.installed:
     - pkgs:
       - libssl-dev
       - gawk
@@ -27,11 +27,15 @@ virtuoso-user:
     - makedirs: True
     - recurse:
       - user
+    - require:
+      - user: virtuoso-user
 
 /usr/local/src/virtuoso7:
   file.directory:
     - user: {{ pillar['koha']['instance'] }}-virtuoso
     - makedirs: True
+    - require:
+      - user: virtuoso-user
 
 /usr/local/src/virtuoso7.tar.gz:
   file.managed:
@@ -47,6 +51,7 @@ unpack_virtuoso:
     - require:
       - file: /usr/local/src/virtuoso7
       - file: /usr/local/src/virtuoso7.tar.gz
+      - user: virtuoso-user
 
 autogen_virtuoso:
   cmd.run:
@@ -56,6 +61,7 @@ autogen_virtuoso:
     - name: CFLAGS="-O2 -m64" ./autogen.sh
     - require:
       - cmd: unpack_virtuoso
+      - user: virtuoso-user
 
 build_virtuoso:
   cmd.run:
@@ -66,6 +72,7 @@ build_virtuoso:
     - require:
       - cmd: autogen_virtuoso
       - file: {{ pillar['virtuoso']['installdir'] }}
+      - user: virtuoso-user
 
 install_virtuoso:
   cmd.run:
@@ -75,17 +82,20 @@ install_virtuoso:
     - name: make install
     - require:
       - cmd: build_virtuoso
+      - user: virtuoso-user
 
 {{ pillar['virtuoso']['installdir'] }}/database/virtuoso.ini:
   file.managed:
     - user: {{ pillar['koha']['instance'] }}-virtuoso
-    - source: {{ pillar['saltfiles'] }}/virtuoso/virtuoso.ini.minimal
+    - source: {{ pillar['virtuoso']['saltfiles'] }}/virtuoso.ini.minimal
     - template: jinja
     - makedirs: True    
+    - require:
+      - user: virtuoso-user
 
 /etc/init/virtuoso7.conf:
   file.managed:
-    - source: {{ pillar['saltfiles'] }}/virtuoso/virtuoso.conf
+    - source: {{ pillar['virtuoso']['saltfiles'] }}/virtuoso.conf
     - template: jinja
 
 virtuoso7:
@@ -94,3 +104,5 @@ virtuoso7:
     - require:
       - file: {{ pillar['virtuoso']['installdir'] }}/database/virtuoso.ini
       - file: /etc/init/virtuoso7.conf
+      - cmd: build_virtuoso
+
