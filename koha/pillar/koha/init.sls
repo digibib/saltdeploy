@@ -7,4 +7,3 @@ dummypatrons: 100
 include:
   - koha.elasticsearch
   - koha.virtuoso
-  - koha.icinga
