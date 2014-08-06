@@ -19,14 +19,14 @@ elasticsearch_repo:
 
 /etc/default/elasticsearch:
   file.managed:
-    - source: {{ pillar['elasticsearchfiles'] }}/elasticsearch.defaults.tmpl
+    - source: {{ pillar['elasticsearch']['saltfiles'] }}/elasticsearch.defaults.tmpl
     - template: jinja
     - require_in:
       - pkg: elasticsearch_pkg
 
 /etc/init/elasticsearch.conf:
   file.managed:
-    - source: {{ pillar['elasticsearchfiles'] }}/elasticsearch.conf
+    - source: {{ pillar['elasticsearch']['saltfiles'] }}/elasticsearch.conf
     - template: jinja
     - require_in:
       - pkg: elasticsearch_pkg

@@ -42,5 +42,3 @@ armillaria:
   api4marc_apikey: secret
   geonames_username: also_secret
 
-elasticsearch:
-  url: http://localhost:9200
