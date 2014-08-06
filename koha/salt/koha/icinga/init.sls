@@ -3,7 +3,7 @@
 ########
 
 icingapkgs:
-  pkg.latest:
+  pkg.installed:
     - pkgs:
       - icinga2
       # - icinga2-ido-mysql
@@ -13,7 +13,7 @@ icingapkgs:
 
 # Icinga web disabled until further need
 # icinga-web:
-#   pkg.latest:
+#   pkg.installed:
 #     - require:
 #       - pkg: icingapkgs
 
@@ -57,7 +57,7 @@ enable-livestatus:
   file.recurse:
     - template: jinja
     - file_mode: 644
-    - source: {{ pillar['saltfiles'] }}/icinga/conf.d
+    - source: {{ pillar['icinga']['saltfiles'] }}/conf.d
     - include_empty: True
     - clean: True
 
@@ -78,7 +78,7 @@ icinga2:
 ########
 
 nagiospkgs:
-  pkg.latest:
+  pkg.installed:
     - pkgs:
       - nagios-plugins
       - libjson-perl
@@ -86,7 +86,7 @@ nagiospkgs:
 
 /usr/lib/nagios/plugins/check_mysqld.pl:
   file.managed:
-    - source: {{ pillar['saltfiles'] }}/icinga/plugins/check_mysqld.pl
+    - source: {{ pillar['icinga']['saltfiles'] }}/plugins/check_mysqld.pl
     - mode: 755
     - stateful: True
     - require:
@@ -94,7 +94,7 @@ nagiospkgs:
 
 /usr/lib/nagios/plugins/check_json.pl:
   file.managed:
-    - source: {{ pillar['saltfiles'] }}/icinga/plugins/check_json.pl
+    - source: {{ pillar['icinga']['saltfiles'] }}/plugins/check_json.pl
     - mode: 755
     - stateful: True
     - require:
@@ -102,7 +102,7 @@ nagiospkgs:
 
 /usr/lib/nagios/plugins/check_sip2.pl:
   file.managed:
-    - source: {{ pillar['saltfiles'] }}/icinga/plugins/check_sip2.pl
+    - source: {{ pillar['icinga']['saltfiles'] }}/plugins/check_sip2.pl
     - mode: 755
     - stateful: True
     - require:
