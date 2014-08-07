@@ -35,10 +35,6 @@ admin:
   virtuoso:
     sparul_user:     dba
     sparul_pass:     dba
-
-armillaria:
-  installdir: /usr/local/src/armillaria
-  port: 3001
-  api4marc_apikey: secret
-  geonames_username: also_secret
-
+  armillaria:
+    api4marc_apikey: secret
+    geonames_username: also_secret

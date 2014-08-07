@@ -3,8 +3,8 @@
   "LogFile": "./armillaria.log",
   "RDFStore": {
     "Endpoint": "{{ pillar['virtuoso']['sparul_endpoint'] }}",
-    "Username": "{{ pillar['virtuoso']['sparul_user'] }}",
-    "Password": "{{ pillar['virtuoso']['sparul_pass'] }}",
+    "Username": "{{ pillar['admin']['virtuoso']['sparul_user'] }}",
+    "Password": "{{ pillar['admin']['virtuoso']['sparul_pass'] }}",
     "DefaultGraph": "http://data.deichman.no/books",
     "DraftsGraph": "http://data.deichman.no/drafts"
   },
@@ -24,7 +24,7 @@
       "Type": "SPARQL"
     },
     "BS": {
-      "Endpoint": "http://melville10:8080?apikey={{ pillar['armillaria']['api4marc_apikey'] }}&base=bibbi&isbn=%v",
+      "Endpoint": "http://melville10:8080?apikey={{ pillar['admin']['armillaria']['api4marc_apikey'] }}&base=bibbi&isbn=%v",
       "Type": "GET"
     },
     "LOC": {
@@ -32,7 +32,7 @@
       "Type": "GET"
     },
     "Geonames": {
-      "Endpoint": "http://api.geonames.org/getJSON?geonameId=%v&username={{ pillar['armillaria']['geonames_username'] }}&style=full",
+      "Endpoint": "http://api.geonames.org/getJSON?geonameId=%v&username={{ pillar['admin']['armillaria']['geonames_username'] }}&style=full",
       "Type": "GET"
     },
     "Open Library": {

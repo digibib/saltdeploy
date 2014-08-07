@@ -4,8 +4,8 @@
 ##########
 
 include:
-  - .elasticsearch
-  - .virtuoso
+  - koha.elasticsearch
+  - koha.virtuoso
 
 armillaria_pkgs:
   pkg.latest:
@@ -35,7 +35,7 @@ https://github.com/digibib/armillaria:
 
 {{ pillar['armillaria']['installdir'] }}/data/config.json:
   file.managed:
-    - source: {{ pillar['saltfiles'] }}/armillaria.json.tmpl
+    - source: {{ pillar['armillaria']['saltfiles'] }}/armillaria.json.tmpl
     - template: jinja    
     - require:
       - git: https://github.com/digibib/armillaria
@@ -58,7 +58,7 @@ build_armillaria:
 
 /etc/init/armillaria.conf:
   file.managed:
-    - source: {{ pillar['saltfiles'] }}/armillaria.conf
+    - source: {{ pillar['armillaria']['saltfiles'] }}/armillaria.conf
     - template: jinja
     - require:
       - cmd: build_armillaria
