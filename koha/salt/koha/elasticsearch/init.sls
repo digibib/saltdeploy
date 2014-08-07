@@ -25,11 +25,8 @@ elasticsearch_repo:
       - pkg: elasticsearch_pkg
 
 /etc/init/elasticsearch.conf:
-  file.managed:
-    - source: {{ pillar['elasticsearch']['saltfiles'] }}/elasticsearch.conf
-    - template: jinja
-    - require_in:
-      - pkg: elasticsearch_pkg
+  # can be removed later, but for now this means we use the init.d-script provided in the es-package.
+  file.absent
 
 elasticsearch_pkg:
   pkg.installed:
@@ -82,5 +79,4 @@ elasticsearch:
     - require:
       - pkg: elasticsearch_pkg
     - watch:
-      - file: /etc/init/elasticsearch.conf
       - file: /etc/default/elasticsearch
