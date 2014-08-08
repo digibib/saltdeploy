@@ -24,6 +24,11 @@ mail:
 sms:
   url: http://localhost/smsapi
 
+icinga:
+  livestatus_host: 127.0.0.1
+  livestatus_port: 6558
+
+
 marc2rdf:
   user:            admin
   pass:            secret
