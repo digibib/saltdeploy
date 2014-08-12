@@ -8,10 +8,9 @@ koharepo:
   pkgrepo.managed:
     - name: deb http://debian.koha-community.org/koha squeeze main
     - key_url: http://debian.koha-community.org/koha/gpg.asc
-    - require_in: koha-common
 
-installpkgs:
-  pkg.latest:
+installdeps:
+  pkg.installed:
     - pkgs:
       - language-pack-nb
       - git
@@ -28,11 +27,9 @@ installpkgs:
       - libnet-ssleay-perl 
       - libcrypt-ssleay-perl
       - openssh-server
-      - lynx
       - apache2
       - mysql-client
       - mysql-server
-      - koha-common
     - skip_verify: True
     - require:
       - pkgrepo: koharepo
@@ -61,47 +58,59 @@ apacheconfig:
 sudo a2enmod rewrite:
   cmd.run:
     - require:
-      - pkg: installpkgs
+      - pkg: installdeps
 
 sudo a2dismod mpm_event:
   cmd.run:
     - require:
-      - pkg: installpkgs
+      - pkg: installdeps
 
 sudo a2dismod mpm_itk:
   cmd.run:
     - require:
-      - pkg: installpkgs
+      - pkg: installdeps
 
 sudo a2dismod mpm_prefork:
   cmd.run:
     - require:
-      - pkg: installpkgs
+      - pkg: installdeps
 
 sudo a2enmod mpm_itk:
   cmd.run:
     - require:
-      - pkg: installpkgs
+      - pkg: installdeps
 
 sudo a2enmod cgi:
   cmd.run:
     - require:
-      - pkg: installpkgs
+      - pkg: installdeps
 
 sudo a2dissite 000-default:
   cmd.run:      
     - require:
-      - pkg: installpkgs
+      - pkg: installdeps
 
 apache2:
   service:
     - running
     - require:
-      - pkg: installpkgs
+      - pkg: installdeps
       - cmd: sudo a2enmod rewrite
       - cmd: sudo a2enmod cgi
       - cmd: sudo a2dissite 000-default
       - file: /etc/apache2/ports.conf
+
+##########
+# KOHA-COMMON
+##########
+
+kohacommon:
+  pkg.installed:
+    - name: koha-common
+    - skip_verify: True
+    - require:
+      - pkgrepo: koharepo
+      - pkg: installdeps
 
 ##########
 # MYSQL
@@ -123,7 +132,7 @@ mysql:
   service:
     - running
     - require:
-      - pkg: installpkgs
+      - pkg: installdeps
     - watch:
       - file: /etc/mysql/my.cnf
 

@@ -97,3 +97,4 @@ custom_sysprefs:
     - watch:
       - file: /etc/koha/sites/{{ pillar['koha']['instance'] }}/zebra-biblios.cfg
       - file: /etc/koha/sites/{{ pillar['koha']['instance'] }}/koha-conf.xml
+

@@ -22,10 +22,10 @@
     - context:
       ServerName: {{ pillar['koha']['instance'] }}
 
-# # defaults file with libraries and item types
-# /tmp/defaults.sql.gz:
-#   file.managed:
-#     - source: {{ pillar['saltfiles'] }}/defaults.sql.gz
+# defaults file with libraries and item types
+/tmp/defaults.sql.gz:
+  file.managed:
+    - source: {{ pillar['saltfiles'] }}/defaults.sql.gz
 
 # db modifications
 /tmp/custom.sql:
