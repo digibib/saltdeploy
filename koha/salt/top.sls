@@ -1,8 +1,9 @@
 base:
   '*':
+    - koha.devtools
     - koha
-    - koha.koha-create
-    # - koha.koha-locales
+    - koha.koha-install
+    - koha.koha-deichman
     # - koha.koha-restore
     # - koha.koha-import
     # - koha.koha-import-15000

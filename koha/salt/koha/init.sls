@@ -13,26 +13,15 @@ installdeps:
   pkg.installed:
     - pkgs:
       - language-pack-nb
-      - git
-      - build-essential
-      - curl
-      - imagemagick
-      - screen
-      - libav-tools
-      - sqlite3
-      - libsqlite3-dev
       - openssh-server
       - python-software-properties
       - software-properties-common
       - libnet-ssleay-perl 
       - libcrypt-ssleay-perl
-      - openssh-server
       - apache2
       - mysql-client
       - mysql-server
     - skip_verify: True
-    - require:
-      - pkgrepo: koharepo
 
 ########
 # APACHE
