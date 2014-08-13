@@ -50,22 +50,19 @@ default_sysprefs_norwegian:
 
 ########
 # Update koha syspref 'Version' manually, needed to bypass webinstaller
-# Update database if not up to date with  koha-common version
+# Update database if not up to date with koha-common version
 ########
 
-{% set kohaversion = salt['cmd.run']("perl -e 'require \"/usr/share/koha/intranet/cgi-bin/kohaversion.pl\" ; print kohaversion();'") %}
-{% set kohaversionnum = kohaversion.replace('.','')[:-3] %}
-
-{% set debianversion = salt['cmd.run']("dpkg -l | awk '$2==\"koha-common\" { print $3 }'") %}
-{% set debianversionnum = debianversion.replace('.','') %}
-
-{% set kohadbversionold = salt['cmd.run']("echo -n \"SELECT value as '' FROM systempreferences WHERE variable = 'Version';\" | sudo koha-mysql knakk | tail -1") %}
-{% set kohadbversionnew = ''.join(kohaversion.rsplit('.', 2)) %}
-
-{% set uptodate = kohadbversionold and kohadbversionold == kohadbversionnew %}
 
 # If run, always return true, as database updates will generate many errors
 update_database:
+  {% set kohaversion = salt['cmd.run']("perl -e 'require \"/usr/share/koha/intranet/cgi-bin/kohaversion.pl\" ; print kohaversion();'") %}
+  {% set kohaversionnum = kohaversion.replace('.','')[:-3] %}
+  {% set debianversion = salt['cmd.run']("dpkg -l | awk '$2==\"koha-common\" { print $3 }'") %}
+  {% set debianversionnum = debianversion.replace('.','') %}
+  {% set kohadbversionold = salt['cmd.run']("echo -n \"SELECT value as '' FROM systempreferences WHERE variable = 'Version';\" | sudo koha-mysql knakk | tail -1") %}
+  {% set kohadbversionnew = ''.join(kohaversion.rsplit('.', 2)) %}
+  {% set uptodate = kohadbversionold and kohadbversionold == kohadbversionnew %}
   cmd.run:
     - unless: {{ uptodate }}
     - name: koha-upgrade-schema {{ pillar['koha']['instance'] }} || true
@@ -80,4 +77,3 @@ update-koha-dbversion:
         ON DUPLICATE KEY UPDATE value = '{{ kohadbversionnew }}' ;" | koha-mysql {{ pillar['koha']['instance'] }}
     - watch:
       - cmd: update_database
-
