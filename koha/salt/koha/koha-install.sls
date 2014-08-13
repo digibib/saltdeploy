@@ -64,10 +64,11 @@ default_sysprefs_norwegian:
 
 {% set uptodate = kohadbversionold and kohadbversionold == kohadbversionnew %}
 
+# If run, always return true, as database updates will generate many errors
 update_database:
   cmd.run:
     - unless: {{ uptodate }}
-    - name: koha-upgrade-schema {{ pillar['koha']['instance'] }}
+    - name: koha-upgrade-schema {{ pillar['koha']['instance'] }} || true
 
 update-koha-dbversion:
   cmd.run:
@@ -79,3 +80,4 @@ update-koha-dbversion:
         ON DUPLICATE KEY UPDATE value = '{{ kohadbversionnew }}' ;" | koha-mysql {{ pillar['koha']['instance'] }}
     - watch:
       - cmd: update_database
+
