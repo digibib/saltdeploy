@@ -1,9 +1,12 @@
 base:
   '*':
     - koha.devtools
+    # States to create a vanilla Koha install 
     - koha
     - koha.koha-install
-    - koha.koha-deichman
+    - koha.koha-adminuser
+
+    # - koha.koha-deichman
     # - koha.koha-restore
     # - koha.koha-import
     # - koha.koha-import-15000
